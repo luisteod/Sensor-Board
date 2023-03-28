@@ -69,6 +69,20 @@ void main(void)
     while (1)
     {
         // Add your application code
+        
+        //Guarda os valores do input do PIC 
+        uint8_t v[3];
+        v[0] = PORTC & 0x3C;
+        v[1] = PORTA & 0x30;
+        v[2] = v[0]>>2;
+        v[2] = v[2] | v[1]; 
+        
+        
+        
+
+        
+             
+        
     }
 }
 /**

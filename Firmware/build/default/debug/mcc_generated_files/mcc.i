@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "mcc_generated_files/mcc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 44 "main.c"
-# 1 "./mcc_generated_files/mcc.h" 1
-# 49 "./mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/mcc.c" 2
+# 47 "mcc_generated_files/mcc.c"
+# 1 "mcc_generated_files/mcc.h" 1
+# 49 "mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5403,21 +5403,21 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 2 3
-# 49 "./mcc_generated_files/mcc.h" 2
+# 49 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/device_config.h" 1
-# 50 "./mcc_generated_files/mcc.h" 2
+# 1 "mcc_generated_files/device_config.h" 1
+# 50 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/pin_manager.h" 1
-# 242 "./mcc_generated_files/pin_manager.h"
+# 1 "mcc_generated_files/pin_manager.h" 1
+# 242 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 254 "./mcc_generated_files/pin_manager.h"
+# 254 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 51 "./mcc_generated_files/mcc.h" 2
+# 51 "mcc_generated_files/mcc.h" 2
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\stdbool.h" 1 3
-# 53 "./mcc_generated_files/mcc.h" 2
+# 53 "mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\conio.h" 1 3
 
@@ -5573,13 +5573,13 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 8 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\conio.h" 2 3
-# 54 "./mcc_generated_files/mcc.h" 2
+# 54 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/interrupt_manager.h" 1
-# 55 "./mcc_generated_files/mcc.h" 2
+# 1 "mcc_generated_files/interrupt_manager.h" 1
+# 55 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/i2c1_slave.h" 1
-# 53 "./mcc_generated_files/i2c1_slave.h"
+# 1 "mcc_generated_files/i2c1_slave.h" 1
+# 53 "mcc_generated_files/i2c1_slave.h"
 typedef void (*i2c1InterruptHandler)(void);
 
 
@@ -5618,7 +5618,7 @@ uint8_t I2C1_Read(void);
 
 
 void I2C1_Write(uint8_t data);
-# 99 "./mcc_generated_files/i2c1_slave.h"
+# 99 "mcc_generated_files/i2c1_slave.h"
 _Bool I2C1_IsRead(void);
 
 
@@ -5661,44 +5661,38 @@ void (*I2C1_SlaveWrInterruptHandler)(void);
 void (*I2C1_SlaveAddrInterruptHandler)(void);
 void (*I2C1_SlaveBusColInterruptHandler)(void);
 void (*I2C1_SlaveWrColInterruptHandler)(void);
-# 56 "./mcc_generated_files/mcc.h" 2
-# 71 "./mcc_generated_files/mcc.h"
+# 56 "mcc_generated_files/mcc.h" 2
+# 71 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 84 "./mcc_generated_files/mcc.h"
+# 84 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 96 "./mcc_generated_files/mcc.h"
+# 96 "mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 44 "main.c" 2
+# 47 "mcc_generated_files/mcc.c" 2
 
 
 
-
-
-void main(void)
+void SYSTEM_Initialize(void)
 {
 
-    SYSTEM_Initialize();
-# 69 "main.c"
-    while (1)
-    {
+    I2C1_Initialize();
+    PIN_MANAGER_Initialize();
+    OSCILLATOR_Initialize();
+    WDT_Initialize();
+}
 
+void OSCILLATOR_Initialize(void)
+{
 
+    OSCEN = 0x00;
 
-        uint8_t v[3];
-        uint8_t TAG = 0;
+    OSCFRQ = 0x03;
 
-        v[0] = PORTC & 0x3C;
-        v[1] = PORTA & 0x30;
+    OSCTUNE = 0x00;
+}
 
-        v[2] = v[0]>>2;
+void WDT_Initialize(void)
+{
 
-        TAG = v[2] | v[1];
-        do { LATAbits.LATA2 = 1; } while(0);
-
-
-        I2C1_Open();
-        I2C1_Write(TAG);
-        I2C1_Close();
-        _delay((unsigned long)((1000)*(8000000/4000.0)));
-    }
+    WDTCON = 0x00;
 }

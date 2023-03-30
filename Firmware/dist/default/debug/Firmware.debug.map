@@ -4,12 +4,12 @@ Linker command line:
 
 -W-3 \
   --edf=C:\Program Files\Microchip\xc8\v2.41\pic\dat\20230208172133_en.msgs \
-  -cn -h+dist/default/production\Firmware.production.sym \
-  --cmf=dist/default/production\Firmware.production.cmf -z -Q16F15223 \
-  -oC:\Users\HARDWA~1\AppData\Local\Temp\xcAsdq8.\driver_tmp_3.o \
+  -cn -h+dist/default/debug\Firmware.debug.sym \
+  --cmf=dist/default/debug\Firmware.debug.cmf -z -Q16F15223 \
+  -oC:\Users\HARDWA~1\AppData\Local\Temp\xcAs89k.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
-  -Mdist/default/production/Firmware.production.map \
-  --md=C:\Users\HARDWA~1\AppData\Local\Temp\xcAsdq8.\driver_tmp_0.dat -E1 \
+  -Mdist/default/debug/Firmware.debug.map \
+  --md=C:\Users\HARDWA~1\AppData\Local\Temp\xcAs89k.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-07FFh -ASTRCODE=00h-07FFh \
   -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 -AENTRY=00h-0FFhx8 \
   -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
@@ -40,8 +40,8 @@ Linker command line:
   -DCONFIG=2 -AIDLOC=08000h-08003h -DIDLOC=2 -DCODE=2 -DSTRCODE=2 \
   -DSTRING=2 -DCONST=2 -DENTRY=2 -preset_vec=00h,intentry=04h,init,end_init \
   -ppowerup=CODE -pcinit=CODE -pfunctab=ENTRY -k \
-  C:\Users\HARDWA~1\AppData\Local\Temp\xcAsdq8.\driver_tmp_12.o \
-  dist/default/production\Firmware.production.o 
+  C:\Users\HARDWA~1\AppData\Local\Temp\xcAs89k.\driver_tmp_12.o \
+  dist/default/debug\Firmware.debug.o 
 
 Object code version is 3.11
 
@@ -50,12 +50,12 @@ Machine type is 16F15223
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\HARDWA~1\AppData\Local\Temp\xcAsdq8.\driver_tmp_12.o
+C:\Users\HARDWA~1\AppData\Local\Temp\xcAs89k.\driver_tmp_12.o
                 end_init                             25       25        1        8       0
-                reset_vec                             0        0        1        0       0
+                reset_vec                             0        0        2        0       0
                 config                             8007     8007        5        0       4
                 idloc                              8000     8000        4        0       5
-dist/default/production\Firmware.production.o
+dist/default/debug\Firmware.debug.o
                 cinit                                26       26        E        8       0
                 intentry                              4        4       21        8       0
                 config                             8007     8007        5        0       4
@@ -107,7 +107,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             25       25        1         0
                 cinit                                26       26        E         0
                 intentry                              4        4       21         0
-                reset_vec                             0        0        1         0
+                reset_vec                             0        0        2         0
                 text36                              1FE      1FE        3         0
                 text35                              1C1      1C1        6         0
                 text34                              15C      15C        D         0
@@ -439,7 +439,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                reset_vec                      000000  000001  000001         0       0  CODE        2
+                reset_vec                      000000  000002  000002         0       0  CODE        2
                 intentry                       000004  0001FD  000201         8       0  CODE        2
                 bssBANK0                       000020  000011  000031        20       1  BANK0       1
                 cstackCOMMON                   000070  00000A  00007A        70       1  COMMON      1
@@ -452,12 +452,12 @@ UNUSED ADDRESS RANGES
         BANK1            000A0-000EF              50           1
         BANK2            00120-0016F              50           1
         BIGRAM           02000-020EF              F0           1
-        CODE             00001-00003               3           2
+        CODE             00002-00003               2           2
                          00201-007FF             5FF
         COMMON           0007A-0007D               4           1
-        CONST            00001-00003               3           2
+        CONST            00002-00003               2           2
                          00201-007FF             100
-        ENTRY            00001-00003               3           2
+        ENTRY            00002-00003               2           2
                          00201-007FF             100
         RAM              00031-0006F              3F           1
                          000A0-000EF              50
@@ -526,9 +526,9 @@ UNUSED ADDRESS RANGES
         SFR7             00380-003EF              70           1
         SFR8             00400-0046F              70           1
         SFR9             00480-004EF              70           1
-        STRCODE          00001-00003               3           2
+        STRCODE          00002-00003               2           2
                          00201-007FF             5FF
-        STRING           00001-00003               3           2
+        STRING           00002-00003               2           2
                          00201-007FF             100
 
                                   Symbol Table
@@ -709,7 +709,7 @@ __Hintentry                                intentry     00025
 __Hmaintext                                maintext     00000
 __Hpowerup                                 powerup      00000
 __Hram                                     ram          00000
-__Hreset_vec                               reset_vec    00001
+__Hreset_vec                               reset_vec    00002
 __Hsfr0                                    sfr0         00000
 __Hsfr1                                    sfr1         00000
 __Hsfr10                                   sfr10        00000

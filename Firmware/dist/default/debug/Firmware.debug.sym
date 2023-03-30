@@ -480,7 +480,7 @@ __end_of_I2C1_SlaveClose 17D 0 CODE 0
 _OSCILLATOR_Initialize 191 0 CODE 0
 _I2C1_SlaveDefRdInterruptHandler 1E0 0 CODE 0
 __end_of_I2C1_SlaveIsRxBufFull 1F2 0 CODE 0
-__Hreset_vec 1 0 CODE 0
+__Hreset_vec 2 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 _I2C1_SlaveSetSlaveAddr 1D1 0 CODE 0
 _I2C1_SlaveSetSlaveMask 1CC 0 CODE 0
@@ -519,13 +519,13 @@ _I2C1_SlaveGetRxData 1FE 0 CODE 0
 __end_of_I2C1_SlaveSetSlaveMask 1D1 0 CODE 0
 _I2C1_SlaveDefBusColInterruptHandler 0 0 ABS 0
 %segments
-reset_vec 0 1 CODE 0 0
+reset_vec 0 3 CODE 0 0
 intentry 8 401 CODE 8 0
 cstackCOMMON 70 79 COMMON 70 1
 bssBANK0 20 30 BANK0 20 1
 %locals
-dist/default/production\Firmware.production.o
-C:\Users\HARDWA~1\AppData\Local\Temp\xcAsdq8.\driver_tmp_1.s
+dist/default/debug\Firmware.debug.o
+C:\Users\HARDWA~1\AppData\Local\Temp\xcAs89k.\driver_tmp_1.s
 1905 26 0 CODE 0
 1908 26 0 CODE 0
 1962 26 0 CODE 0

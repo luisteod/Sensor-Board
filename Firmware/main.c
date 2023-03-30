@@ -72,17 +72,21 @@ void main(void)
         
         //Guarda os valores do input do PIC 
         uint8_t v[3];
+        uint8_t TAG = 0;
+
         v[0] = PORTC & 0x3C;
         v[1] = PORTA & 0x30;
+        //shifta os bits para o devido local
         v[2] = v[0]>>2;
-        v[2] = v[2] | v[1]; 
+        //armazana o identificador do pic 
+        TAG = v[2] | v[1]; 
+        LED_SetHigh();
         
         
-        
-
-        
-             
-        
+        I2C1_Open();
+        I2C1_Write(TAG);
+        I2C1_Close();
+        __delay_ms(1000);
     }
 }
 /**

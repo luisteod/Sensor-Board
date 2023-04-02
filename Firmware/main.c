@@ -42,10 +42,46 @@
 */
 
 #include "mcc_generated_files/mcc.h"
-
+#
 /*
                          Main application
  */
+
+//Efetiva a operação de escrita/deleção
+void flash_block_commit()
+{
+    NVMCON1bits.WREN = 1; // Enable write/erase
+    INTCONbits.GIE = 0; // Disable global interrupts
+    // The next three steps are the required unlock sequence
+    NVMCON2 = 0x55; // First unlock code
+    NVMCON2 = 0xAA; // Second unlock code
+    NVMCON1bits.WR = 1; // Initiate write/erase cycle
+    INTCONbits.GIE = 1; // Enable global interrupts
+    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
+}
+// Deleta a memoria em um "row"
+void flash_block_delete(uint8_t addr)
+{
+    NVMCON1bits.NVMREGS = 0; // Point to PFM
+    //add enderecamento correto
+    NVMADR = addr; // 14-bit PFM address ; Must start at beginning of PFM row
+    NVMCON1bits.FREE = 1; // Specify an erase operation
+    NVMCON1bits.WREN = 1; // Enable write/erase cycle
+    flash_block_commit(); // Where the delete operation effectively takes place
+}
+// flash writing func
+void flash_block_write(uint8_t addr, uint8_t data)
+{   
+    //add enderacamento correto
+    flash_block_delete(addr); //Deleta a info que esta nesse endereço para que algoseja escrito
+    NVMCON1bits.LWLO = 1; ?// Habilita os "write latches"
+            /*
+             * Escreva a operação de escrita aqui
+             */
+    
+    flash_block_commit(); //Efetiva a escrita
+}
+
 void main(void)
 {
     // initialize the device

@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F15223 ]
 [d frameptr 6 ]
-"68 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.c
+"68 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [e E3248 . `uc
 I2C1_IDLE 0
 I2C1_ADDR_TX 1
@@ -11,13 +11,19 @@ I2C1_ADDR_RX 2
 I2C1_DATA_TX 3
 I2C1_DATA_RX 4
 ]
-"10 /opt/microchip/xc8/v2.41/pic/sources/c99/common/sprcadd.c
+"10 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"4 /opt/microchip/xc8/v2.41/pic/sources/c99/common/Umul8_16.c
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"49 /home/luis/Desktop/Sensor-Board/Firmware/main.c
+"51 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
+[v _flash_block_commit flash_block_commit `(v  1 e 1 0 ]
+"61
+[v _flash_block_delete flash_block_delete `(v  1 e 1 0 ]
+"82
+[v _flash_block_write flash_block_write `(v  1 e 1 0 ]
+"109
 [v _main main `(v  1 e 1 0 ]
-"108 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.c
+"108 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 "116
 [v _I2C1_Open I2C1_Open `(v  1 e 1 0 ]
@@ -86,17 +92,17 @@ I2C1_DATA_RX 4
 [v _I2C1_SlaveSendAck I2C1_SlaveSendAck `T(v  1 s 1 I2C1_SlaveSendAck ]
 "412
 [v _I2C1_SlaveSendNack I2C1_SlaveSendNack `T(v  1 s 1 I2C1_SlaveSendNack ]
-"52 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/interrupt_manager.c
+"52 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/mcc.c
+"50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "60
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "70
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
-"55 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/pin_manager.c
+"55 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"61 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/tmr0.c
+"61 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "121
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -104,7 +110,7 @@ I2C1_DATA_RX 4
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "138
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"135 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.h
+"135 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/mcc_generated_files/i2c1_slave.h
 [v _MSSP1_InterruptHandler MSSP1_InterruptHandler `*.37(v  1 e 2 0 ]
 "136
 [v _I2C1_SlaveRdInterruptHandler I2C1_SlaveRdInterruptHandler `*.37(v  1 e 2 0 ]
@@ -121,7 +127,7 @@ I2C1_DATA_RX 4
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 /opt/microchip/mplabx/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8/pic/include/proc/pic16f15223.h
+"426 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
 [u S122 . 1 `S117 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES122  1 e 1 @11 ]
 "446
@@ -134,7 +140,7 @@ I2C1_DATA_RX 4
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
 "646
 [v _LATA LATA `VEuc  1 e 1 @24 ]
-[s S954 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S986 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -142,8 +148,8 @@ I2C1_DATA_RX 4
 `uc 1 LATA5 1 0 :1:5 
 ]
 "661
-[u S961 . 1 `S954 1 . 1 0 ]
-[v _LATAbits LATAbits `VES961  1 e 1 @24 ]
+[u S993 . 1 `S986 1 . 1 0 ]
+[v _LATAbits LATAbits `VES993  1 e 1 @24 ]
 "696
 [v _LATC LATC `VEuc  1 e 1 @26 ]
 "1298
@@ -380,6 +386,27 @@ I2C1_DATA_RX 4
 [v _PIE1bits PIE1bits `VES139  1 e 1 @1815 ]
 "5179
 [v _WDTCON WDTCON `VEuc  1 e 1 @2060 ]
+"5353
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @2074 ]
+"5373
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @2075 ]
+"5400
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
+"5420
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
+[s S952 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 NVMREGS 1 0 :1:6 
+]
+"5456
+[u S960 . 1 `S952 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES960  1 e 1 @2078 ]
+"5496
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
 "5627
 [v _OSCEN OSCEN `VEuc  1 e 1 @2193 ]
 "5667
@@ -414,7 +441,7 @@ I2C1_DATA_RX 4
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
 "8165
 [v _INLVLC INLVLC `VEuc  1 e 1 @8018 ]
-"65 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.c
+"65 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _i2c1WrData i2c1WrData `VEuc  1 e 1 0 ]
 "66
 [v _i2c1RdData i2c1RdData `VEuc  1 e 1 0 ]
@@ -422,18 +449,33 @@ I2C1_DATA_RX 4
 [v _i2c1SlaveAddr i2c1SlaveAddr `VEuc  1 e 1 0 ]
 "68
 [v _i2c1SlaveState i2c1SlaveState `VEE3248  1 s 1 i2c1SlaveState ]
-"59 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/tmr0.c
+"59 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"49 /home/luis/Desktop/Sensor-Board/Firmware/main.c
+"109 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"74
+"135
 [v main@v v `[3]uc  1 a 3 1 ]
-"75
+"136
 [v main@TAG TAG `uc  1 a 1 0 ]
-"91
+"152
 } 0
-"50 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/mcc.c
+"82
+[v _flash_block_write flash_block_write `(v  1 e 1 0 ]
+{
+"107
+} 0
+"61
+[v _flash_block_delete flash_block_delete `(v  1 e 1 0 ]
+{
+"80
+} 0
+"51
+[v _flash_block_commit flash_block_commit `(v  1 e 1 0 ]
+{
+"59
+} 0
+"50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "58
@@ -443,7 +485,7 @@ I2C1_DATA_RX 4
 {
 "74
 } 0
-"61 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/tmr0.c
+"61 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "85
@@ -454,17 +496,17 @@ I2C1_DATA_RX 4
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 3 ]
 "136
 } 0
-"55 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/pin_manager.c
+"55 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "110
 } 0
-"60 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/mcc.c
+"60 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "68
 } 0
-"108 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.c
+"108 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
 "114
@@ -566,12 +608,12 @@ I2C1_DATA_RX 4
 {
 "329
 } 0
-"52 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/interrupt_manager.c
+"52 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "78
 } 0
-"121 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/tmr0.c
+"121 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
 "131
@@ -581,7 +623,7 @@ I2C1_DATA_RX 4
 {
 "141
 } 0
-"165 /home/luis/Desktop/Sensor-Board/Firmware/mcc_generated_files/i2c1_slave.c
+"165 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Isr I2C1_Isr `(v  1 s 1 I2C1_Isr ]
 {
 "220

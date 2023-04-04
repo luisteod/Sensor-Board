@@ -5715,9 +5715,9 @@ void flash_block_delete(void)
 
 
 
-    NVMADRL = ((0x07FF & 0x7) << 5);
+    NVMADRL = ((0x300 & 0x7) << 5);
 
-    NVMADRH = ((0x07FF & 0x3F8) >> 3);
+    NVMADRH = ((0x300 & 0x3F8) >> 3);
 
     NVMCON1bits.FREE = 1;
 
@@ -5740,11 +5740,13 @@ void flash_block_write(void)
     NVMCON1bits.WREN = 1;
     INTCONbits.GIE = 0;
 
+    NVMCON1bits.FREE = 0;
+
     NVMCON1bits.LWLO = 1;
 
 
-    NVMADRL = ((0x07FF & 0x7) << 5);
-    NVMADRH = ((0x07FF & 0x3F8) >> 3);
+    NVMADRL = ((0x300 & 0x7) << 5);
+    NVMADRH = ((0x300 & 0x3F8) >> 3);
 
 
     NVMDATL = 0x89;
@@ -5755,6 +5757,9 @@ void flash_block_write(void)
 
     flash_block_commit();
 
+    INTCONbits.GIE = 1;
+    NVMCON1bits.WREN = 0;
+
  }
 
 void main(void)
@@ -5763,7 +5768,7 @@ void main(void)
     SYSTEM_Initialize();
 
     flash_block_write();
-# 130 "main.c"
+# 135 "main.c"
     while (1)
     {
 

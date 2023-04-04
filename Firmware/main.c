@@ -42,7 +42,7 @@
 */
 
 #include "mcc_generated_files/mcc.h"
-#define ADR_CONFIG 0x07FF
+#define ADR_CONFIG 0x300
 /*
                          Main application
  */
@@ -89,6 +89,8 @@ void flash_block_write(void)
     NVMCON1bits.WREN = 1; // Enable write/erase
     INTCONbits.GIE = 0; // Disable global interrupts
     
+    NVMCON1bits.FREE = 0; //Afirma op de escrita
+    
     NVMCON1bits.LWLO = 1; // Habilita os "write latches"
     
     // Endereco do row para escrita 
@@ -103,6 +105,9 @@ void flash_block_write(void)
     NVMCON1bits.LWLO = 0;
     
     flash_block_commit(); // Habilita a escrita
+    
+    INTCONbits.GIE = 1; // Enable global interrupts
+    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
     
  }
 

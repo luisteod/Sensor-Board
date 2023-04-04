@@ -121,7 +121,7 @@ void main(void)
     // Use the following macros to:
 
     // Enable the Global Int  errupts
-    //INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_GlobalInterruptEnable();
 
     // Enable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptEnable();
@@ -142,11 +142,13 @@ void main(void)
 
         v[0] = PORTC & 0x3C;
         v[1] = PORTA & 0x30;
-        //shifta os bits para o devido local
+        // Shifta os bits para o devido local
         v[2] = v[0]>>2;
-        //armazana o identificador do pic 
+        // Armazana o identificador do pic 
         TAG = v[2] | v[1]; 
-        LED_SetHigh();
+        //LED_SetHigh();
+        
+        INTERRUPT_InterruptManager();
         
         
         I2C1_Open();

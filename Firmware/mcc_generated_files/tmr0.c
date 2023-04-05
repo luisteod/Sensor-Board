@@ -56,6 +56,9 @@
   Section: TMR0 APIs
 */
 
+/* Ponteiro para uma funcao que sera criada posteriormente com a mesma assinatura,
+   isso eh ultil para selecionar qual funcao chamar baseado em uma condicao ou
+   quando se quer separar a funcao que chama interrupt handler da que implementa de fato o handler*/
 void (*TMR0_InterruptHandler)(void);
 
 void TMR0_Initialize(void)
@@ -122,6 +125,7 @@ void TMR0_ISR(void)
 {
     // clear the TMR0 interrupt flag
     PIR0bits.TMR0IF = 0;
+    // Caso tenha algum endereco de memoria na funcao ponteiro TMR0_InterruptHandler
     if(TMR0_InterruptHandler)
     {
         TMR0_InterruptHandler();
@@ -135,9 +139,12 @@ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
     TMR0_InterruptHandler = InterruptHandler;
 }
 
+// A funcao ponteiro void (*TMR0_InterruptHandler)(void) eh setada com essa funcao na TMR0_Initialize()
+// Essa funcao sera chamada na TMR0_ISR() para efetua o codigo necessario quando houver interrupcao
 void TMR0_DefaultInterruptHandler(void){
     // add your TMR0 interrupt custom code
     // or set custom function using TMR0_SetInterruptHandler()
+    
 }
 
 /**

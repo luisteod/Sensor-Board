@@ -114,6 +114,7 @@ void flash_block_write(void)
 void main(void)
 {
     // initialize the device
+    // Seta o interrupt enable do TMR0IE = 1 para habilitar a interrupcao pelo TMR0 
     SYSTEM_Initialize();
     
     flash_block_write();
@@ -147,9 +148,7 @@ void main(void)
         // Armazana o identificador do pic 
         TAG = v[2] | v[1]; 
         //LED_SetHigh();
-        
-        INTERRUPT_InterruptManager();
-        
+               
         
         I2C1_Open();
         I2C1_Write(TAG);

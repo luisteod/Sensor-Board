@@ -50,11 +50,14 @@
 
 #include <xc.h>
 #include "tmr0.h"
+#include "pin_manager.h"
 
 
 /**
   Section: TMR0 APIs
 */
+//Global variable definitions
+uint8_t LED_timer=0;
 
 /* Ponteiro para uma funcao que sera criada posteriormente com a mesma assinatura,
    isso eh ultil para selecionar qual funcao chamar baseado em uma condicao ou
@@ -144,7 +147,16 @@ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
 void TMR0_DefaultInterruptHandler(void){
     // add your TMR0 interrupt custom code
     // or set custom function using TMR0_SetInterruptHandler()
-    
+         LED_timer++;
+        if (LED_timer==100)
+        {
+            LED_SetHigh();
+        }
+        if(LED_timer==300)
+        {
+           LED_SetLow();
+           LED_timer = 0;
+        }
 }
 
 /**

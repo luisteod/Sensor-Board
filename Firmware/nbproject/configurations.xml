@@ -13,6 +13,7 @@
         <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/tmr0.h</itemPath>
+        <itemPath>mcc_generated_files/memory.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -22,6 +23,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="custom_functions" projectFiles="true">
+        <itemPath>flash_memory_filling.c</itemPath>
+        <itemPath>flash_memory_filling.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -31,6 +36,7 @@
         <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/i2c1_slave.c</itemPath>
         <itemPath>mcc_generated_files/tmr0.c</itemPath>
+        <itemPath>mcc_generated_files/memory.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>

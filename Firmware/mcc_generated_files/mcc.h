@@ -54,6 +54,7 @@
 #include <conio.h>
 #include "interrupt_manager.h"
 #include "i2c1_slave.h"
+#include "memory.h"
 #include "tmr0.h"
 
 
@@ -69,6 +70,9 @@
  * @Example
     SYSTEM_Initialize(void);
  */
+
+// PIC16F15223 Configuration Bit Settings
+
 void SYSTEM_Initialize(void);
 
 /**

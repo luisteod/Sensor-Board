@@ -60,6 +60,8 @@
 
 #endif
 
+ //Global variable declaration
+uint8_t LED_timer;
 
 
 /**

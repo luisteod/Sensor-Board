@@ -42,82 +42,79 @@
 */
 
 #include "mcc_generated_files/mcc.h"
-#define ADR_CONFIG 0x300
-/*
-                         Main application
- */
-
+#include "flash_memory_filling.h"
 //Efetiva a operação de escrita/deleção
-void flash_block_commit(void)
-{
-    
-    // The next three steps are the required unlock sequence
-    NVMCON2 = 0x55; // First unlock code
-    NVMCON2 = 0xAA; // Second unlock code
-    NVMCON1bits.WR = 1; // Initiate write/erase cycle
- 
-}
+//void flash_block_commit(void)
+//{
+//    
+//    // The next three steps are the required unlock sequence
+//    NVMCON2 = 0x55; // First unlock code
+//    NVMCON2 = 0xAA; // Second unlock code
+//    NVMCON1bits.WR = 1; // Initiate write/erase cycle
+// 
+//}
 // Deleta a memoria em um "row"
-void flash_block_delete(void)
-{
-    NVMCON1bits.NVMREGS = 0; // Point to PFM
-    // Add enderecamento correto
-    // 14-bit PFM address ; Must start at beginning of PFM row
-    // Colocando os 5 LSB bits como 0x00 e colocando os 3 bits MSB igual aos 3 bits LSB do ADR_CONFIG[2:0]
-    NVMADRL = ((ADR_CONFIG & 0x7) << 5); 
-    // Colocando os 7 bits iguais aos 7 MSB  do ADR_CONFIG
-    NVMADRH = ((ADR_CONFIG & 0x3F8) >> 3);
-    
-    NVMCON1bits.FREE = 1; // Specify an erase operation
-    
-    NVMCON1bits.WREN = 1; // Enable write/erase
-    INTCONbits.GIE = 0; // Disable global interrupts
-    
-    flash_block_commit();
-    
-    INTCONbits.GIE = 1; // Enable global interrupts
-    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
-}
+//void flash_block_delete(void)
+//{
+//    NVMCON1bits.NVMREGS = 0; // Point to PFM
+//    // Add enderecamento correto
+//    // 14-bit PFM address ; Must start at beginning of PFM row
+//    // Colocando os 5 LSB bits como 0x00 e colocando os 3 bits MSB igual aos 3 bits LSB do ADR_CONFIG[2:0]
+//    NVMADRL = ((ADR_CONFIG & 0x7) << 5); 
+//    // Colocando os 7 bits iguais aos 7 MSB  do ADR_CONFIG
+//    NVMADRH = ((ADR_CONFIG & 0x3F8) >> 3);
+//    
+//    NVMCON1bits.FREE = 1; // Specify an erase operation
+//    
+//    NVMCON1bits.WREN = 1; // Enable write/erase
+//    INTCONbits.GIE = 0; // Disable global interrupts
+//    
+//    flash_block_commit();
+//    
+//    INTCONbits.GIE = 1; // Enable global interrupts
+//    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
+//}
 // flash writing func
-void flash_block_write(void)
-{   
-    // Add enderacamento correto
-    flash_block_delete(); //Deleta a info que esta nesse endereço para que algoseja escrito
-    
-    NVMCON1bits.NVMREGS = 0;
-    
-    NVMCON1bits.WREN = 1; // Enable write/erase
-    INTCONbits.GIE = 0; // Disable global interrupts
-    
-    NVMCON1bits.FREE = 0; //Afirma op de escrita
-    
-    NVMCON1bits.LWLO = 1; // Habilita os "write latches"
-    
-    // Endereco do row para escrita 
-    NVMADRL = ((ADR_CONFIG & 0x7) << 5);
-    NVMADRH = ((ADR_CONFIG & 0x3F8) >> 3);
-    
-    // Dados para escrita
-    NVMDATL = 0x89;
-    NVMDATH = 0x23;
-    
-    // Faz com que os write latches apontem para PFM
-    NVMCON1bits.LWLO = 0;
-    
-    flash_block_commit(); // Habilita a escrita
-    
-    INTCONbits.GIE = 1; // Enable global interrupts
-    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
-    
- }
+//void flash_block_write(void)
+//{   
+//    // Add enderacamento correto
+//    flash_block_delete(); //Deleta a info que esta nesse endereço para que algoseja escrito
+//    
+//    NVMCON1bits.NVMREGS = 0;
+//    
+//    NVMCON1bits.WREN = 1; // Enable write/erase
+//    INTCONbits.GIE = 0; // Disable global interrupts
+//    
+//    NVMCON1bits.FREE = 0; //Afirma op de escrita
+//    
+//    NVMCON1bits.LWLO = 1; // Habilita os "write latches"
+//    
+//    // Endereco do row para escrita 
+//    NVMADRL = ((ADR_CONFIG & 0x7) << 5);
+//    NVMADRH = ((ADR_CONFIG & 0x3F8) >> 3);
+//    
+//    // Dados para escrita
+//    NVMDATL = 0x89;
+//    NVMDATH = 0x23;
+//    
+//    // Faz com que os write latches apontem para PFM
+//    NVMCON1bits.LWLO = 0;
+//    
+//    flash_block_commit(); // Habilita a escrita
+//    
+//    INTCONbits.GIE = 1; // Enable global interrupts
+//    NVMCON1bits.WREN = 0; // Disable further write/erase cycles
+//    
+// }
 
 void main(void)
 {
     // initialize the device
     // Seta o interrupt enable do TMR0IE = 1 para habilitar a interrupcao pelo TMR0 
     SYSTEM_Initialize();
+    memory_initialize();
     
-    flash_block_write();
+    //flash_block_write();
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
 
@@ -125,7 +122,7 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
 
     // Enable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
 
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
@@ -150,10 +147,10 @@ void main(void)
         //LED_SetHigh();
                
         
-        I2C1_Open();
-        I2C1_Write(TAG);
-        I2C1_Close();
-        __delay_ms(1000);
+//        I2C1_Open();
+//        I2C1_Write(TAG);
+//        I2C1_Close();
+//        __delay_ms(1000);
     }
 }
 /**

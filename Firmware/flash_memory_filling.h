@@ -9,8 +9,6 @@
     extern "C" {
 #endif
  
-// Comeco da SAF
-#define FLASH_ROW_ADDR 0x0780
 
 uint16_t dataBlock[32];  
 

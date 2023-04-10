@@ -147,12 +147,12 @@ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
 void TMR0_DefaultInterruptHandler(void){
     // add your TMR0 interrupt custom code
     // or set custom function using TMR0_SetInterruptHandler()
-         LED_timer++;
-        if (LED_timer==100)
+        LED_timer++;
+        if (LED_timer==10)
         {
             LED_SetHigh();
         }
-        if(LED_timer==300)
+        if(LED_timer==20)
         {
            LED_SetLow();
            LED_timer = 0;

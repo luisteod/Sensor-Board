@@ -144,13 +144,9 @@ void main(void)
         v[2] = v[0]>>2;
         // Armazana o identificador do pic 
         TAG = v[2] | v[1]; 
-        //LED_SetHigh();
+        LED_SetHigh();
                
-        
-//        I2C1_Open();
-//        I2C1_Write(TAG);
-//        I2C1_Close();
-//        __delay_ms(1000);
+       
     }
 }
 /**

@@ -17,10 +17,8 @@ void memory_initialize(void)
     if(FLASH_ReadWord(FLASH_ROW_ADDR) != PREAMBLE)
     {
         // Inicia a rotina de escrita default(HARD CODE) na flash
-        if(FLASH_WriteBlock(FLASH_ROW_ADDR, dataBlock) == -1)
-            printf("memory inicialization failed");
-        else
-            printf("sucess memory inicialization");
+        uint8_t flag = FLASH_WriteBlock(FLASH_ROW_ADDR, dataBlock);
+            
     }
 }
 

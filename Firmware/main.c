@@ -112,7 +112,7 @@ void main(void)
     // initialize the device
     // Seta o interrupt enable do TMR0IE = 1 para habilitar a interrupcao pelo TMR0 
     SYSTEM_Initialize();
-    //memory_initialize();
+    memory_initialize();
     
     //flash_block_write();
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
@@ -144,7 +144,6 @@ void main(void)
         v[2] = v[0]>>2;
         // Armazana o identificador do pic 
         TAG = v[2] | v[1]; 
-        LED_SetHigh();
                
        
     }

@@ -70,9 +70,6 @@
  * @Example
     SYSTEM_Initialize(void);
  */
-
-// PIC16F15223 Configuration Bit Settings
-
 void SYSTEM_Initialize(void);
 
 /**

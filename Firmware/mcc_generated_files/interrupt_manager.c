@@ -64,6 +64,7 @@ void __interrupt() INTERRUPT_InterruptManager (void)
         } 
         else if(PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
         {
+            // Ponteiro para a funcao I2C_Isr()
             MSSP1_InterruptHandler();
         } 
         else

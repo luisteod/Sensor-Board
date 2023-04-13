@@ -66,6 +66,11 @@ volatile uint8_t i2c1WrData;
 volatile uint8_t i2c1RdData;
 volatile uint8_t i2c1SlaveAddr;
 static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
+// My global variables
+// Varible to count the varibles received
+static volatile uint8_t i2cReadCnt;
+// Array to store de bytes received
+uint8_t i2cDataRead[3];
 
 /**
  Section: Functions declaration
@@ -234,12 +239,20 @@ static void I2C1_SlaveRdCallBack() {
     // Add your custom callback code here
     if (I2C1_SlaveRdInterruptHandler) 
     {
+        // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
     }
 }
 
+// Funcao que lida com a interrupcao gearada quando o master almeja falar
 static void I2C1_SlaveDefRdInterruptHandler() {
+    
     i2c1RdData = I2C1_SlaveGetRxData();
+    
+    while(i2cReadCnt < 3)
+    {
+        i2cDataRead[i2cReadCnt] = i2c1RdData;
+    }
 }
 
 // Write Event Interrupt Handlers
@@ -271,8 +284,11 @@ static void I2C1_SlaveAddrCallBack() {
     }
 }
 
+// Handler que cuida da verificao do endereco e manda o acknowledge
 static void I2C1_SlaveDefAddrInterruptHandler() {
     i2c1SlaveAddr = I2C1_SlaveGetRxData();
+    // Clear the counter of bytes received
+    i2cReadCnt = 0;
 }
 
 // Write Collision Event Interrupt Handlers

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/debug\Firmware2.debug.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>2048</length>
+      <used>736</used>
+      <free>1312</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>256</length>
+      <used>108</used>
+      <free>148</free>
+    </memory>
+  </executable>
+</project>

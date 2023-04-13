@@ -45,7 +45,6 @@
 #include "flash_memory_filling.h"
 
 
-static 
 
 void main(void)
 {
@@ -53,6 +52,8 @@ void main(void)
     SYSTEM_Initialize();
     // Inicializa memoria nao volatil
     memory_initialize();
+    //Permite que o pic receba informação via I2C (Ativa )
+    I2C1_Open();
     
     // Pega os valores das portas A e C do PIC e os armazena 
     uint8_t v[3];
@@ -63,6 +64,8 @@ void main(void)
     v[2] = v[0]>>2;
     // Armazana o identificador do pic 
     TAG = v[2] | v[1]; 
+    
+    TAG = ((PORTC & 0x3C)) >>2 | (PORTA & 0x30);
     
     //flash_block_write();
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
@@ -84,8 +87,7 @@ void main(void)
     {
         // Add your application code
         
-        //Permite que o pic receba informação via I2C (Ativa )
-        I2C1_Open();
+       
         
     }
 }

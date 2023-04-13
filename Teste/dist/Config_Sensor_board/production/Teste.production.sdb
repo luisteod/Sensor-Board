@@ -7,7 +7,7 @@
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\main.c
+"65 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\main.c
 [v _main main `(v  1 e 1 0 ]
 "52 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
@@ -47,7 +47,7 @@
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
 "646
 [v _LATA LATA `VEuc  1 e 1 @24 ]
-[s S243 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S245 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -55,8 +55,8 @@
 `uc 1 LATA5 1 0 :1:5 
 ]
 "661
-[u S250 . 1 `S243 1 . 1 0 ]
-[v _LATAbits LATAbits `VES250  1 e 1 @24 ]
+[u S252 . 1 `S245 1 . 1 0 ]
+[v _LATAbits LATAbits `VES252  1 e 1 @24 ]
 "696
 [v _LATC LATC `VEuc  1 e 1 @26 ]
 "4291
@@ -65,27 +65,27 @@
 [v _TMR0H TMR0H `VEuc  1 e 1 @1437 ]
 "4683
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @1438 ]
-[s S201 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S203 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 MD16 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "4711
-[s S207 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S209 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T0MD16 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
-[s S213 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S215 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
 `uc 1 T016BIT 1 0 :1:4 
 ]
-[u S219 . 1 `S201 1 . 1 0 `S207 1 . 1 0 `S213 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES219  1 e 1 @1438 ]
+[u S221 . 1 `S203 1 . 1 0 `S209 1 . 1 0 `S215 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES221  1 e 1 @1438 ]
 "4781
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @1439 ]
 [s S140 . 1 `uc 1 INTF 1 0 :1:0 
@@ -153,14 +153,18 @@
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
 "8165
 [v _INLVLC INLVLC `VEuc  1 e 1 @8018 ]
+"49 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\main.c
+[v _status_in_flash status_in_flash `DC[8]uc  1 e 8 @1920 ]
+"50
+[v _default_in_flash default_in_flash `DC[72]uc  1 e 72 @1928 ]
 "56 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\mcc_generated_files/tmr0.c
 [v _Time_ticker Time_ticker `uc  1 e 1 0 ]
 "63
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\main.c
+"65 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"76
+"91
 } 0
 "50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Teste\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]

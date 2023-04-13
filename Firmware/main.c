@@ -43,31 +43,30 @@
 
 #include "mcc_generated_files/mcc.h"
 #include "flash_memory_filling.h"
+#include "sensor.h"
 
-
-
+                
 void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    // Inicializa memoria nao volatil
-    memory_initialize();
+    
+    uint8_t TAG = getSensorBoardType();
+    if(SensorBoardType_validation(TAG)){
+        // Inicializa memoria nao volatil
+        memory_initialize(TAG);
+    }
+    else{
+        //errorSignal();
+    }
     //Permite que o pic receba informação via I2C (Ativa )
     I2C1_Open();
     
-    // Pega os valores das portas A e C do PIC e os armazena 
-    uint8_t v[3];
-    uint8_t TAG = 0;
-    v[0] = PORTC & 0x3C;
-    v[1] = PORTA & 0x30;
-    // Shifta os bits para o devido local
-    v[2] = v[0]>>2;
-    // Armazana o identificador do pic 
-    TAG = v[2] | v[1]; 
+
     
-    TAG = ((PORTC & 0x3C)) >>2 | (PORTA & 0x30);
+   
     
-    //flash_block_write();
+   
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
 

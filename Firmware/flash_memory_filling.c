@@ -1,62 +1,66 @@
 #include "flash_memory_filling.h"
 
-#define FIRST_ROW_WORD 0x0780
-#define PREAMBLE 0x1555
-#define STATUS_DEFAULT 0x0000
-
 // Inicializacao da memoria
-uint8_t Default_data[12][6] =
-{
-    0x01,0x02,0x03,0x04,0x05,0x06,
-    0x11,0x12,0x13,0x14,0x15,0x16,
-    0x21,0x22,0x23,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-    0x00,0x00,0x00,0x00,0x00,0x00,
-};
+const uint8_t status_in_flash[STATUS_ARRAY_SIZE] = {PREAMBLE, STATUS_DEFAULT, 0, 0, 0, 0, 0, 0};
+const uint8_t default_in_flash[DEFAULT_ARRAY_SIZE] = {  1,  1,  1,  1,  1,  1,
+                                                        2,  2,  2,  2,  2,  2,
+                                                        3,  3,  3,  3,  3,  3,
+                                                        4,  4,  4,  4,  4,  4,
+                                                        5,  5,  5,  5,  5,  5,
+                                                        6,  6,  6,  6,  6,  6,
+                                                        7,  7,  7,  7,  7,  7,
+                                                        8,  8,  8,  8,  8,  8,
+                                                        9,  9,  9,  9,  9,  9,
+                                                        10, 10, 10, 10, 10, 10,
+                                                        11, 11, 11, 11, 11, 11,
+                                                        12, 12, 12, 12, 12, 12  };
 
-uint16_t dataBlock[32] = 
-{
-    PREAMBLE, STATUS_DEFAULT, 0x0002, 0x0003, 0x0004, 0x0005, 0x0006, 0x0007,
-    0x0008  , 0x0009        , 0x000A, 0x000B, 0x000C, 0x000D, 0x000D, 0x000F,
-    0x0010  , 0x0011        , 0x0012, 0x0013, 0x0014, 0x0015, 0x0016, 0x0017,
-    0x0018  , 0x0019        , 0x001A, 0x001B, 0x001C, 0x001D, 0x001E, 0x001F
-};
 
-// Auxiliar buffer for writing a word inf flash memory
-static volatile uint16_t* ramBuff;
 
-void memory_initialize(void)
+
+void memory_initialize(uint8_t TAG)
 {
-    if(FLASH_ReadWord(FIRST_ROW_WORD) != PREAMBLE)
+    // Auxiliar buffer for writing a word inf flash memory
+    static volatile uint16_t *ramBuff;
+
+    if(FLASH_ReadWord(STATUS_ARRAY_ADDR) != PREAMBLE)
     {
+
         // Inicia a rotina de escrita default(HARD CODE) na flash
-        uint8_t flag = FLASH_WriteBlock(FIRST_ROW_WORD, dataBlock);
+        
+        FLASH_WriteWord(STATUS_ARRAY_ADDR,     ramBuff, PREAMBLE);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, STATUS_DEFAULT );
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 2, ramBuff, 0);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 3, ramBuff, 0);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 4, ramBuff, 0);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 5, ramBuff, 0);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 6, ramBuff, 0);
+        FLASH_WriteWord(STATUS_ARRAY_ADDR + 7, ramBuff, 0);
+
+
+        
+        
             
     }
 }
 
-void data_recv_handle(uint8_t* data)
-{
-    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
-    if(data[5] != 0)
-    {
-        for(int i=1; i<6; i++)
-        {
-            FLASH_WriteWord(FIRST_ROW_WORD + (uint16_t)i, ramBuff, (uint16_t)data[i]);
-        }
-    }
-    // If last byte is equal 0, so the master want's PIC to send calibration data stored in flash
-    else
-    {
-        // Nothing to be done here!
-    }
-}
+//void data_recv_handle(uint8_t* data)
+//{
+//    static volatile uint16_t* ramBuff;
+//
+//    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
+//    if(data[5] != 0)
+//    {
+//        for(int i=1; i<6; i++)
+//        {
+//            FLASH_WriteWord(FIRST_ROW_WORD + (uint16_t)i, ramBuff, (uint16_t)data[i]);
+//        }
+//    }
+//    // If last byte is equal 0, so the master want's PIC to send calibration data stored in flash
+//    else
+//    {
+//        // Nothing to be done here!
+//    }
+//}
 
 

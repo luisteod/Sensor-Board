@@ -26,6 +26,8 @@
       <logicalFolder name="f1" displayName="custom_functions" projectFiles="true">
         <itemPath>flash_memory_filling.c</itemPath>
         <itemPath>flash_memory_filling.h</itemPath>
+        <itemPath>sensor.c</itemPath>
+        <itemPath>sensor.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"

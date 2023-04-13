@@ -2,11 +2,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "218 mcc_generated_files/pin_manager.h
 [; ;mcc_generated_files/pin_manager.h: 218: void PIN_MANAGER_Initialize (void);
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"85 mcc_generated_files/mcc.h
-[; ;mcc_generated_files/mcc.h: 85: void OSCILLATOR_Initialize(void);
+"87 mcc_generated_files/mcc.h
+[; ;mcc_generated_files/mcc.h: 87: void OSCILLATOR_Initialize(void);
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"97
-[; ;mcc_generated_files/mcc.h: 97: void WDT_Initialize(void);
+"99
+[; ;mcc_generated_files/mcc.h: 99: void WDT_Initialize(void);
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
 "101 mcc_generated_files/tmr0.h
 [; ;mcc_generated_files/tmr0.h: 101: void TMR0_Initialize(void);
@@ -518,6 +518,100 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8648
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 8648: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
+"59 mcc_generated_files/mcc.h
+[; ;mcc_generated_files/mcc.h: 59: const uint8_t status_in_flash[8] __attribute__((address(0x780)));
+[v _status_in_flash `Cuc ~T0 @X0 -> 8 `i e@1920 ]
+[i _status_in_flash
+:U ..
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+..
+]
+"60
+[; ;mcc_generated_files/mcc.h: 60: const uint8_t default_in_flash[72] __attribute__((address(0x788)));
+[v _default_in_flash `Cuc ~T0 @X0 -> 72 `i e@1928 ]
+[i _default_in_flash
+:U ..
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+..
+]
 "50 mcc_generated_files/mcc.c
 [; ;mcc_generated_files/mcc.c: 50: void SYSTEM_Initialize(void)
 [v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]

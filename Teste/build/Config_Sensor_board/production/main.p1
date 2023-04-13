@@ -1,31 +1,30 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"5057 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 5057:     struct {
-[s S265 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S265 . INTE . IOCIE TMR0IE ]
-"5056
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 5056: typedef union {
-[u S264 `S265 1 ]
-[n S264 . . ]
-"5064
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 5064: extern volatile PIE0bits_t PIE0bits __attribute__((address(0x716)));
-[v _PIE0bits `VS264 ~T0 @X0 0 e@1814 ]
-"4929
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 4929:     struct {
-[s S259 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S259 . INTF . IOCIF TMR0IF ]
-"4928
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 4928: typedef union {
-[u S258 `S259 1 ]
-[n S258 . . ]
-"4936
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 4936: extern volatile PIR0bits_t PIR0bits __attribute__((address(0x70C)));
-[v _PIR0bits `VS258 ~T0 @X0 0 e@1804 ]
-"292 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 292: void TMR0_ISR(void);
-[v _TMR0_ISR `(v ~T0 @X0 0 ef ]
+[p mainexit ]
+"74 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 74: void SYSTEM_Initialize(void);
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"419 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 419:     struct {
+[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . INTEDG . PEIE GIE ]
+"418
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 418: typedef union {
+[u S30 `S31 1 ]
+[n S30 . . ]
+"426
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 426: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
+[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+"652
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 652:     struct {
+[s S41 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S41 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 ]
+"651
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 651: typedef union {
+[u S40 `S41 1 ]
+[n S40 . . ]
+"661
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 661: extern volatile LATAbits_t LATAbits __attribute__((address(0x018)));
+[v _LATAbits `VS40 ~T0 @X0 0 e@24 ]
 "110 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 110: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -521,39 +520,232 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8648
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 8648: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-[v $root$_INTERRUPT_InterruptManager `(v ~T0 @X0 0 e ]
-"52 mcc_generated_files/interrupt_manager.c
-[; ;mcc_generated_files/interrupt_manager.c: 52: void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
-[v _INTERRUPT_InterruptManager `(v ~T1 @X0 1 ef ]
-"53
-[; ;mcc_generated_files/interrupt_manager.c: 53: {
-{
-[e :U _INTERRUPT_InterruptManager ]
-[f ]
-"55
-[; ;mcc_generated_files/interrupt_manager.c: 55:     if(PIE0bits.TMR0IE == 1 && PIR0bits.TMR0IF == 1)
-[e $ ! && == -> . . _PIE0bits 0 3 `i -> 1 `i == -> . . _PIR0bits 0 3 `i -> 1 `i 470  ]
-"56
-[; ;mcc_generated_files/interrupt_manager.c: 56:     {
-{
-"57
-[; ;mcc_generated_files/interrupt_manager.c: 57:         TMR0_ISR();
-[e ( _TMR0_ISR ..  ]
-"58
-[; ;mcc_generated_files/interrupt_manager.c: 58:     }
-}
-[e $U 471  ]
-"59
-[; ;mcc_generated_files/interrupt_manager.c: 59:     else
-[e :U 470 ]
+"59 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 59: const uint8_t status_in_flash[8] __attribute__((address(0x780)));
+[v _status_in_flash `Cuc ~T0 @X0 -> 8 `i e@1920 ]
+[i _status_in_flash
+:U ..
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+..
+]
 "60
-[; ;mcc_generated_files/interrupt_manager.c: 60:     {
+[; ;./mcc_generated_files/mcc.h: 60: const uint8_t default_in_flash[72] __attribute__((address(0x788)));
+[v _default_in_flash `Cuc ~T0 @X0 -> 72 `i e@1928 ]
+[i _default_in_flash
+:U ..
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+-> -> 0 `i `Cuc
+..
+]
+"49 main.c
+[; ;main.c: 49: const uint8_t status_in_flash[8] = {0x55,0x00,0,0,0,0,0,0};
+[v _status_in_flash `Cuc ~T0 @X0 -> 8 `i e@1920 ]
+[i _status_in_flash
+:U ..
+-> -> 85 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+"50
+[; ;main.c: 50: const uint8_t default_in_flash[72] = { 1, 1, 1, 1, 1, 1,
+[v _default_in_flash `Cuc ~T0 @X0 -> 72 `i e@1928 ]
+[i _default_in_flash
+:U ..
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+..
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"65
+[; ;main.c: 65: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"66
+[; ;main.c: 66: {
 {
-"62
-[; ;mcc_generated_files/interrupt_manager.c: 62:     }
+[e :U _main ]
+[f ]
+"68
+[; ;main.c: 68:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"74
+[; ;main.c: 74:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+"77
+[; ;main.c: 77:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+"85
+[; ;main.c: 85:     do { LATAbits.LATA2 = 1; } while(0);
+[e :U 472 ]
+{
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 471 ]
-"63
-[; ;mcc_generated_files/interrupt_manager.c: 63: }
+"87
+[; ;main.c: 87:     while (1)
+[e :U 474 ]
+"88
+[; ;main.c: 88:     {
+{
+"90
+[; ;main.c: 90:     }
+}
+[e :U 473 ]
+[e $U 474  ]
+[e :U 475 ]
+"91
+[; ;main.c: 91: }
 [e :UE 469 ]
 }

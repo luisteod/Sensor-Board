@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/mcc.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/mcc.c" 2
-# 47 "mcc_generated_files/mcc.c"
-# 1 "mcc_generated_files/mcc.h" 1
-# 49 "mcc_generated_files/mcc.h"
+# 1 "main.c" 2
+# 46 "main.c"
+# 1 "./mcc_generated_files/mcc.h" 1
+# 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5403,21 +5403,21 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 2 3
-# 49 "mcc_generated_files/mcc.h" 2
+# 49 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/device_config.h" 1
-# 50 "mcc_generated_files/mcc.h" 2
+# 1 "./mcc_generated_files/device_config.h" 1
+# 50 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/pin_manager.h" 1
-# 218 "mcc_generated_files/pin_manager.h"
+# 1 "./mcc_generated_files/pin_manager.h" 1
+# 218 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 230 "mcc_generated_files/pin_manager.h"
+# 230 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 51 "mcc_generated_files/mcc.h" 2
+# 51 "./mcc_generated_files/mcc.h" 2
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\stdbool.h" 1 3
-# 53 "mcc_generated_files/mcc.h" 2
+# 53 "./mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\conio.h" 1 3
 
@@ -5573,81 +5573,104 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 8 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\conio.h" 2 3
-# 54 "mcc_generated_files/mcc.h" 2
+# 54 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/interrupt_manager.h" 1
-# 55 "mcc_generated_files/mcc.h" 2
+# 1 "./mcc_generated_files/interrupt_manager.h" 1
+# 55 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/memory.h" 1
-# 99 "mcc_generated_files/memory.h"
+# 1 "./mcc_generated_files/memory.h" 1
+# 99 "./mcc_generated_files/memory.h"
 uint16_t FLASH_ReadWord(uint16_t flashAddr);
-# 128 "mcc_generated_files/memory.h"
+# 128 "./mcc_generated_files/memory.h"
 void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-# 164 "mcc_generated_files/memory.h"
+# 164 "./mcc_generated_files/memory.h"
 int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-# 189 "mcc_generated_files/memory.h"
+# 189 "./mcc_generated_files/memory.h"
 void FLASH_EraseBlock(uint16_t startAddr);
-# 222 "mcc_generated_files/memory.h"
+# 222 "./mcc_generated_files/memory.h"
 void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
-# 248 "mcc_generated_files/memory.h"
+# 248 "./mcc_generated_files/memory.h"
 uint8_t DATAEE_ReadByte(uint16_t bAdd);
-# 56 "mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
-# 1 "mcc_generated_files/tmr0.h" 1
-# 64 "mcc_generated_files/tmr0.h"
+# 1 "./mcc_generated_files/tmr0.h" 1
+# 64 "./mcc_generated_files/tmr0.h"
         extern uint8_t Time_ticker;
-# 101 "mcc_generated_files/tmr0.h"
+# 101 "./mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 130 "mcc_generated_files/tmr0.h"
+# 130 "./mcc_generated_files/tmr0.h"
 void TMR0_StartTimer(void);
-# 162 "mcc_generated_files/tmr0.h"
+# 162 "./mcc_generated_files/tmr0.h"
 void TMR0_StopTimer(void);
-# 197 "mcc_generated_files/tmr0.h"
+# 197 "./mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 236 "mcc_generated_files/tmr0.h"
+# 236 "./mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 273 "mcc_generated_files/tmr0.h"
+# 273 "./mcc_generated_files/tmr0.h"
 void TMR0_Reload(uint8_t periodVal);
-# 292 "mcc_generated_files/tmr0.h"
+# 292 "./mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 311 "mcc_generated_files/tmr0.h"
+# 311 "./mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 329 "mcc_generated_files/tmr0.h"
+# 329 "./mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 347 "mcc_generated_files/tmr0.h"
+# 347 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 57 "mcc_generated_files/mcc.h" 2
-# 72 "mcc_generated_files/mcc.h"
+# 57 "./mcc_generated_files/mcc.h" 2
+
+
+const uint8_t status_in_flash[8] __attribute__((address(0x780)));
+const uint8_t default_in_flash[72] __attribute__((address(0x788)));
+# 74 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 85 "mcc_generated_files/mcc.h"
+# 87 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 97 "mcc_generated_files/mcc.h"
+# 99 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 47 "mcc_generated_files/mcc.c" 2
+# 46 "main.c" 2
 
 
 
-void SYSTEM_Initialize(void)
+const uint8_t status_in_flash[8] = {0x55,0x00,0,0,0,0,0,0};
+const uint8_t default_in_flash[72] = { 1, 1, 1, 1, 1, 1,
+                                        2, 2, 2, 2, 2, 2,
+                                        3, 3, 3, 3, 3, 3,
+                                        4, 4, 4, 4, 4, 4,
+                                        5, 5, 5, 5, 5, 5,
+                                        6, 6, 6, 6, 6, 6,
+                                        7, 7, 7, 7, 7, 7,
+                                        8, 8, 8, 8, 8, 8,
+                                        9, 9, 9, 9, 9, 9,
+                                        10, 10, 10, 10, 10, 10,
+                                        11, 11, 11, 11, 11, 11,
+                                        12, 12, 12, 12, 12, 12 };
+
+
+
+void main(void)
 {
 
-    PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
-    WDT_Initialize();
-    TMR0_Initialize();
-}
+    SYSTEM_Initialize();
 
-void OSCILLATOR_Initialize(void)
-{
 
-    OSCEN = 0x00;
 
-    OSCFRQ = 0x03;
 
-    OSCTUNE = 0x00;
-}
 
-void WDT_Initialize(void)
-{
+    (INTCONbits.GIE = 1);
 
-    WDTCON = 0x00;
+
+    (INTCONbits.PEIE = 1);
+
+
+
+
+
+
+
+    do { LATAbits.LATA2 = 1; } while(0);
+
+    while (1)
+    {
+
+    }
 }

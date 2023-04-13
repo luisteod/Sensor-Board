@@ -1,4 +1,4 @@
-build/Config_Sensor_board/debug/main.p1:  \
+build/Config_Sensor_board/production/main.p1:  \
 main.c  \
 mcc_generated_files/mcc.h  \
 mcc_generated_files/device_config.h  \

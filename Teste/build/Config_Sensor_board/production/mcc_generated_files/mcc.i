@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/interrupt_manager.c"
+# 1 "mcc_generated_files/mcc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,11 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/interrupt_manager.c" 2
-# 49 "mcc_generated_files/interrupt_manager.c"
-# 1 "mcc_generated_files/interrupt_manager.h" 1
-# 49 "mcc_generated_files/interrupt_manager.c" 2
-
+# 1 "mcc_generated_files/mcc.c" 2
+# 47 "mcc_generated_files/mcc.c"
 # 1 "mcc_generated_files/mcc.h" 1
 # 49 "mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 1 3
@@ -5578,6 +5575,8 @@ char *tempnam(const char *, const char *);
 # 8 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\conio.h" 2 3
 # 54 "mcc_generated_files/mcc.h" 2
 
+# 1 "mcc_generated_files/interrupt_manager.h" 1
+# 55 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/memory.h" 1
 # 99 "mcc_generated_files/memory.h"
@@ -5618,24 +5617,41 @@ extern void (*TMR0_InterruptHandler)(void);
 # 347 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 57 "mcc_generated_files/mcc.h" 2
-# 72 "mcc_generated_files/mcc.h"
+
+
+const uint8_t status_in_flash[8] __attribute__((address(0x780)));
+const uint8_t default_in_flash[72] __attribute__((address(0x788)));
+# 74 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 85 "mcc_generated_files/mcc.h"
+# 87 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 97 "mcc_generated_files/mcc.h"
+# 99 "mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 50 "mcc_generated_files/interrupt_manager.c" 2
+# 47 "mcc_generated_files/mcc.c" 2
 
 
-void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
+
+void SYSTEM_Initialize(void)
 {
 
-    if(PIE0bits.TMR0IE == 1 && PIR0bits.TMR0IF == 1)
-    {
-        TMR0_ISR();
-    }
-    else
-    {
+    PIN_MANAGER_Initialize();
+    OSCILLATOR_Initialize();
+    WDT_Initialize();
+    TMR0_Initialize();
+}
 
-    }
+void OSCILLATOR_Initialize(void)
+{
+
+    OSCEN = 0x00;
+
+    OSCFRQ = 0x03;
+
+    OSCTUNE = 0x00;
+}
+
+void WDT_Initialize(void)
+{
+
+    WDTCON = 0x00;
 }

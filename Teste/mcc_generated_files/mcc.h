@@ -56,6 +56,8 @@
 #include "memory.h"
 #include "tmr0.h"
 
+const uint8_t status_in_flash[8] __at(0x780);
+const uint8_t default_in_flash[72] __at(0x788);
 
 
 /**

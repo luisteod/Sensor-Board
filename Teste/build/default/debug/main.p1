@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"72 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 72: void SYSTEM_Initialize(void);
+"74 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 74: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "419 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 419:     struct {
@@ -520,44 +520,138 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8648
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 8648: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
+"49 main.c
+[; ;main.c: 49: const uint8_t status_in_flash[8] __attribute__((address(0x780))) = {0x55,0x00,0,0,0,0,0,0};
+[v _status_in_flash `Cuc ~T0 @X0 -> 8 `i e@1920 ]
+[i _status_in_flash
+:U ..
+-> -> 85 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+"50
+[; ;main.c: 50: const uint8_t default_in_flash[72] __attribute__((address(0x788))) = { 1, 1, 1, 1, 1, 1,
+[v _default_in_flash `Cuc ~T0 @X0 -> 72 `i e@1928 ]
+[i _default_in_flash
+:U ..
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 10 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 11 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+-> -> 12 `i `uc
+..
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"50 main.c
-[; ;main.c: 50: void main(void)
+"65
+[; ;main.c: 65: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"51
-[; ;main.c: 51: {
+"66
+[; ;main.c: 66: {
 {
 [e :U _main ]
 [f ]
-"53
-[; ;main.c: 53:     SYSTEM_Initialize();
+"68
+[; ;main.c: 68:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"59
-[; ;main.c: 59:     (INTCONbits.GIE = 1);
+"74
+[; ;main.c: 74:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"62
-[; ;main.c: 62:     (INTCONbits.PEIE = 1);
+"77
+[; ;main.c: 77:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"70
-[; ;main.c: 70:     do { LATAbits.LATA2 = 1; } while(0);
+"85
+[; ;main.c: 85:     do { LATAbits.LATA2 = 1; } while(0);
 [e :U 472 ]
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
 [e :U 471 ]
-"72
-[; ;main.c: 72:     while (1)
+"87
+[; ;main.c: 87:     while (1)
 [e :U 474 ]
-"73
-[; ;main.c: 73:     {
+"88
+[; ;main.c: 88:     {
 {
-"75
-[; ;main.c: 75:     }
+"90
+[; ;main.c: 90:     }
 }
 [e :U 473 ]
 [e $U 474  ]
 [e :U 475 ]
-"76
-[; ;main.c: 76: }
+"91
+[; ;main.c: 91: }
 [e :UE 469 ]
 }

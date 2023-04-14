@@ -60,7 +60,7 @@ void main(void)
         //errorSignal();
     }
     //Permite que o pic receba informação via I2C (Ativa )
-    I2C1_Open();
+    //I2C1_Open();
     
 
     

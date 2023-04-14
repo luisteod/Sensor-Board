@@ -1,46 +1,53 @@
 #include "flash_memory_filling.h"
 
 // Inicializacao da memoria
-const uint8_t status_in_flash[STATUS_ARRAY_SIZE] = {PREAMBLE, STATUS_DEFAULT, 0, 0, 0, 0, 0, 0};
-const uint8_t default_in_flash[DEFAULT_ARRAY_SIZE] = {  1,  1,  1,  1,  1,  1,
-                                                        2,  2,  2,  2,  2,  2,
-                                                        3,  3,  3,  3,  3,  3,
-                                                        4,  4,  4,  4,  4,  4,
-                                                        5,  5,  5,  5,  5,  5,
-                                                        6,  6,  6,  6,  6,  6,
-                                                        7,  7,  7,  7,  7,  7,
-                                                        8,  8,  8,  8,  8,  8,
-                                                        9,  9,  9,  9,  9,  9,
-                                                        10, 10, 10, 10, 10, 10,
-                                                        11, 11, 11, 11, 11, 11,
-                                                        12, 12, 12, 12, 12, 12  };
-
 
 
 
 void memory_initialize(uint8_t TAG)
 {
     // Auxiliar buffer for writing a word inf flash memory
-    static volatile uint16_t *ramBuff;
+    static uint16_t *ramBuff;
 
     if(FLASH_ReadWord(STATUS_ARRAY_ADDR) != PREAMBLE)
     {
 
         // Inicia a rotina de escrita default(HARD CODE) na flash
         
-        FLASH_WriteWord(STATUS_ARRAY_ADDR,     ramBuff, PREAMBLE);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, STATUS_DEFAULT );
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 2, ramBuff, 0);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 3, ramBuff, 0);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 4, ramBuff, 0);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 5, ramBuff, 0);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 6, ramBuff, 0);
-        FLASH_WriteWord(STATUS_ARRAY_ADDR + 7, ramBuff, 0);
-
-
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR,     ramBuff, PREAMBLE);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, STATUS_DEFAULT );
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 2, ramBuff, (uint16_t)default_in_flash[TAG - 1][0]);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 3, ramBuff, (uint16_t)default_in_flash[TAG - 1][1]);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 4, ramBuff, (uint16_t)default_in_flash[TAG - 1][2]);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
+//        FLASH_WriteWord(STATUS_ARRAY_ADDR + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
+        
+        uint16_t* ponteiro;
+        ponteiro = &default_in_flash[TAG-1];
+        
+        FLASH_WriteBlock(STATUS_ARRAY_ADDR ,ponteiro );
         
         
-            
+        uint8_t flag_1;
+        flag_1 = (uint16_t)default_in_flash[TAG - 1][5];
+        flag_1++;
+        
+        uint8_t flag, flag1,flag2,flag3,flag4,flag5,flag6;
+        flag = FLASH_ReadWord(STATUS_ARRAY_ADDR);
+        flag1 = FLASH_ReadWord(STATUS_ARRAY_ADDR+1);
+        flag2 = FLASH_ReadWord(STATUS_ARRAY_ADDR+2);
+        flag3 = FLASH_ReadWord(STATUS_ARRAY_ADDR+3);
+        flag4 = FLASH_ReadWord(STATUS_ARRAY_ADDR+4);
+        flag5 = FLASH_ReadWord(STATUS_ARRAY_ADDR+5);
+        flag6 = FLASH_ReadWord(STATUS_ARRAY_ADDR+6);
+        flag++;
+        flag1++;       
+        flag2++;
+        flag3++;
+        flag4++;
+        flag5++;
+        flag6++;
     }
 }
 

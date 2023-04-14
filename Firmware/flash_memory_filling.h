@@ -3,8 +3,9 @@
 
 #define STATUS_ARRAY_ADDR   0x780
 #define STATUS_ARRAY_SIZE   8
-#define DEFAULT_ARRAY_ADDR  0x788
-#define DEFAULT_ARRAY_SIZE  72
+#define DEFAULT_ARRAY_ADDR  0x040
+#define SENSOR_BOARD_TYPES  12
+#define CALIBRATION_BYTES   6
 #define PREAMBLE            0x55
 #define STATUS_DEFAULT      0x00
 
@@ -16,8 +17,21 @@
     extern "C" {
 #endif
  
-const uint8_t status_in_flash[STATUS_ARRAY_SIZE]        __at(STATUS_ARRAY_ADDR);
-const uint8_t default_in_flash[DEFAULT_ARRAY_SIZE]      __at(DEFAULT_ARRAY_ADDR);
+const uint16_t default_in_flash[SENSOR_BOARD_TYPES][CALIBRATION_BYTES]  __at(DEFAULT_ARRAY_ADDR) = 
+{
+    {1,  1,  1,  1,  1,  1},
+    {2,  2,  2,  2,  2,  2},
+    {3,  3,  3,  3,  3,  3},
+    {4,  4,  4,  4,  4,  4},
+    {5,  5,  5,  5,  5,  5},
+    {6,  6,  6,  6,  6,  6},
+    {7,  7,  7,  7,  7,  7},
+    {8,  8,  8,  8,  8,  8},
+    {9,  9,  9,  9,  9,  9},
+    {10, 10, 10, 10, 10, 10},
+    {11, 11, 11, 11, 11, 11},
+    {12, 12, 12, 12, 12, 12}
+};
 
 void memory_initialize(uint8_t TAG);
 

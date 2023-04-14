@@ -7,7 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 44 "main.c"
+# 46 "main.c"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 1 3
@@ -5617,16 +5617,29 @@ extern void (*TMR0_InterruptHandler)(void);
 # 347 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 57 "./mcc_generated_files/mcc.h" 2
-# 72 "./mcc_generated_files/mcc.h"
+# 74 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 85 "./mcc_generated_files/mcc.h"
+# 87 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 97 "./mcc_generated_files/mcc.h"
+# 99 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 44 "main.c" 2
+# 46 "main.c" 2
 
 
 
+const uint8_t status_in_flash[8] __attribute__((address(0x780))) = {0x55,0x00,0,0,0,0,0,0};
+const uint8_t default_in_flash[72] __attribute__((address(0x788))) = { 1, 1, 1, 1, 1, 1,
+                                        2, 2, 2, 2, 2, 2,
+                                        3, 3, 3, 3, 3, 3,
+                                        4, 4, 4, 4, 4, 4,
+                                        5, 5, 5, 5, 5, 5,
+                                        6, 6, 6, 6, 6, 6,
+                                        7, 7, 7, 7, 7, 7,
+                                        8, 8, 8, 8, 8, 8,
+                                        9, 9, 9, 9, 9, 9,
+                                        10, 10, 10, 10, 10, 10,
+                                        11, 11, 11, 11, 11, 11,
+                                        12, 12, 12, 12, 12, 12 };
 
 
 

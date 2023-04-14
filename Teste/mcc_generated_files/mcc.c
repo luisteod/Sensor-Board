@@ -43,8 +43,24 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
+#define PREAMBLE 0x55
+#define STATUS_DEFAULT 0x00
 
 #include "mcc.h"
+
+const uint8_t status_in_flash[8]  = {PREAMBLE,STATUS_DEFAULT,0,0,0,0,0,0};
+const uint8_t default_in_flash[72]  = { 1,  1,  1,  1,  1,  1,
+                                        2,  2,   2,  2,  2, 2,
+                                        3,  3,  3,  3,  3,  3,
+                                        4,  4,  4,  4,  4,  4,
+                                        5,  5,  5,  5,  5,  5,
+                                        6,  6,  6,  6,  6,  6,
+                                        7,  7,  7,  7,  7,  7,
+                                        8,  8,  8,  8,  8,  8,
+                                        9,  9,  9,  9,  9,  9,
+                                        10, 10, 10, 10, 10, 10,
+                                        11, 11, 11, 11, 11, 11,
+                                        12, 12, 12, 12, 12, 12 };
 
 
 void SYSTEM_Initialize(void)

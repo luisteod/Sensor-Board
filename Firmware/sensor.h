@@ -46,6 +46,8 @@
 #define MIN_SENSOR_BOARD_TYPE  1
 #define MAX_SENSOR_BOARD_TYPE  12
 
+#define CALIBRATION_BYTES   6
+
 #define TRUE                1
 #define FALSE               0
 

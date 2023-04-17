@@ -27,7 +27,11 @@
 #include "sensor.h"
 #include "mcc_generated_files/pin_manager.h"
 
-// Retorna o tipo do Sensor Board
+/*
+ * Global variables
+ */
+uint8_t error_flag = 0;
+
 uint8_t getSensorBoardType(void)
 {
     return (((PORTC & 0x3C)) >>2 | (PORTA & 0x30));
@@ -46,7 +50,10 @@ uint8_t SensorBoardType_validation (uint8_t SensorBoardType)
     return(FALSE);
 }
 
-  
+void error_signal(void)
+{
+    error_flag = 1;
+}  
 
 /**
  End of File

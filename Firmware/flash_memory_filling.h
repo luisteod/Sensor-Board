@@ -34,6 +34,8 @@ const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(
 };
 
 /*
+ * @Author : Luis
+ * 
  * @Description : Intializes or not, the memory of the chip when reseted.
  * 
  * @Params : TAG of the chip.

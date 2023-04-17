@@ -51,12 +51,19 @@
 #define TRUE                1
 #define FALSE               0
 
-/* function declaration*/
+/*
+ * Global variables
+ */
+uint8_t error_flag;
 
+
+/* function declaration*/
 uint8_t getSensorBoardType(void);
 
 
 uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
+
+void error_signal(void);
 
 #endif // PIN_MANAGER_H
 /**

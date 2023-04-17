@@ -56,12 +56,16 @@
 /**
   Section: TMR0 APIs
 */
+
 //Global variable definitions
 uint8_t LED_timer=0;
+extern uint8_t error_flag;
 
-/* Ponteiro para uma funcao que sera criada posteriormente com a mesma assinatura,
-   isso eh ultil para selecionar qual funcao chamar baseado em uma condicao ou
-   quando se quer separar a funcao que chama interrupt handler da que implementa de fato o handler*/
+/* 
+ Ponteiro para uma funcao que sera criada posteriormente com a mesma assinatura,
+ isso eh ultil para selecionar qual funcao chamar baseado em uma condicao ou
+ quando se quer separar a funcao que chama interrupt handler da que implementa de fato o handler
+ */
 void (*TMR0_InterruptHandler)(void);
 
 void TMR0_Initialize(void)
@@ -148,17 +152,34 @@ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
 void TMR0_DefaultInterruptHandler(void){
     // add your TMR0 interrupt custom code
     // or set custom function using TMR0_SetInterruptHandler()
-     LED_timer++;
-    if (LED_timer==10)
+    
+    LED_timer++;
+    
+    //If error, LED's toggle fast then normal
+    if(error_flag == 1)
     {
-        LED_SetHigh();
-    }
-    if(LED_timer==20)
-    {
-       LED_SetLow();
-       LED_timer = 0;
+        if(LED_timer == 5)
+        {
+            LED_SetHigh();
+        }
+        if(LED_timer == 10)
+        {
+            LED_SetLow();
+            LED_timer = 0;
+        }
+    }else{// LED indicates normal conditions
+        if(LED_timer == 50)
+        {
+            LED_SetHigh();
+        }
+        if(LED_timer == 100)
+        {
+            LED_SetLow();
+            LED_timer = 0;
+        }
     }
 }
+    
 
 /**
   End of File

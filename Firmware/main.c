@@ -52,12 +52,13 @@ void main(void)
     SYSTEM_Initialize();
     
     uint8_t TAG = getSensorBoardType();
+    
     if(SensorBoardType_validation(TAG)){
-        // Inicializa memoria nao volatil
+        
         memory_initialize(TAG);
     }
     else{
-        //errorSignal();
+        error_signal();
     }
     //Permite que o pic receba informação via I2C (Ativa )
     //I2C1_Open();

@@ -62,6 +62,7 @@
 
  //Global variable declaration
 uint8_t LED_timer;
+extern uint8_t error_flag;
 
 
 /**

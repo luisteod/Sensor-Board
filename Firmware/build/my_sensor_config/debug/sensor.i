@@ -5404,11 +5404,17 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 2 3
 # 31 "./sensor.h" 2
-# 56 "./sensor.h"
+# 57 "./sensor.h"
+uint8_t error_flag;
+
+
+
 uint8_t getSensorBoardType(void);
 
 
 uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
+
+void error_signal(void);
 # 27 "sensor.c" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
@@ -5419,6 +5425,10 @@ void PIN_MANAGER_IOC(void);
 # 28 "sensor.c" 2
 
 
+
+
+
+uint8_t error_flag = 0;
 
 uint8_t getSensorBoardType(void)
 {
@@ -5436,4 +5446,9 @@ uint8_t SensorBoardType_validation (uint8_t SensorBoardType)
     }
 
     return(0);
+}
+
+void error_signal(void)
+{
+    error_flag = 1;
 }

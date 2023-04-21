@@ -5579,7 +5579,64 @@ char *tempnam(const char *, const char *);
 # 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/i2c1_slave.h" 1
-# 53 "./mcc_generated_files/i2c1_slave.h"
+# 56 "./mcc_generated_files/i2c1_slave.h"
+# 1 "./mcc_generated_files/../flash_memory_filling.h" 1
+# 12 "./mcc_generated_files/../flash_memory_filling.h"
+# 1 "./mcc_generated_files/mcc.h" 1
+# 12 "./mcc_generated_files/../flash_memory_filling.h" 2
+
+# 1 "./sensor.h" 1
+# 57 "./sensor.h"
+uint8_t error_flag;
+
+
+
+uint8_t getSensorBoardType(void);
+
+
+uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
+
+void error_signal(void);
+# 13 "./mcc_generated_files/../flash_memory_filling.h" 2
+
+
+
+
+
+
+
+
+const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
+{
+    {1, 1, 1, 1, 1, 1},
+    {2, 2, 2, 2, 2, 2},
+    {3, 3, 3, 3, 3, 3},
+    {4, 4, 4, 4, 4, 4},
+    {5, 5, 5, 5, 5, 5},
+    {6, 6, 6, 6, 6, 6},
+    {7, 7, 7, 7, 7, 7},
+    {8, 8, 8, 8, 8, 8},
+    {9, 9, 9, 9, 9, 9},
+    {10, 10, 10, 10, 10, 10},
+    {11, 11, 11, 11, 11, 11},
+    {12, 12, 12, 12, 12, 12}
+};
+# 46 "./mcc_generated_files/../flash_memory_filling.h"
+void memory_initialize(uint8_t TAG);
+
+void data_recv_handler();
+
+void data_send_handle(uint8_t addr);
+# 56 "./mcc_generated_files/i2c1_slave.h" 2
+
+
+
+
+
+static volatile uint8_t i2cReadCnt;
+volatile uint8_t i2cDataRead[3];
+
+
 typedef void (*i2c1InterruptHandler)(void);
 
 
@@ -5618,7 +5675,7 @@ uint8_t I2C1_Read(void);
 
 
 void I2C1_Write(uint8_t data);
-# 99 "./mcc_generated_files/i2c1_slave.h"
+# 111 "./mcc_generated_files/i2c1_slave.h"
 _Bool I2C1_IsRead(void);
 
 
@@ -5681,25 +5738,26 @@ uint8_t DATAEE_ReadByte(uint16_t bAdd);
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 64 "./mcc_generated_files/tmr0.h"
 uint8_t LED_timer;
-# 102 "./mcc_generated_files/tmr0.h"
+extern uint8_t error_flag;
+# 103 "./mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 131 "./mcc_generated_files/tmr0.h"
+# 132 "./mcc_generated_files/tmr0.h"
 void TMR0_StartTimer(void);
-# 163 "./mcc_generated_files/tmr0.h"
+# 164 "./mcc_generated_files/tmr0.h"
 void TMR0_StopTimer(void);
-# 198 "./mcc_generated_files/tmr0.h"
+# 199 "./mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 237 "./mcc_generated_files/tmr0.h"
+# 238 "./mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 274 "./mcc_generated_files/tmr0.h"
+# 275 "./mcc_generated_files/tmr0.h"
 void TMR0_Reload(uint8_t periodVal);
-# 293 "./mcc_generated_files/tmr0.h"
+# 294 "./mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 312 "./mcc_generated_files/tmr0.h"
+# 313 "./mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 330 "./mcc_generated_files/tmr0.h"
+# 331 "./mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 348 "./mcc_generated_files/tmr0.h"
+# 349 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 # 73 "./mcc_generated_files/mcc.h"
@@ -5710,47 +5768,10 @@ void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
-# 1 "./flash_memory_filling.h" 1
-# 13 "./flash_memory_filling.h"
-# 1 "./sensor.h" 1
-# 56 "./sensor.h"
-uint8_t getSensorBoardType(void);
-
-
-uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
-# 13 "./flash_memory_filling.h" 2
 
 
 
-
-
-
-
-const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
-{
-    {1, 1, 1, 1, 1, 1},
-    {2, 2, 2, 2, 2, 2},
-    {3, 3, 3, 3, 3, 3},
-    {4, 4, 4, 4, 4, 4},
-    {5, 5, 5, 5, 5, 5},
-    {6, 6, 6, 6, 6, 6},
-    {7, 7, 7, 7, 7, 7},
-    {8, 8, 8, 8, 8, 8},
-    {9, 9, 9, 9, 9, 9},
-    {10, 10, 10, 10, 10, 10},
-    {11, 11, 11, 11, 11, 11},
-    {12, 12, 12, 12, 12, 12}
-};
-# 43 "./flash_memory_filling.h"
-void memory_initialize(uint8_t TAG);
-
-void data_recv_handle(uint8_t* data);
-
-void data_send_handle(uint8_t addr);
-# 45 "main.c" 2
-
-
-
+extern uint8_t debug;
 
 void main(void)
 {
@@ -5758,14 +5779,17 @@ void main(void)
     SYSTEM_Initialize();
 
     uint8_t TAG = getSensorBoardType();
+
     if(SensorBoardType_validation(TAG)){
 
         memory_initialize(TAG);
     }
     else{
-
+        error_signal();
     }
-# 74 "main.c"
+
+    I2C1_Open();
+# 76 "main.c"
     (INTCONbits.GIE = 1);
 
 
@@ -5781,6 +5805,7 @@ void main(void)
     {
 
 
+        volatile uint8_t atlas = debug;
 
 
     }

@@ -70,7 +70,7 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
  */
 static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
 volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES]; // Array to store de bytes received
-
+uint8_t debug = 0;
 /**
  Section: Functions declaration
  */
@@ -247,10 +247,11 @@ static void I2C1_SlaveRdCallBack() {
     {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
-        
+                
         if(i2cReadCnt == NUM_PROTOCOL_BYTES)
         {
             data_recv_handler();
+            debug = 1;
         }
     }
 }

@@ -2,6 +2,7 @@
 
 extern volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES];
 
+
 void memory_initialize(uint8_t TAG)
 {
     // Auxiliar buffer for writing a word in flash memory
@@ -17,7 +18,6 @@ void memory_initialize(uint8_t TAG)
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
-        
     }
 }
 

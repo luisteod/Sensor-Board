@@ -5409,25 +5409,26 @@ extern __bank0 __bit __timeout;
 # 55 "mcc_generated_files/tmr0.h" 2
 # 64 "mcc_generated_files/tmr0.h"
 uint8_t LED_timer;
-# 102 "mcc_generated_files/tmr0.h"
+extern uint8_t error_flag;
+# 103 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 131 "mcc_generated_files/tmr0.h"
+# 132 "mcc_generated_files/tmr0.h"
 void TMR0_StartTimer(void);
-# 163 "mcc_generated_files/tmr0.h"
+# 164 "mcc_generated_files/tmr0.h"
 void TMR0_StopTimer(void);
-# 198 "mcc_generated_files/tmr0.h"
+# 199 "mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 237 "mcc_generated_files/tmr0.h"
+# 238 "mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 274 "mcc_generated_files/tmr0.h"
+# 275 "mcc_generated_files/tmr0.h"
 void TMR0_Reload(uint8_t periodVal);
-# 293 "mcc_generated_files/tmr0.h"
+# 294 "mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 312 "mcc_generated_files/tmr0.h"
+# 313 "mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 330 "mcc_generated_files/tmr0.h"
+# 331 "mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 348 "mcc_generated_files/tmr0.h"
+# 349 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
 # 52 "mcc_generated_files/tmr0.c" 2
 
@@ -5444,7 +5445,11 @@ void PIN_MANAGER_IOC(void);
 
 
 
+
 uint8_t LED_timer=0;
+extern uint8_t error_flag;
+
+
 
 
 
@@ -5535,14 +5540,30 @@ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
 void TMR0_DefaultInterruptHandler(void){
 
 
-     LED_timer++;
-    if (LED_timer==10)
+
+    LED_timer++;
+
+
+    if(error_flag == 1)
     {
-        do { LATAbits.LATA2 = 1; } while(0);
-    }
-    if(LED_timer==20)
-    {
-       do { LATAbits.LATA2 = 0; } while(0);
-       LED_timer = 0;
+        if(LED_timer == 5)
+        {
+            do { LATAbits.LATA2 = 1; } while(0);
+        }
+        if(LED_timer == 10)
+        {
+            do { LATAbits.LATA2 = 0; } while(0);
+            LED_timer = 0;
+        }
+    }else{
+        if(LED_timer == 50)
+        {
+            do { LATAbits.LATA2 = 1; } while(0);
+        }
+        if(LED_timer == 100)
+        {
+            do { LATAbits.LATA2 = 0; } while(0);
+            LED_timer = 0;
+        }
     }
 }

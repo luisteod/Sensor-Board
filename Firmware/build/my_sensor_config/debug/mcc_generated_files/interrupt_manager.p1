@@ -1,10 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3560 `(v ~T0 @X0 0 tf ]
-[v F3562 `(v ~T0 @X0 0 tf ]
-[v F3564 `(v ~T0 @X0 0 tf ]
-[v F3566 `(v ~T0 @X0 0 tf ]
-[v F3568 `(v ~T0 @X0 0 tf ]
-[v F3570 `(v ~T0 @X0 0 tf ]
+[v F3574 `(v ~T0 @X0 0 tf ]
+[v F3576 `(v ~T0 @X0 0 tf ]
+[v F3578 `(v ~T0 @X0 0 tf ]
+[v F3580 `(v ~T0 @X0 0 tf ]
+[v F3582 `(v ~T0 @X0 0 tf ]
+[v F3584 `(v ~T0 @X0 0 tf ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
 "5057 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
@@ -29,8 +29,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4936
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 4936: extern volatile PIR0bits_t PIR0bits __attribute__((address(0x70C)));
 [v _PIR0bits `VS258 ~T0 @X0 0 e@1804 ]
-"293 mcc_generated_files/tmr0.h
-[; ;mcc_generated_files/tmr0.h: 293: void TMR0_ISR(void);
+"294 mcc_generated_files/tmr0.h
+[; ;mcc_generated_files/tmr0.h: 294: void TMR0_ISR(void);
 [v _TMR0_ISR `(v ~T0 @X0 0 ef ]
 "419 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 419:     struct {
@@ -560,24 +560,137 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8648
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 8648: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"135 mcc_generated_files/i2c1_slave.h
-[; ;mcc_generated_files/i2c1_slave.h: 135: void (*MSSP1_InterruptHandler)(void);
-[v _MSSP1_InterruptHandler `*F3560 ~T0 @X0 1 e ]
-"136
-[; ;mcc_generated_files/i2c1_slave.h: 136: void (*I2C1_SlaveRdInterruptHandler)(void);
-[v _I2C1_SlaveRdInterruptHandler `*F3562 ~T0 @X0 1 e ]
-"137
-[; ;mcc_generated_files/i2c1_slave.h: 137: void (*I2C1_SlaveWrInterruptHandler)(void);
-[v _I2C1_SlaveWrInterruptHandler `*F3564 ~T0 @X0 1 e ]
-"138
-[; ;mcc_generated_files/i2c1_slave.h: 138: void (*I2C1_SlaveAddrInterruptHandler)(void);
-[v _I2C1_SlaveAddrInterruptHandler `*F3566 ~T0 @X0 1 e ]
-"139
-[; ;mcc_generated_files/i2c1_slave.h: 139: void (*I2C1_SlaveBusColInterruptHandler)(void);
-[v _I2C1_SlaveBusColInterruptHandler `*F3568 ~T0 @X0 1 e ]
-"140
-[; ;mcc_generated_files/i2c1_slave.h: 140: void (*I2C1_SlaveWrColInterruptHandler)(void);
-[v _I2C1_SlaveWrColInterruptHandler `*F3570 ~T0 @X0 1 e ]
+"57 ./sensor.h
+[; ;./sensor.h: 57: uint8_t error_flag;
+[v _error_flag `uc ~T0 @X0 1 e ]
+[v F3529 `Cus ~T0 @X0 -> 6 `i t ]
+"21 mcc_generated_files/../flash_memory_filling.h
+[; ;mcc_generated_files/../flash_memory_filling.h: 21: const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
+[v _default_in_flash `F3529 ~T0 @X0 -> 12 `i e@64 ]
+[i _default_in_flash
+:U ..
+:U ..
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+-> -> 1 `i `us
+..
+:U ..
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+-> -> 2 `i `us
+..
+:U ..
+-> -> 3 `i `us
+-> -> 3 `i `us
+-> -> 3 `i `us
+-> -> 3 `i `us
+-> -> 3 `i `us
+-> -> 3 `i `us
+..
+:U ..
+-> -> 4 `i `us
+-> -> 4 `i `us
+-> -> 4 `i `us
+-> -> 4 `i `us
+-> -> 4 `i `us
+-> -> 4 `i `us
+..
+:U ..
+-> -> 5 `i `us
+-> -> 5 `i `us
+-> -> 5 `i `us
+-> -> 5 `i `us
+-> -> 5 `i `us
+-> -> 5 `i `us
+..
+:U ..
+-> -> 6 `i `us
+-> -> 6 `i `us
+-> -> 6 `i `us
+-> -> 6 `i `us
+-> -> 6 `i `us
+-> -> 6 `i `us
+..
+:U ..
+-> -> 7 `i `us
+-> -> 7 `i `us
+-> -> 7 `i `us
+-> -> 7 `i `us
+-> -> 7 `i `us
+-> -> 7 `i `us
+..
+:U ..
+-> -> 8 `i `us
+-> -> 8 `i `us
+-> -> 8 `i `us
+-> -> 8 `i `us
+-> -> 8 `i `us
+-> -> 8 `i `us
+..
+:U ..
+-> -> 9 `i `us
+-> -> 9 `i `us
+-> -> 9 `i `us
+-> -> 9 `i `us
+-> -> 9 `i `us
+-> -> 9 `i `us
+..
+:U ..
+-> -> 10 `i `us
+-> -> 10 `i `us
+-> -> 10 `i `us
+-> -> 10 `i `us
+-> -> 10 `i `us
+-> -> 10 `i `us
+..
+:U ..
+-> -> 11 `i `us
+-> -> 11 `i `us
+-> -> 11 `i `us
+-> -> 11 `i `us
+-> -> 11 `i `us
+-> -> 11 `i `us
+..
+:U ..
+-> -> 12 `i `us
+-> -> 12 `i `us
+-> -> 12 `i `us
+-> -> 12 `i `us
+-> -> 12 `i `us
+-> -> 12 `i `us
+..
+..
+]
+"61 mcc_generated_files/i2c1_slave.h
+[; ;mcc_generated_files/i2c1_slave.h: 61: static volatile uint8_t i2cReadCnt;
+[v _i2cReadCnt `Vuc ~T0 @X0 1 s ]
+"62
+[; ;mcc_generated_files/i2c1_slave.h: 62: volatile uint8_t i2cDataRead[3];
+[v _i2cDataRead `Vuc ~T0 @X0 -> 3 `i e ]
+"147
+[; ;mcc_generated_files/i2c1_slave.h: 147: void (*MSSP1_InterruptHandler)(void);
+[v _MSSP1_InterruptHandler `*F3574 ~T0 @X0 1 e ]
+"148
+[; ;mcc_generated_files/i2c1_slave.h: 148: void (*I2C1_SlaveRdInterruptHandler)(void);
+[v _I2C1_SlaveRdInterruptHandler `*F3576 ~T0 @X0 1 e ]
+"149
+[; ;mcc_generated_files/i2c1_slave.h: 149: void (*I2C1_SlaveWrInterruptHandler)(void);
+[v _I2C1_SlaveWrInterruptHandler `*F3578 ~T0 @X0 1 e ]
+"150
+[; ;mcc_generated_files/i2c1_slave.h: 150: void (*I2C1_SlaveAddrInterruptHandler)(void);
+[v _I2C1_SlaveAddrInterruptHandler `*F3580 ~T0 @X0 1 e ]
+"151
+[; ;mcc_generated_files/i2c1_slave.h: 151: void (*I2C1_SlaveBusColInterruptHandler)(void);
+[v _I2C1_SlaveBusColInterruptHandler `*F3582 ~T0 @X0 1 e ]
+"152
+[; ;mcc_generated_files/i2c1_slave.h: 152: void (*I2C1_SlaveWrColInterruptHandler)(void);
+[v _I2C1_SlaveWrColInterruptHandler `*F3584 ~T0 @X0 1 e ]
 "64 mcc_generated_files/tmr0.h
 [; ;mcc_generated_files/tmr0.h: 64: uint8_t LED_timer;
 [v _LED_timer `uc ~T0 @X0 1 e ]

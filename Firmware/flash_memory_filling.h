@@ -17,6 +17,7 @@
     extern "C" {
 #endif
  
+
 const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(DEFAULT_ARRAY_ADDR) = 
 {
     {1,  1,  1,  1,  1,  1},
@@ -44,7 +45,7 @@ const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(
  */
 void memory_initialize(uint8_t TAG);
 
-void data_recv_handle(uint8_t* data);
+void data_recv_handler();
 
 void data_send_handle(uint8_t addr);
 

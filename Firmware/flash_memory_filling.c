@@ -1,5 +1,6 @@
 #include "flash_memory_filling.h"
 
+extern volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES];
 
 void memory_initialize(uint8_t TAG)
 {
@@ -20,12 +21,13 @@ void memory_initialize(uint8_t TAG)
     }
 }
 
-//void data_recv_handle(uint8_t* data)
-//{
-//    static volatile uint16_t* ramBuff;
-//
-//    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
-//    if(data[5] != 0)
+void data_recv_handler()
+{
+    static volatile uint16_t* ramBuff;
+    
+    
+    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
+//    if(i2cDataRead[] != 0)
 //    {
 //        for(int i=1; i<6; i++)
 //        {
@@ -37,6 +39,6 @@ void memory_initialize(uint8_t TAG)
 //    {
 //        // Nothing to be done here!
 //    }
-//}
+}
 
 

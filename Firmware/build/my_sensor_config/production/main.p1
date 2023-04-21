@@ -1,10 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3560 `(v ~T0 @X0 0 tf ]
-[v F3562 `(v ~T0 @X0 0 tf ]
-[v F3564 `(v ~T0 @X0 0 tf ]
-[v F3566 `(v ~T0 @X0 0 tf ]
-[v F3568 `(v ~T0 @X0 0 tf ]
-[v F3570 `(v ~T0 @X0 0 tf ]
+[v F3574 `(v ~T0 @X0 0 tf ]
+[v F3576 `(v ~T0 @X0 0 tf ]
+[v F3578 `(v ~T0 @X0 0 tf ]
+[v F3580 `(v ~T0 @X0 0 tf ]
+[v F3582 `(v ~T0 @X0 0 tf ]
+[v F3584 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
 "73 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 73: void SYSTEM_Initialize(void);
@@ -15,12 +15,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "64
 [; ;./sensor.h: 64: uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
 [v _SensorBoardType_validation `(uc ~T0 @X0 0 ef1`uc ]
-"45 ./flash_memory_filling.h
-[; ;./flash_memory_filling.h: 45: void memory_initialize(uint8_t TAG);
+"46 ./flash_memory_filling.h
 [v _memory_initialize `(v ~T0 @X0 0 ef1`uc ]
 "66 ./sensor.h
 [; ;./sensor.h: 66: void error_signal(void);
 [v _error_signal `(v ~T0 @X0 0 ef ]
+"80 ./mcc_generated_files/i2c1_slave.h
+[; ;./mcc_generated_files/i2c1_slave.h: 80: void I2C1_Open(void);
+[v _I2C1_Open `(v ~T0 @X0 0 ef ]
 "419 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 419:     struct {
 [s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -527,34 +529,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8648
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h: 8648: __asm("TOSH equ 01FEFh");
 [; <" TOSH equ 01FEFh ;# ">
-"135 ./mcc_generated_files/i2c1_slave.h
-[; ;./mcc_generated_files/i2c1_slave.h: 135: void (*MSSP1_InterruptHandler)(void);
-[v _MSSP1_InterruptHandler `*F3560 ~T0 @X0 1 e ]
-"136
-[; ;./mcc_generated_files/i2c1_slave.h: 136: void (*I2C1_SlaveRdInterruptHandler)(void);
-[v _I2C1_SlaveRdInterruptHandler `*F3562 ~T0 @X0 1 e ]
-"137
-[; ;./mcc_generated_files/i2c1_slave.h: 137: void (*I2C1_SlaveWrInterruptHandler)(void);
-[v _I2C1_SlaveWrInterruptHandler `*F3564 ~T0 @X0 1 e ]
-"138
-[; ;./mcc_generated_files/i2c1_slave.h: 138: void (*I2C1_SlaveAddrInterruptHandler)(void);
-[v _I2C1_SlaveAddrInterruptHandler `*F3566 ~T0 @X0 1 e ]
-"139
-[; ;./mcc_generated_files/i2c1_slave.h: 139: void (*I2C1_SlaveBusColInterruptHandler)(void);
-[v _I2C1_SlaveBusColInterruptHandler `*F3568 ~T0 @X0 1 e ]
-"140
-[; ;./mcc_generated_files/i2c1_slave.h: 140: void (*I2C1_SlaveWrColInterruptHandler)(void);
-[v _I2C1_SlaveWrColInterruptHandler `*F3570 ~T0 @X0 1 e ]
-"64 ./mcc_generated_files/tmr0.h
-[; ;./mcc_generated_files/tmr0.h: 64: uint8_t LED_timer;
-[v _LED_timer `uc ~T0 @X0 1 e ]
 "57 ./sensor.h
 [; ;./sensor.h: 57: uint8_t error_flag;
 [v _error_flag `uc ~T0 @X0 1 e ]
-[v F3614 `Cus ~T0 @X0 -> 6 `i t ]
-"20 ./flash_memory_filling.h
-[; ;./flash_memory_filling.h: 20: const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
-[v _default_in_flash `F3614 ~T0 @X0 -> 12 `i e@64 ]
+[v F3529 `Cus ~T0 @X0 -> 6 `i t ]
+"21 ./flash_memory_filling.h
+[v _default_in_flash `F3529 ~T0 @X0 -> 12 `i e@64 ]
 [i _default_in_flash
 :U ..
 :U ..
@@ -655,6 +635,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
+"61 ./mcc_generated_files/i2c1_slave.h
+[; ;./mcc_generated_files/i2c1_slave.h: 61: static volatile uint8_t i2cReadCnt;
+[v _i2cReadCnt `Vuc ~T0 @X0 1 s ]
+"62
+[; ;./mcc_generated_files/i2c1_slave.h: 62: volatile uint8_t i2cDataRead[3];
+[v _i2cDataRead `Vuc ~T0 @X0 -> 3 `i e ]
+"147
+[; ;./mcc_generated_files/i2c1_slave.h: 147: void (*MSSP1_InterruptHandler)(void);
+[v _MSSP1_InterruptHandler `*F3574 ~T0 @X0 1 e ]
+"148
+[; ;./mcc_generated_files/i2c1_slave.h: 148: void (*I2C1_SlaveRdInterruptHandler)(void);
+[v _I2C1_SlaveRdInterruptHandler `*F3576 ~T0 @X0 1 e ]
+"149
+[; ;./mcc_generated_files/i2c1_slave.h: 149: void (*I2C1_SlaveWrInterruptHandler)(void);
+[v _I2C1_SlaveWrInterruptHandler `*F3578 ~T0 @X0 1 e ]
+"150
+[; ;./mcc_generated_files/i2c1_slave.h: 150: void (*I2C1_SlaveAddrInterruptHandler)(void);
+[v _I2C1_SlaveAddrInterruptHandler `*F3580 ~T0 @X0 1 e ]
+"151
+[; ;./mcc_generated_files/i2c1_slave.h: 151: void (*I2C1_SlaveBusColInterruptHandler)(void);
+[v _I2C1_SlaveBusColInterruptHandler `*F3582 ~T0 @X0 1 e ]
+"152
+[; ;./mcc_generated_files/i2c1_slave.h: 152: void (*I2C1_SlaveWrColInterruptHandler)(void);
+[v _I2C1_SlaveWrColInterruptHandler `*F3584 ~T0 @X0 1 e ]
+"64 ./mcc_generated_files/tmr0.h
+[; ;./mcc_generated_files/tmr0.h: 64: uint8_t LED_timer;
+[v _LED_timer `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "49 main.c
 [; ;main.c: 49: void main(void)
@@ -672,8 +679,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _TAG `uc ~T0 @X0 1 a ]
 [e = _TAG ( _getSensorBoardType ..  ]
 "56
-[; ;main.c: 56:     if(SensorBoardType_validation(TAG+50)){
-[e $ ! != -> ( _SensorBoardType_validation (1 -> + -> _TAG `i -> 50 `i `uc `i -> 0 `i 470  ]
+[; ;main.c: 56:     if(SensorBoardType_validation(TAG)){
+[e $ ! != -> ( _SensorBoardType_validation (1 _TAG `i -> 0 `i 470  ]
 {
 "58
 [; ;main.c: 58:         memory_initialize(TAG);
@@ -693,6 +700,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 62:     }
 }
 [e :U 471 ]
+"64
+[; ;main.c: 64:     I2C1_Open();
+[e ( _I2C1_Open ..  ]
 "75
 [; ;main.c: 75:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]

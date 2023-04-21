@@ -47,8 +47,6 @@
 #include "i2c1_slave.h"
 #include <xc.h>
 
-#define I2C1_SLAVE_ADDRESS      7
-#define I2C1_SLAVE_MASK         0
 
 typedef enum
 {
@@ -66,11 +64,12 @@ volatile uint8_t i2c1WrData;
 volatile uint8_t i2c1RdData;
 volatile uint8_t i2c1SlaveAddr;
 static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
-// My global variables
-// Varible to count the varibles received
-static volatile uint8_t i2cReadCnt;
-// Array to store de bytes received
-uint8_t i2cDataRead[3];
+
+/*
+ *  My global variables
+ */
+static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
+volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES]; // Array to store de bytes received
 
 /**
  Section: Functions declaration
@@ -170,9 +169,16 @@ void I2C1_SendNack()
 static void I2C1_Isr() 
 { 
     I2C1_SlaveClearIrq();
-
+    
+    // If addr of the slave matches, initiate the routine.
     if(I2C1_SlaveIsAddr())
     {
+        /* 
+         *Catch the W/R bit from master and and set the slave states as TX if master wants
+          the slave to write on bus or RX if master wants to slave read the bus.
+         * 
+         * IsRead -> Master send the Read bit.
+        */
         if(I2C1_SlaveIsRead())
         {
             i2c1SlaveState = I2C1_ADDR_TX;
@@ -241,6 +247,11 @@ static void I2C1_SlaveRdCallBack() {
     {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
+        
+        if(i2cReadCnt == NUM_PROTOCOL_BYTES)
+        {
+            data_recv_handler();
+        }
     }
 }
 
@@ -249,9 +260,13 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     
     i2c1RdData = I2C1_SlaveGetRxData();
     
-    while(i2cReadCnt < 3)
+    if(i2cReadCnt < NUM_PROTOCOL_BYTES)
     {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
+    }
+    else // Ignore excess of data
+    {
+        I2C1_SlaveGetRxData();
     }
 }
 

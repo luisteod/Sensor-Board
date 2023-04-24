@@ -5591,8 +5591,22 @@ char *tempnam(const char *, const char *);
 # 55 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/i2c1_slave.h" 1
-# 56 "./mcc_generated_files/i2c1_slave.h"
+# 55 "./mcc_generated_files/i2c1_slave.h"
 # 1 "./mcc_generated_files/../flash_memory_filling.h" 1
+# 55 "./mcc_generated_files/i2c1_slave.h" 2
+
+# 1 "./mcc_generated_files/../sensor.h" 1
+# 57 "./mcc_generated_files/../sensor.h"
+uint8_t error_flag;
+
+
+
+uint8_t getSensorBoardType(void);
+
+
+uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
+
+void error_signal(void);
 # 56 "./mcc_generated_files/i2c1_slave.h" 2
 
 
@@ -5600,7 +5614,7 @@ char *tempnam(const char *, const char *);
 
 
 static volatile uint8_t i2cReadCnt;
-volatile uint8_t i2cDataRead[3];
+volatile uint8_t i2cDataRead[5];
 
 
 typedef void (*i2c1InterruptHandler)(void);
@@ -5733,29 +5747,8 @@ void OSCILLATOR_Initialize(void);
 # 98 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
 # 12 "./mcc_generated_files/../flash_memory_filling.h" 2
-
-# 1 "./sensor.h" 1
-# 57 "./sensor.h"
-uint8_t error_flag;
-
-
-
-uint8_t getSensorBoardType(void);
-
-
-uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
-
-void error_signal(void);
-# 13 "./mcc_generated_files/../flash_memory_filling.h" 2
-
-
-
-
-
-
-
-
-const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
+# 21 "./mcc_generated_files/../flash_memory_filling.h"
+const uint16_t default_in_flash[12][5 + 1] __attribute__((address(0x040))) =
 {
     {1, 1, 1, 1, 1, 1},
     {2, 2, 2, 2, 2, 2},
@@ -5770,21 +5763,30 @@ const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
     {11, 11, 11, 11, 11, 11},
     {12, 12, 12, 12, 12, 12}
 };
-# 46 "./mcc_generated_files/../flash_memory_filling.h"
+
+
+
+
+
+
 void memory_initialize(uint8_t TAG);
 
-void data_recv_handler();
+
+
+
+
+
+void data_recv_handler(void);
 
 void data_send_handle(uint8_t addr);
 # 1 "flash_memory_filling.c" 2
 
 
-extern volatile uint8_t i2cDataRead[3];
+extern volatile uint8_t i2cDataRead[5];
+static uint16_t ramBuff[32];
 
 void memory_initialize(uint8_t TAG)
 {
-
-    static uint16_t ramBuff[32];
 
     if(FLASH_ReadWord(0x780) != 0x55)
     {
@@ -5796,12 +5798,23 @@ void memory_initialize(uint8_t TAG)
         FLASH_WriteWord(0x780 + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
         FLASH_WriteWord(0x780 + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
         FLASH_WriteWord(0x780 + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
-
     }
 }
 
-void data_recv_handler()
+void data_recv_handler(void)
 {
-    static volatile uint16_t* ramBuff;
-# 42 "flash_memory_filling.c"
+
+
+    if(i2cDataRead[5 - 1] != 0x00)
+    {
+        for(uint16_t i = 0; i < 5; i++)
+        {
+            FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
+        }
+    }
+
+    else
+    {
+
+    }
 }

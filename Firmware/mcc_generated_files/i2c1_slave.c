@@ -69,8 +69,8 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
  *  My global variables
  */
 static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
-volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES]; // Array to store de bytes received
-uint8_t debug = 0;
+volatile uint8_t i2cDataRead[CALIBRATION_BYTES]; // Array to store de bytes received
+
 /**
  Section: Functions declaration
  */
@@ -247,11 +247,10 @@ static void I2C1_SlaveRdCallBack() {
     {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
-                
-        if(i2cReadCnt == NUM_PROTOCOL_BYTES)
+               
+        if(i2cReadCnt == CALIBRATION_BYTES - 1) // The -1 is considerating the indexing of a vector 
         {
             data_recv_handler();
-            debug = 1;
         }
     }
 }
@@ -261,7 +260,7 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     
     i2c1RdData = I2C1_SlaveGetRxData();
     
-    if(i2cReadCnt < NUM_PROTOCOL_BYTES)
+    if(i2cReadCnt < CALIBRATION_BYTES) 
     {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
     }
@@ -269,6 +268,9 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     {
         I2C1_SlaveGetRxData();
     }
+    
+    i2cReadCnt++;
+    
 }
 
 // Write Event Interrupt Handlers
@@ -300,10 +302,9 @@ static void I2C1_SlaveAddrCallBack() {
     }
 }
 
-// Handler que cuida da verificao do endereco e manda o acknowledge
 static void I2C1_SlaveDefAddrInterruptHandler() {
     i2c1SlaveAddr = I2C1_SlaveGetRxData();
-    // Clear the counter of bytes received
+    // Clear the counter of bytes received when receives the match addr
     i2cReadCnt = 0;
 }
 

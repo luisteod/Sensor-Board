@@ -1,28 +1,28 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o
+ C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o
  -Odist/my_sensor_config/debug\Firmware.debug.hex
  -logfile=dist/my_sensor_config/debug\Firmware.debug.hxl
  -addressing=2
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
-  8h - 63h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
-  80h - A5Fh		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
-  10000h - 10007h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
-  1000Eh - 10017h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
+  8h - 63h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
+  80h - A67h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
+  10000h - 10007h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
+  1000Eh - 10017h		(C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
   64h - 7Fh
-  A60h - FFFFh
+  A68h - FFFFh
   10008h - 1000Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\HARDWA~1\AppData\Local\Temp\xcAseeg.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\HARDWA~1\AppData\Local\Temp\xcAs9n4.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -192,6 +192,7 @@
 00000A30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000A40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000A50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000A60 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00010000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- H1 H1
 00010010 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --

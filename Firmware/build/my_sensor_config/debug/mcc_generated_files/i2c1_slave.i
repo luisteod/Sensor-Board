@@ -5982,11 +5982,10 @@ static void I2C1_SlaveRdCallBack() {
 
         I2C1_SlaveRdInterruptHandler();
 
-        debug = 1;
-
         if(i2cReadCnt == 3)
         {
             data_recv_handler();
+            debug = 1;
         }
     }
 }
@@ -6004,6 +6003,8 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     {
         I2C1_SlaveGetRxData();
     }
+
+    i2cReadCnt++;
 }
 
 

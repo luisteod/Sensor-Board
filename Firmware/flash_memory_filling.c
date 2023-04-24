@@ -1,12 +1,10 @@
 #include "flash_memory_filling.h"
 
-extern volatile uint8_t i2cDataRead[NUM_PROTOCOL_BYTES];
-
+extern volatile uint8_t i2cDataRead[CALIBRATION_BYTES];
+static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE]; // Auxiliar buffer for writing a word in flash memory
 
 void memory_initialize(uint8_t TAG)
 {
-    // Auxiliar buffer for writing a word in flash memory
-    static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE];
 
     if(FLASH_ReadWord(STATUS_ARRAY_ADDR) != PREAMBLE)
     {         
@@ -21,24 +19,22 @@ void memory_initialize(uint8_t TAG)
     }
 }
 
-void data_recv_handler()
+void data_recv_handler(void)
 {
-    static volatile uint16_t* ramBuff;
     
-    
-    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
-//    if(i2cDataRead[] != 0)
-//    {
-//        for(int i=1; i<6; i++)
-//        {
-//            FLASH_WriteWord(FIRST_ROW_WORD + (uint16_t)i, ramBuff, (uint16_t)data[i]);
-//        }
-//    }
-//    // If last byte is equal 0, so the master want's PIC to send calibration data stored in flash
-//    else
-//    {
-//        // Nothing to be done here!
-//    }
+    //If the last byte is diferent of 0, so it's for PIC save calibration bytes in flash memory
+    if(i2cDataRead[CALIBRATION_BYTES - 1] != 0x00)
+    {
+        for(uint16_t i = 0; i < CALIBRATION_BYTES; i++)
+        {
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]); // +1 is to do not write in the PREAMBLE ADDR
+        }
+    }
+    // If last byte is equal 0, so the master want's PIC to send calibration data stored in flash
+    else
+    {
+        // Nothing to be done here!
+    }
 }
 
 

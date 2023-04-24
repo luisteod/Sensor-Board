@@ -7,8 +7,8 @@
 #define PREAMBLE            0x55
 #define STATUS_DEFAULT      0x00
 
-#include<stdint.h>
-#include<stdbool.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include "mcc_generated_files/mcc.h"
 #include "sensor.h"
 
@@ -18,7 +18,7 @@
 #endif
  
 
-const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(DEFAULT_ARRAY_ADDR) = 
+const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES + 1]  __at(DEFAULT_ARRAY_ADDR) = 
 {
     {1,  1,  1,  1,  1,  1},
     {2,  2,  2,  2,  2,  2},
@@ -34,18 +34,19 @@ const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(
     {12, 12, 12, 12, 12, 12}
 };
 
-/*
- * @Author : Luis
- * 
+/* @Author : Luis
  * @Description : Intializes or not, the memory of the chip when reseted.
- * 
  * @Params : TAG of the chip.
- * 
  * @Return : Nothing.
  */
 void memory_initialize(uint8_t TAG);
 
-void data_recv_handler();
+/* @Author : Luis
+ * @Description : When receives 5 bytes of the MTW protocol, save things in flash
+ * @Params : Nothing
+ * @Return : Nothing
+ */
+void data_recv_handler(void);
 
 void data_send_handle(uint8_t addr);
 

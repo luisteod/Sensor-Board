@@ -45,7 +45,6 @@
 #include "flash_memory_filling.h"
 #include "sensor.h"
 
-extern uint8_t debug; 
                 
 void main(void)
 {
@@ -87,9 +86,6 @@ void main(void)
     while (1)
     {
         // Add your application code
-        
-        volatile uint8_t atlas = debug;
-        
         
     }
 }

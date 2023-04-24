@@ -45,6 +45,8 @@
 #include "flash_memory_filling.h"
 #include "sensor.h"
 
+//Debug variables
+uint8_t debug = 0;
                 
 void main(void)
 {
@@ -61,12 +63,8 @@ void main(void)
         error_signal();
     }
     //Permite que o pic receba informação via I2C (Ativa )
-    //I2C1_Open();
-    
-
-    
+    I2C1_Open();
    
-    
    
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
@@ -86,8 +84,6 @@ void main(void)
     while (1)
     {
         // Add your application code
-        
-       
         
     }
 }

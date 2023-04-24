@@ -3,8 +3,8 @@
 [d edition pro ]
 [d chip 16F15223 ]
 [d frameptr 6 ]
-"68 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
-[e E3248 . `uc
+"66 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+[e E3621 . `uc
 I2C1_IDLE 0
 I2C1_ADDR_TX 1
 I2C1_ADDR_RX 2
@@ -17,71 +17,75 @@ I2C1_DATA_RX 4
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"4 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
+"10 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
 [v _memory_initialize memory_initialize `(v  1 e 1 0 ]
-"49 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
+"26
+[v _data_recv_handler data_recv_handler `(v  1 e 1 0 ]
+"51 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
 [v _main main `(v  1 e 1 0 ]
-"113 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+"112 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
-"170
+"120
+[v _I2C1_Open I2C1_Open `(v  1 e 1 0 ]
+"169
 [v _I2C1_Isr I2C1_Isr `(v  1 s 1 I2C1_Isr ]
-"228
-[v _I2C1_SlaveSetIsrHandler I2C1_SlaveSetIsrHandler `(v  1 e 1 0 ]
 "234
+[v _I2C1_SlaveSetIsrHandler I2C1_SlaveSetIsrHandler `(v  1 e 1 0 ]
+"240
 [v _I2C1_SlaveSetReadIntHandler I2C1_SlaveSetReadIntHandler `(v  1 e 1 0 ]
-"238
+"244
 [v _I2C1_SlaveRdCallBack I2C1_SlaveRdCallBack `(v  1 s 1 I2C1_SlaveRdCallBack ]
-"248
-[v _I2C1_SlaveDefRdInterruptHandler I2C1_SlaveDefRdInterruptHandler `(v  1 s 1 I2C1_SlaveDefRdInterruptHandler ]
 "259
+[v _I2C1_SlaveDefRdInterruptHandler I2C1_SlaveDefRdInterruptHandler `(v  1 s 1 I2C1_SlaveDefRdInterruptHandler ]
+"277
 [v _I2C1_SlaveSetWriteIntHandler I2C1_SlaveSetWriteIntHandler `(v  1 e 1 0 ]
-"263
+"281
 [v _I2C1_SlaveWrCallBack I2C1_SlaveWrCallBack `(v  1 s 1 I2C1_SlaveWrCallBack ]
-"271
+"289
 [v _I2C1_SlaveDefWrInterruptHandler I2C1_SlaveDefWrInterruptHandler `(v  1 s 1 I2C1_SlaveDefWrInterruptHandler ]
-"276
+"294
 [v _I2C1_SlaveSetAddrIntHandler I2C1_SlaveSetAddrIntHandler `(v  1 e 1 0 ]
-"280
+"298
 [v _I2C1_SlaveAddrCallBack I2C1_SlaveAddrCallBack `(v  1 s 1 I2C1_SlaveAddrCallBack ]
-"288
+"305
 [v _I2C1_SlaveDefAddrInterruptHandler I2C1_SlaveDefAddrInterruptHandler `(v  1 s 1 I2C1_SlaveDefAddrInterruptHandler ]
-"295
+"312
 [v _I2C1_SlaveSetWrColIntHandler I2C1_SlaveSetWrColIntHandler `(v  1 e 1 0 ]
-"307
+"324
 [v _I2C1_SlaveDefWrColInterruptHandler I2C1_SlaveDefWrColInterruptHandler `(v  1 s 1 I2C1_SlaveDefWrColInterruptHandler ]
-"311
+"328
 [v _I2C1_SlaveSetBusColIntHandler I2C1_SlaveSetBusColIntHandler `(v  1 e 1 0 ]
-"323
+"340
 [v _I2C1_SlaveDefBusColInterruptHandler I2C1_SlaveDefBusColInterruptHandler `(v  1 s 1 I2C1_SlaveDefBusColInterruptHandler ]
-"326
+"343
 [v _I2C1_SlaveOpen I2C1_SlaveOpen `T(a  1 s 1 I2C1_SlaveOpen ]
-"339
+"356
 [v _I2C1_SlaveClose I2C1_SlaveClose `T(v  1 s 1 I2C1_SlaveClose ]
-"347
+"364
 [v _I2C1_SlaveSetSlaveAddr I2C1_SlaveSetSlaveAddr `T(v  1 s 1 I2C1_SlaveSetSlaveAddr ]
-"352
+"369
 [v _I2C1_SlaveSetSlaveMask I2C1_SlaveSetSlaveMask `T(v  1 s 1 I2C1_SlaveSetSlaveMask ]
-"357
+"374
 [v _I2C1_SlaveEnableIrq I2C1_SlaveEnableIrq `T(v  1 s 1 I2C1_SlaveEnableIrq ]
-"362
+"379
 [v _I2C1_SlaveIsAddr I2C1_SlaveIsAddr `T(a  1 s 1 I2C1_SlaveIsAddr ]
-"367
+"384
 [v _I2C1_SlaveIsRead I2C1_SlaveIsRead `T(a  1 s 1 I2C1_SlaveIsRead ]
-"372
+"389
 [v _I2C1_SlaveClearIrq I2C1_SlaveClearIrq `T(v  1 s 1 I2C1_SlaveClearIrq ]
-"377
+"394
 [v _I2C1_SlaveReleaseClock I2C1_SlaveReleaseClock `T(v  1 s 1 I2C1_SlaveReleaseClock ]
-"397
+"414
 [v _I2C1_SlaveIsTxBufEmpty I2C1_SlaveIsTxBufEmpty `T(a  1 s 1 I2C1_SlaveIsTxBufEmpty ]
-"402
+"419
 [v _I2C1_SlaveIsRxBufFull I2C1_SlaveIsRxBufFull `T(a  1 s 1 I2C1_SlaveIsRxBufFull ]
-"407
+"424
 [v _I2C1_SlaveSendTxData I2C1_SlaveSendTxData `T(v  1 s 1 I2C1_SlaveSendTxData ]
-"412
+"429
 [v _I2C1_SlaveGetRxData I2C1_SlaveGetRxData `T(uc  1 s 1 I2C1_SlaveGetRxData ]
-"422
+"439
 [v _I2C1_SlaveSendAck I2C1_SlaveSendAck `T(v  1 s 1 I2C1_SlaveSendAck ]
-"428
+"445
 [v _I2C1_SlaveSendNack I2C1_SlaveSendNack `T(v  1 s 1 I2C1_SlaveSendNack ]
 "52 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
@@ -93,50 +97,63 @@ I2C1_DATA_RX 4
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "58 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+[v i1_FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
 "75
 [v _FLASH_WriteWord FLASH_WriteWord `(v  1 e 1 0 ]
+[v i1_FLASH_WriteWord FLASH_WriteWord `(v  1 e 1 0 ]
 "94
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+[v i1_FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
 "149
 [v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+[v i1_FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
 "55 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"67 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
+"71 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
-"127
+"131
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
-"142
+"146
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
-"148
+"152
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-"31 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\sensor.c
+"35 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\sensor.c
 [v _getSensorBoardType getSensorBoardType `(uc  1 e 1 0 ]
-"36
+"40
 [v _SensorBoardType_validation SensorBoardType_validation `(uc  1 e 1 0 ]
-"20 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/flash_memory_filling.h
+"53
+[v _error_signal error_signal `(v  1 e 1 0 ]
+"24 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/flash_memory_filling.h
 [v _default_in_flash default_in_flash `DC[12][6]us  1 e 144 @64 ]
-"135 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/mcc_generated_files/i2c1_slave.h
+"57 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/sensor.h
+[v _error_flag error_flag `uc  1 e 1 0 ]
+"61 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/mcc_generated_files/i2c1_slave.h
+[v _i2cReadCnt i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
+[v _i2cReadCnt@i2c1_slave$F1136 i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
+"62
+[v _i2cDataRead i2cDataRead `VE[5]uc  1 e 5 0 ]
+"147
 [v _MSSP1_InterruptHandler MSSP1_InterruptHandler `*.37(v  1 e 2 0 ]
-"136
+"148
 [v _I2C1_SlaveRdInterruptHandler I2C1_SlaveRdInterruptHandler `*.37(v  1 e 2 0 ]
-"137
+"149
 [v _I2C1_SlaveWrInterruptHandler I2C1_SlaveWrInterruptHandler `*.37(v  1 e 2 0 ]
-"138
+"150
 [v _I2C1_SlaveAddrInterruptHandler I2C1_SlaveAddrInterruptHandler `*.37(v  1 e 2 0 ]
-"139
+"151
 [v _I2C1_SlaveBusColInterruptHandler I2C1_SlaveBusColInterruptHandler `*.37(v  1 e 2 0 ]
-"140
+"152
 [v _I2C1_SlaveWrColInterruptHandler I2C1_SlaveWrColInterruptHandler `*.37(v  1 e 2 0 ]
 "64 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware/mcc_generated_files/tmr0.h
 [v _LED_timer LED_timer `uc  1 e 1 0 ]
-[s S113 . 1 `uc 1 INTEDG 1 0 :1:0 
+[s S125 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "426 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\pic\include\proc\pic16f15223.h
-[u S118 . 1 `S113 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES118  1 e 1 @11 ]
+[u S130 . 1 `S125 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES130  1 e 1 @11 ]
 "446
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
 "496
@@ -147,7 +164,7 @@ I2C1_DATA_RX 4
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
 "646
 [v _LATA LATA `VEuc  1 e 1 @24 ]
-[s S925 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S951 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -155,8 +172,8 @@ I2C1_DATA_RX 4
 `uc 1 LATA5 1 0 :1:5 
 ]
 "661
-[u S932 . 1 `S925 1 . 1 0 ]
-[v _LATAbits LATAbits `VES932  1 e 1 @24 ]
+[u S958 . 1 `S951 1 . 1 0 ]
+[v _LATAbits LATAbits `VES958  1 e 1 @24 ]
 "696
 [v _LATC LATC `VEuc  1 e 1 @26 ]
 "1298
@@ -167,7 +184,7 @@ I2C1_DATA_RX 4
 [v _SSP1MSK SSP1MSK `VEuc  1 e 1 @398 ]
 "1508
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
-[s S450 . 1 `uc 1 BF 1 0 :1:0 
+[s S468 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -177,33 +194,33 @@ I2C1_DATA_RX 4
 `uc 1 SMP 1 0 :1:7 
 ]
 "1617
-[s S459 . 1 `uc 1 . 1 0 :2:0 
+[s S477 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S464 . 1 `uc 1 . 1 0 :2:0 
+[s S482 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S469 . 1 `uc 1 . 1 0 :2:0 
+[s S487 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S474 . 1 `uc 1 . 1 0 :2:0 
+[s S492 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S479 . 1 `uc 1 . 1 0 :2:0 
+[s S497 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S485 . 1 `uc 1 BF1 1 0 :1:0 
+[s S503 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -212,66 +229,66 @@ I2C1_DATA_RX 4
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S494 . 1 `uc 1 . 1 0 :2:0 
+[s S512 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S500 . 1 `uc 1 . 1 0 :2:0 
+[s S518 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 I2C_START1 1 0 :1:3 
 `uc 1 I2C_STOP2 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S506 . 1 `uc 1 . 1 0 :2:0 
+[s S524 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ1 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS1 1 0 :1:5 
 ]
-[s S512 . 1 `uc 1 . 1 0 :2:0 
+[s S530 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A1 1 0 :1:5 
 ]
-[s S517 . 1 `uc 1 . 1 0 :2:0 
+[s S535 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA1 1 0 :1:5 
 ]
-[s S522 . 1 `uc 1 . 1 0 :2:0 
+[s S540 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT1 1 0 :1:5 
 ]
-[s S527 . 1 `uc 1 . 1 0 :2:0 
+[s S545 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S532 . 1 `uc 1 . 1 0 :2:0 
+[s S550 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS1 1 0 :1:5 
 ]
-[u S537 . 1 `S450 1 . 1 0 `S459 1 . 1 0 `S464 1 . 1 0 `S469 1 . 1 0 `S474 1 . 1 0 `S479 1 . 1 0 `S485 1 . 1 0 `S494 1 . 1 0 `S500 1 . 1 0 `S506 1 . 1 0 `S512 1 . 1 0 `S517 1 . 1 0 `S522 1 . 1 0 `S527 1 . 1 0 `S532 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES537  1 e 1 @399 ]
+[u S555 . 1 `S468 1 . 1 0 `S477 1 . 1 0 `S482 1 . 1 0 `S487 1 . 1 0 `S492 1 . 1 0 `S497 1 . 1 0 `S503 1 . 1 0 `S512 1 . 1 0 `S518 1 . 1 0 `S524 1 . 1 0 `S530 1 . 1 0 `S535 1 . 1 0 `S540 1 . 1 0 `S545 1 . 1 0 `S550 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES555  1 e 1 @399 ]
 "1872
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S224 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S241 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "1902
-[s S230 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S247 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S235 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S252 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -280,11 +297,11 @@ I2C1_DATA_RX 4
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S244 . 1 `S224 1 . 1 0 `S230 1 . 1 0 `S235 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES244  1 e 1 @400 ]
+[u S261 . 1 `S241 1 . 1 0 `S247 1 . 1 0 `S252 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES261  1 e 1 @400 ]
 "1992
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @401 ]
-[s S653 . 1 `uc 1 SEN 1 0 :1:0 
+[s S671 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -294,17 +311,17 @@ I2C1_DATA_RX 4
 `uc 1 GCEN 1 0 :1:7 
 ]
 "2039
-[s S662 . 1 `uc 1 . 1 0 :1:0 
+[s S680 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S665 . 1 `uc 1 . 1 0 :1:0 
+[s S683 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S672 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S690 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -313,53 +330,53 @@ I2C1_DATA_RX 4
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S681 . 1 `uc 1 . 1 0 :1:0 
+[s S699 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S688 . 1 `S653 1 . 1 0 `S662 1 . 1 0 `S665 1 . 1 0 `S672 1 . 1 0 `S681 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES688  1 e 1 @401 ]
+[u S706 . 1 `S671 1 . 1 0 `S680 1 . 1 0 `S683 1 . 1 0 `S690 1 . 1 0 `S699 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES706  1 e 1 @401 ]
 "4291
 [v _TMR0L TMR0L `VEuc  1 e 1 @1436 ]
 "4429
 [v _TMR0H TMR0H `VEuc  1 e 1 @1437 ]
 "4683
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @1438 ]
-[s S881 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S906 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 MD16 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "4711
-[s S887 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S912 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T0MD16 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
-[s S893 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S918 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
 `uc 1 T016BIT 1 0 :1:4 
 ]
-[u S899 . 1 `S881 1 . 1 0 `S887 1 . 1 0 `S893 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES899  1 e 1 @1438 ]
+[u S924 . 1 `S906 1 . 1 0 `S912 1 . 1 0 `S918 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES924  1 e 1 @1438 ]
 "4781
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @1439 ]
-[s S96 . 1 `uc 1 INTF 1 0 :1:0 
+[s S108 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "4936
-[u S101 . 1 `S96 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES101  1 e 1 @1804 ]
-[s S147 . 1 `uc 1 ADIF 1 0 :1:0 
+[u S113 . 1 `S108 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES113  1 e 1 @1804 ]
+[s S159 . 1 `uc 1 ADIF 1 0 :1:0 
 `uc 1 SSP1IF 1 0 :1:1 
 `uc 1 BCL1IF 1 0 :1:2 
 `uc 1 TX1IF 1 0 :1:3 
@@ -369,17 +386,17 @@ I2C1_DATA_RX 4
 `uc 1 CCP1IF 1 0 :1:7 
 ]
 "4973
-[u S156 . 1 `S147 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES156  1 e 1 @1805 ]
-[s S83 . 1 `uc 1 INTE 1 0 :1:0 
+[u S168 . 1 `S159 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES168  1 e 1 @1805 ]
+[s S95 . 1 `uc 1 INTE 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIE 1 0 :1:4 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "5064
-[u S88 . 1 `S83 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES88  1 e 1 @1814 ]
-[s S126 . 1 `uc 1 ADIE 1 0 :1:0 
+[u S100 . 1 `S95 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES100  1 e 1 @1814 ]
+[s S138 . 1 `uc 1 ADIE 1 0 :1:0 
 `uc 1 SSP1IE 1 0 :1:1 
 `uc 1 BCL1IE 1 0 :1:2 
 `uc 1 TX1IE 1 0 :1:3 
@@ -389,8 +406,8 @@ I2C1_DATA_RX 4
 `uc 1 CCP1IE 1 0 :1:7 
 ]
 "5101
-[u S135 . 1 `S126 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES135  1 e 1 @1815 ]
+[u S147 . 1 `S138 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES147  1 e 1 @1815 ]
 "5179
 [v _WDTCON WDTCON `VEuc  1 e 1 @2060 ]
 "5353
@@ -401,7 +418,7 @@ I2C1_DATA_RX 4
 [v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
 "5420
 [v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
-[s S980 . 1 `uc 1 RD 1 0 :1:0 
+[s S1006 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -410,8 +427,8 @@ I2C1_DATA_RX 4
 `uc 1 NVMREGS 1 0 :1:6 
 ]
 "5456
-[u S988 . 1 `S980 1 . 1 0 ]
-[v _NVMCON1bits NVMCON1bits `VES988  1 e 1 @2078 ]
+[u S1014 . 1 `S1006 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES1014  1 e 1 @2078 ]
 "5496
 [v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
 "5627
@@ -448,108 +465,118 @@ I2C1_DATA_RX 4
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @8017 ]
 "8165
 [v _INLVLC INLVLC `VEuc  1 e 1 @8018 ]
-"65 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
-[v _i2c1WrData i2c1WrData `VEuc  1 e 1 0 ]
-"66
-[v _i2c1RdData i2c1RdData `VEuc  1 e 1 0 ]
-"67
-[v _i2c1SlaveAddr i2c1SlaveAddr `VEuc  1 e 1 0 ]
-"68
-[v _i2c1SlaveState i2c1SlaveState `VEE3248  1 s 1 i2c1SlaveState ]
-"71
-[v _i2cReadCnt i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
-"73
-[v _i2cDataRead i2cDataRead `[3]uc  1 e 3 0 ]
-"65 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
-[v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
+"4 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
+[v _ramBuff ramBuff `[32]us  1 s 64 ramBuff ]
+"5
+[v _status_byte status_byte `uc  1 s 1 status_byte ]
 "49 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
+[v _debug debug `uc  1 e 1 0 ]
+"63 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+[v _i2c1WrData i2c1WrData `VEuc  1 e 1 0 ]
+"64
+[v _i2c1RdData i2c1RdData `VEuc  1 e 1 0 ]
+"65
+[v _i2c1SlaveAddr i2c1SlaveAddr `VEuc  1 e 1 0 ]
+"66
+[v _i2c1SlaveState i2c1SlaveState `VEE3621  1 s 1 i2c1SlaveState ]
+"71
+[v _i2cReadCnt@i2c1_slave$F753 i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
+"61 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.h
+[v _i2cReadCnt@i2c1_slave$F183 i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
+[v _i2cReadCnt@i2c1_slave$F1099 i2cReadCnt `VEuc  1 s 1 i2cReadCnt ]
+"69 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
+[v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
+"51 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"54
-[v main@TAG TAG `uc  1 a 1 22 ]
-"92
+"56
+[v main@TAG TAG `uc  1 a 1 8 ]
+"89
 } 0
-"4 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
+"10 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
 [v _memory_initialize memory_initialize `(v  1 e 1 0 ]
 {
 [v memory_initialize@TAG TAG `uc  1 a 1 wreg ]
 [v memory_initialize@TAG TAG `uc  1 a 1 wreg ]
-"7
-[v memory_initialize@ramBuff ramBuff `[32]us  1 s 64 ramBuff ]
-"9
-[v memory_initialize@TAG TAG `uc  1 a 1 21 ]
-"21
+"13
+[v memory_initialize@TAG TAG `uc  1 a 1 7 ]
+"24
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 0 ]
+[v ___wmul@product product `ui  1 a 2 19 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 3 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 5 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 15 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 17 ]
 "53
 } 0
 "75 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/memory.c
 [v _FLASH_WriteWord FLASH_WriteWord `(v  1 e 1 0 ]
 {
 "77
-[v FLASH_WriteWord@blockStartAddr blockStartAddr `us  1 a 2 16 ]
+[v FLASH_WriteWord@blockStartAddr blockStartAddr `us  1 a 2 2 ]
 "79
-[v FLASH_WriteWord@i i `uc  1 a 1 18 ]
+[v FLASH_WriteWord@i i `uc  1 a 1 4 ]
 "78
-[v FLASH_WriteWord@offset offset `uc  1 a 1 15 ]
+[v FLASH_WriteWord@offset offset `uc  1 a 1 1 ]
 "75
-[v FLASH_WriteWord@flashAddr flashAddr `us  1 p 2 10 ]
-[v FLASH_WriteWord@ramBuf ramBuf `*.4us  1 p 1 12 ]
-[v FLASH_WriteWord@word word `us  1 p 2 13 ]
+[v FLASH_WriteWord@flashAddr flashAddr `us  1 p 2 28 ]
+[v FLASH_WriteWord@ramBuf ramBuf `*.4us  1 p 1 30 ]
+[v FLASH_WriteWord@word word `us  1 p 2 31 ]
 "92
 } 0
 "94
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
 {
 "96
-[v FLASH_WriteBlock@blockStartAddr blockStartAddr `us  1 a 2 6 ]
+[v FLASH_WriteBlock@blockStartAddr blockStartAddr `us  1 a 2 24 ]
 "98
-[v FLASH_WriteBlock@i i `uc  1 a 1 9 ]
+[v FLASH_WriteBlock@i i `uc  1 a 1 27 ]
 "97
-[v FLASH_WriteBlock@GIEBitValue GIEBitValue `uc  1 a 1 8 ]
+[v FLASH_WriteBlock@GIEBitValue GIEBitValue `uc  1 a 1 26 ]
 "94
-[v FLASH_WriteBlock@writeAddr writeAddr `us  1 p 2 0 ]
-[v FLASH_WriteBlock@flashWordArray flashWordArray `*.4us  1 p 1 2 ]
+[v FLASH_WriteBlock@writeAddr writeAddr `us  1 p 2 18 ]
+[v FLASH_WriteBlock@flashWordArray flashWordArray `*.4us  1 p 1 20 ]
 "147
 } 0
 "149
 [v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
 {
 "151
-[v FLASH_EraseBlock@GIEBitValue GIEBitValue `uc  1 a 1 5 ]
+[v FLASH_EraseBlock@GIEBitValue GIEBitValue `uc  1 a 1 17 ]
 "149
-[v FLASH_EraseBlock@startAddr startAddr `us  1 p 2 3 ]
+[v FLASH_EraseBlock@startAddr startAddr `us  1 p 2 15 ]
 "174
 } 0
 "58
 [v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
 {
 "60
-[v FLASH_ReadWord@GIEBitValue GIEBitValue `uc  1 a 1 5 ]
+[v FLASH_ReadWord@GIEBitValue GIEBitValue `uc  1 a 1 17 ]
 "58
-[v FLASH_ReadWord@flashAddr flashAddr `us  1 p 2 3 ]
+[v FLASH_ReadWord@flashAddr flashAddr `us  1 p 2 15 ]
 "73
 } 0
-"31 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\sensor.c
+"35 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\sensor.c
 [v _getSensorBoardType getSensorBoardType `(uc  1 e 1 0 ]
 {
-"34
+"38
 } 0
-"36
+"53
+[v _error_signal error_signal `(v  1 e 1 0 ]
+{
+"56
+} 0
+"40
 [v _SensorBoardType_validation SensorBoardType_validation `(uc  1 e 1 0 ]
 {
 [v SensorBoardType_validation@SensorBoardType SensorBoardType `uc  1 a 1 wreg ]
 [v SensorBoardType_validation@SensorBoardType SensorBoardType `uc  1 a 1 wreg ]
-"38
-[v SensorBoardType_validation@SensorBoardType SensorBoardType `uc  1 a 1 3 ]
-"47
+"42
+[v SensorBoardType_validation@SensorBoardType SensorBoardType `uc  1 a 1 15 ]
+"51
 } 0
 "50 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -561,16 +588,16 @@ I2C1_DATA_RX 4
 {
 "74
 } 0
-"67 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
+"71 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
-"91
+"95
 } 0
-"142
+"146
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
-[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 3 ]
-"144
+[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 15 ]
+"148
 } 0
 "55 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -582,102 +609,225 @@ I2C1_DATA_RX 4
 {
 "68
 } 0
-"113 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+"112 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
-"119
+"118
+} 0
+"120
+[v _I2C1_Open I2C1_Open `(v  1 e 1 0 ]
+{
+"132
+} 0
+"277
+[v _I2C1_SlaveSetWriteIntHandler I2C1_SlaveSetWriteIntHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetWriteIntHandler@handler handler `*.37(v  1 p 2 15 ]
+"279
+} 0
+"312
+[v _I2C1_SlaveSetWrColIntHandler I2C1_SlaveSetWrColIntHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetWrColIntHandler@handler handler `*.37(v  1 p 2 15 ]
+"314
+} 0
+"369
+[v _I2C1_SlaveSetSlaveMask I2C1_SlaveSetSlaveMask `T(v  1 s 1 I2C1_SlaveSetSlaveMask ]
+{
+[v I2C1_SlaveSetSlaveMask@maskAddr maskAddr `uc  1 a 1 wreg ]
+[v I2C1_SlaveSetSlaveMask@maskAddr maskAddr `uc  1 a 1 wreg ]
+"371
+[v I2C1_SlaveSetSlaveMask@maskAddr maskAddr `uc  1 a 1 15 ]
+"372
+} 0
+"364
+[v _I2C1_SlaveSetSlaveAddr I2C1_SlaveSetSlaveAddr `T(v  1 s 1 I2C1_SlaveSetSlaveAddr ]
+{
+[v I2C1_SlaveSetSlaveAddr@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v I2C1_SlaveSetSlaveAddr@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+"366
+[v I2C1_SlaveSetSlaveAddr@slaveAddr slaveAddr `uc  1 a 1 15 ]
+"367
+} 0
+"240
+[v _I2C1_SlaveSetReadIntHandler I2C1_SlaveSetReadIntHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetReadIntHandler@handler handler `*.37(v  1 p 2 15 ]
+"242
+} 0
+"234
+[v _I2C1_SlaveSetIsrHandler I2C1_SlaveSetIsrHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetIsrHandler@handler handler `*.37(v  1 p 2 15 ]
+"237
+} 0
+"328
+[v _I2C1_SlaveSetBusColIntHandler I2C1_SlaveSetBusColIntHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetBusColIntHandler@handler handler `*.37(v  1 p 2 15 ]
+"330
+} 0
+"294
+[v _I2C1_SlaveSetAddrIntHandler I2C1_SlaveSetAddrIntHandler `(v  1 e 1 0 ]
+{
+[v I2C1_SlaveSetAddrIntHandler@handler handler `*.37(v  1 p 2 15 ]
+"296
+} 0
+"343
+[v _I2C1_SlaveOpen I2C1_SlaveOpen `T(a  1 s 1 I2C1_SlaveOpen ]
+{
+"354
+} 0
+"374
+[v _I2C1_SlaveEnableIrq I2C1_SlaveEnableIrq `T(v  1 s 1 I2C1_SlaveEnableIrq ]
+{
+"377
 } 0
 "52 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "79
 } 0
-"127 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
+"131 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
-"139
+"143
 } 0
-"148
+"152
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
-"161
+"181
 } 0
-"170 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+"169 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
 [v _I2C1_Isr I2C1_Isr `(v  1 s 1 I2C1_Isr ]
 {
-"225
+"231
 } 0
-"263
+"281
 [v _I2C1_SlaveWrCallBack I2C1_SlaveWrCallBack `(v  1 s 1 I2C1_SlaveWrCallBack ]
 {
-"269
+"287
 } 0
-"271
+"289
 [v _I2C1_SlaveDefWrInterruptHandler I2C1_SlaveDefWrInterruptHandler `(v  1 s 1 I2C1_SlaveDefWrInterruptHandler ]
 {
-"273
+"291
 } 0
-"407
+"424
 [v _I2C1_SlaveSendTxData I2C1_SlaveSendTxData `T(v  1 s 1 I2C1_SlaveSendTxData ]
 {
 [v I2C1_SlaveSendTxData@data data `uc  1 a 1 wreg ]
 [v I2C1_SlaveSendTxData@data data `uc  1 a 1 wreg ]
-"409
+"426
 [v I2C1_SlaveSendTxData@data data `uc  1 a 1 0 ]
-"410
+"427
 } 0
-"377
+"394
 [v _I2C1_SlaveReleaseClock I2C1_SlaveReleaseClock `T(v  1 s 1 I2C1_SlaveReleaseClock ]
 {
-"380
+"397
 } 0
-"238
+"244
 [v _I2C1_SlaveRdCallBack I2C1_SlaveRdCallBack `(v  1 s 1 I2C1_SlaveRdCallBack ]
-{
-"245
-} 0
-"248
-[v _I2C1_SlaveDefRdInterruptHandler I2C1_SlaveDefRdInterruptHandler `(v  1 s 1 I2C1_SlaveDefRdInterruptHandler ]
 {
 "256
 } 0
-"397
+"26 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
+[v _data_recv_handler data_recv_handler `(v  1 e 1 0 ]
+{
+"32
+[v data_recv_handler@i i `us  1 a 2 11 ]
+"49
+} 0
+"75 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/memory.c
+[v i1_FLASH_WriteWord FLASH_WriteWord `(v  1 e 1 0 ]
+{
+"77
+[v i1FLASH_WriteWord@blockStartAddr blockStartAddr `us  1 a 2 6 ]
+"79
+[v i1FLASH_WriteWord@i i `uc  1 a 1 8 ]
+"78
+[v i1FLASH_WriteWord@offset offset `uc  1 a 1 5 ]
+"75
+[v i1FLASH_WriteWord@flashAddr flashAddr `us  1 p 2 0 ]
+[v i1FLASH_WriteWord@ramBuf ramBuf `*.4us  1 p 1 2 ]
+[v i1FLASH_WriteWord@word word `us  1 p 2 3 ]
+"92
+} 0
+"94
+[v i1_FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+{
+"96
+[v i1FLASH_WriteBlock@blockStartAddr blockStartAddr `us  1 a 2 9 ]
+"98
+[v i1FLASH_WriteBlock@i i `uc  1 a 1 12 ]
+"97
+[v i1FLASH_WriteBlock@GIEBitValue GIEBitValue `uc  1 a 1 11 ]
+"94
+[v i1FLASH_WriteBlock@writeAddr writeAddr `us  1 p 2 3 ]
+[v i1FLASH_WriteBlock@flashWordArray flashWordArray `*.4us  1 p 1 5 ]
+"147
+} 0
+"149
+[v i1_FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+{
+"151
+[v i1FLASH_EraseBlock@GIEBitValue GIEBitValue `uc  1 a 1 2 ]
+"149
+[v i1FLASH_EraseBlock@startAddr startAddr `us  1 p 2 0 ]
+"174
+} 0
+"58
+[v i1_FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+{
+"60
+[v i1FLASH_ReadWord@GIEBitValue GIEBitValue `uc  1 a 1 2 ]
+"58
+[v i1FLASH_ReadWord@flashAddr flashAddr `us  1 p 2 0 ]
+"73
+} 0
+"259 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
+[v _I2C1_SlaveDefRdInterruptHandler I2C1_SlaveDefRdInterruptHandler `(v  1 s 1 I2C1_SlaveDefRdInterruptHandler ]
+{
+"274
+} 0
+"414
 [v _I2C1_SlaveIsTxBufEmpty I2C1_SlaveIsTxBufEmpty `T(a  1 s 1 I2C1_SlaveIsTxBufEmpty ]
 {
-"400
+"417
 } 0
-"402
+"419
 [v _I2C1_SlaveIsRxBufFull I2C1_SlaveIsRxBufFull `T(a  1 s 1 I2C1_SlaveIsRxBufFull ]
 {
-"405
+"422
 } 0
-"367
+"384
 [v _I2C1_SlaveIsRead I2C1_SlaveIsRead `T(a  1 s 1 I2C1_SlaveIsRead ]
 {
-"370
+"387
 } 0
-"362
+"379
 [v _I2C1_SlaveIsAddr I2C1_SlaveIsAddr `T(a  1 s 1 I2C1_SlaveIsAddr ]
 {
-"365
+"382
 } 0
-"372
+"389
 [v _I2C1_SlaveClearIrq I2C1_SlaveClearIrq `T(v  1 s 1 I2C1_SlaveClearIrq ]
 {
-"375
+"392
 } 0
-"280
+"298
 [v _I2C1_SlaveAddrCallBack I2C1_SlaveAddrCallBack `(v  1 s 1 I2C1_SlaveAddrCallBack ]
 {
-"285
+"303
 } 0
-"288
+"305
 [v _I2C1_SlaveDefAddrInterruptHandler I2C1_SlaveDefAddrInterruptHandler `(v  1 s 1 I2C1_SlaveDefAddrInterruptHandler ]
 {
-"292
+"309
 } 0
-"412
+"429
 [v _I2C1_SlaveGetRxData I2C1_SlaveGetRxData `T(uc  1 s 1 I2C1_SlaveGetRxData ]
 {
-"415
+"432
 } 0

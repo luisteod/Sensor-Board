@@ -1,10 +1,14 @@
 #include "flash_memory_filling.h"
 
+extern volatile uint8_t i2cDataRead[CALIBRATION_BYTES];
+static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE]; // Auxiliar buffer for writing a word in flash memory
+static uint8_t status_byte;
+
+// Debug variables
+extern uint8_t debug;
 
 void memory_initialize(uint8_t TAG)
 {
-    // Auxiliar buffer for writing a word in flash memory
-    static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE];
 
     if(FLASH_ReadWord(STATUS_ARRAY_ADDR) != PREAMBLE)
     {         
@@ -16,27 +20,36 @@ void memory_initialize(uint8_t TAG)
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
         FLASH_WriteWord(STATUS_ARRAY_ADDR + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
-        
     }
 }
 
-//void data_recv_handle(uint8_t* data)
-//{
-//    static volatile uint16_t* ramBuff;
-//
-//    // If the last byte is diferent of 0, so it's for PIC write calibration values in memory
-//    if(data[5] != 0)
-//    {
-//        for(int i=1; i<6; i++)
-//        {
-//            FLASH_WriteWord(FIRST_ROW_WORD + (uint16_t)i, ramBuff, (uint16_t)data[i]);
-//        }
-//    }
-//    // If last byte is equal 0, so the master want's PIC to send calibration data stored in flash
-//    else
-//    {
-//        // Nothing to be done here!
-//    }
-//}
+void data_recv_handler(void)
+{
+    
+    //If the last byte is diferent of 0, so it's for PIC save calibration bytes in flash memory
+    if(i2cDataRead[CALIBRATION_BYTES - 1] == FLASH_CMD)
+    {
+        for(uint16_t i = 0; i < CALIBRATION_BYTES; i++)
+        {
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]); // +1 is to do not write in the PREAMBLE ADDR
+        }
+    }
+    /* 
+       If last byte is equal 0x31, so the master want's PIC to send calibration data stored in flash
+       so this procedure only saves the CMD requested by master to use in data_send_handler function.
+    */
+    else if(i2cDataRead[CALIBRATION_BYTES - 1] == SEND_CMD)
+    {
+       status_byte = i2cDataRead[0];    
+       
+       debug = 1;
+
+       
+    }
+}
+
+void data_send_handle(void)
+{
+}
 
 

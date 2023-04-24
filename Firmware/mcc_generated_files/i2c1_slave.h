@@ -47,8 +47,20 @@
 #ifndef I2C1_SLAVE_H
 #define I2C1_SLAVE_H
 
+#define I2C1_SLAVE_ADDRESS      0x77
+#define I2C1_SLAVE_MASK         0
+
 #include <stdbool.h>
 #include <stdint.h>
+#include "../flash_memory_filling.h"
+#include "../sensor.h"
+
+/*
+ * My global variables
+ */
+static volatile uint8_t i2cReadCnt; // Varible to count the varibles received
+volatile uint8_t i2cDataRead[CALIBRATION_BYTES]; // Array to store de bytes received
+
 
 typedef void (*i2c1InterruptHandler)(void);
 /**

@@ -5580,11 +5580,11 @@ char *tempnam(const char *, const char *);
 
 
 # 1 "mcc_generated_files/i2c1_slave.h" 1
-# 56 "mcc_generated_files/i2c1_slave.h"
+# 55 "mcc_generated_files/i2c1_slave.h"
 # 1 "mcc_generated_files/../flash_memory_filling.h" 1
-# 12 "mcc_generated_files/../flash_memory_filling.h"
+# 15 "mcc_generated_files/../flash_memory_filling.h"
 # 1 "./mcc_generated_files/mcc.h" 1
-# 12 "mcc_generated_files/../flash_memory_filling.h" 2
+# 15 "mcc_generated_files/../flash_memory_filling.h" 2
 
 # 1 "./sensor.h" 1
 # 57 "./sensor.h"
@@ -5598,7 +5598,7 @@ uint8_t getSensorBoardType(void);
 uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
 
 void error_signal(void);
-# 13 "mcc_generated_files/../flash_memory_filling.h" 2
+# 16 "mcc_generated_files/../flash_memory_filling.h" 2
 
 
 
@@ -5607,7 +5607,7 @@ void error_signal(void);
 
 
 
-const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
+const uint16_t default_in_flash[12][5 + 1] __attribute__((address(0x040))) =
 {
     {1, 1, 1, 1, 1, 1},
     {2, 2, 2, 2, 2, 2},
@@ -5622,20 +5622,36 @@ const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
     {11, 11, 11, 11, 11, 11},
     {12, 12, 12, 12, 12, 12}
 };
-# 46 "mcc_generated_files/../flash_memory_filling.h"
+
+
+
+
+
+
 void memory_initialize(uint8_t TAG);
 
-void data_recv_handler();
 
-void data_send_handle(uint8_t addr);
-# 56 "mcc_generated_files/i2c1_slave.h" 2
+
+
+
+
+void data_recv_handler(void);
+
+
+
+
+
+
+void data_send_handle(void);
+# 55 "mcc_generated_files/i2c1_slave.h" 2
+
 
 
 
 
 
 static volatile uint8_t i2cReadCnt;
-volatile uint8_t i2cDataRead[3];
+volatile uint8_t i2cDataRead[5];
 
 
 typedef void (*i2c1InterruptHandler)(void);

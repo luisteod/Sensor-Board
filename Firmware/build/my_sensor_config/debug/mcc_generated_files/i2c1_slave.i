@@ -9,9 +9,9 @@
 # 1 "mcc_generated_files/i2c1_slave.c" 2
 # 47 "mcc_generated_files/i2c1_slave.c"
 # 1 "mcc_generated_files/i2c1_slave.h" 1
-# 54 "mcc_generated_files/i2c1_slave.h"
+# 53 "mcc_generated_files/i2c1_slave.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\stdbool.h" 1 3
-# 54 "mcc_generated_files/i2c1_slave.h" 2
+# 53 "mcc_generated_files/i2c1_slave.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\stdint.h" 1 3
 
@@ -118,10 +118,10 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 145 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c99\\stdint.h" 2 3
-# 55 "mcc_generated_files/i2c1_slave.h" 2
+# 54 "mcc_generated_files/i2c1_slave.h" 2
 
 # 1 "mcc_generated_files/../flash_memory_filling.h" 1
-# 12 "mcc_generated_files/../flash_memory_filling.h"
+# 15 "mcc_generated_files/../flash_memory_filling.h"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16F1xxxx_DFP/1.15.191/xc8\\pic\\include\\xc.h" 1 3
@@ -5642,7 +5642,7 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 98 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 12 "mcc_generated_files/../flash_memory_filling.h" 2
+# 15 "mcc_generated_files/../flash_memory_filling.h" 2
 
 # 1 "./sensor.h" 1
 # 57 "./sensor.h"
@@ -5656,7 +5656,7 @@ uint8_t getSensorBoardType(void);
 uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
 
 void error_signal(void);
-# 13 "mcc_generated_files/../flash_memory_filling.h" 2
+# 16 "mcc_generated_files/../flash_memory_filling.h" 2
 
 
 
@@ -5665,7 +5665,7 @@ void error_signal(void);
 
 
 
-const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
+const uint16_t default_in_flash[12][5 + 1] __attribute__((address(0x040))) =
 {
     {1, 1, 1, 1, 1, 1},
     {2, 2, 2, 2, 2, 2},
@@ -5680,20 +5680,36 @@ const uint16_t default_in_flash[12][6] __attribute__((address(0x040))) =
     {11, 11, 11, 11, 11, 11},
     {12, 12, 12, 12, 12, 12}
 };
-# 46 "mcc_generated_files/../flash_memory_filling.h"
+
+
+
+
+
+
 void memory_initialize(uint8_t TAG);
 
-void data_recv_handler();
 
-void data_send_handle(uint8_t addr);
-# 56 "mcc_generated_files/i2c1_slave.h" 2
+
+
+
+
+void data_recv_handler(void);
+
+
+
+
+
+
+void data_send_handle(void);
+# 55 "mcc_generated_files/i2c1_slave.h" 2
+
 
 
 
 
 
 static volatile uint8_t i2cReadCnt;
-volatile uint8_t i2cDataRead[3];
+volatile uint8_t i2cDataRead[5];
 
 
 typedef void (*i2c1InterruptHandler)(void);
@@ -5803,8 +5819,8 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
 
 
 static volatile uint8_t i2cReadCnt = 0;
-volatile uint8_t i2cDataRead[3];
-uint8_t debug = 0;
+volatile uint8_t i2cDataRead[5];
+
 
 
 
@@ -5982,10 +5998,9 @@ static void I2C1_SlaveRdCallBack() {
 
         I2C1_SlaveRdInterruptHandler();
 
-        if(i2cReadCnt == 3)
+        if(i2cReadCnt == 5 - 1)
         {
             data_recv_handler();
-            debug = 1;
         }
     }
 }
@@ -5995,7 +6010,7 @@ static void I2C1_SlaveDefRdInterruptHandler() {
 
     i2c1RdData = I2C1_SlaveGetRxData();
 
-    if(i2cReadCnt < 3)
+    if(i2cReadCnt < 5)
     {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
     }
@@ -6005,6 +6020,7 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     }
 
     i2cReadCnt++;
+
 }
 
 
@@ -6035,7 +6051,6 @@ static void I2C1_SlaveAddrCallBack() {
         I2C1_SlaveAddrInterruptHandler();
     }
 }
-
 
 static void I2C1_SlaveDefAddrInterruptHandler() {
     i2c1SlaveAddr = I2C1_SlaveGetRxData();

@@ -5790,9 +5790,11 @@ void data_send_handle(void);
 extern volatile uint8_t i2cDataRead[5];
 static uint16_t ramBuff[32];
 static uint8_t command;
+static uint8_t low_cal;
+static uint8_t high_cal;
 
 
-extern uint8_t debug;
+static uint8_t debug;
 
 void memory_initialize(uint8_t TAG)
 {
@@ -5812,7 +5814,9 @@ void memory_initialize(uint8_t TAG)
 
 void data_recv_handler(void)
 {
-    command = i2cDataRead[0] & 0x80;
+    command = (0x80 & i2cDataRead[0]);
+    low_cal = (0x40 & i2cDataRead[0]);
+    high_cal = (0x20 & i2cDataRead[0]);
 
 
     if(command)
@@ -5824,12 +5828,13 @@ void data_recv_handler(void)
     }
 
 
-    else if(~command)
+    else if(!command)
     {
-       debug = 1;
+
     }
 }
 
 void data_send_handle(void)
 {
+
 }

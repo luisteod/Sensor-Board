@@ -658,72 +658,66 @@ Version 4.0 HI-TECH Software Intermediate Code
 "64 ./mcc_generated_files/tmr0.h
 [; ;./mcc_generated_files/tmr0.h: 64: uint8_t LED_timer;
 [v _LED_timer `uc ~T0 @X0 1 e ]
-"49 main.c
-[; ;main.c: 49: uint8_t debug = 0;
-[v _debug `uc ~T0 @X0 1 e ]
-[i _debug
--> -> 0 `i `uc
-]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"51
-[; ;main.c: 51: void main(void)
+"50 main.c
+[; ;main.c: 50: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"52
-[; ;main.c: 52: {
+"51
+[; ;main.c: 51: {
 {
 [e :U _main ]
 [f ]
-"54
-[; ;main.c: 54:     SYSTEM_Initialize();
+"53
+[; ;main.c: 53:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"56
-[; ;main.c: 56:     uint8_t TAG = getSensorBoardType();
+"55
+[; ;main.c: 55:     uint8_t TAG = getSensorBoardType();
 [v _TAG `uc ~T0 @X0 1 a ]
 [e = _TAG ( _getSensorBoardType ..  ]
-"58
-[; ;main.c: 58:     if(SensorBoardType_validation(TAG)){
+"57
+[; ;main.c: 57:     if(SensorBoardType_validation(TAG)){
 [e $ ! != -> ( _SensorBoardType_validation (1 _TAG `i -> 0 `i 470  ]
 {
-"60
-[; ;main.c: 60:         memory_initialize(TAG);
+"59
+[; ;main.c: 59:         memory_initialize(TAG);
 [e ( _memory_initialize (1 _TAG ]
-"61
-[; ;main.c: 61:     }
+"60
+[; ;main.c: 60:     }
 }
 [e $U 471  ]
-"62
-[; ;main.c: 62:     else{
+"61
+[; ;main.c: 61:     else{
 [e :U 470 ]
 {
-"63
-[; ;main.c: 63:         error_signal();
+"62
+[; ;main.c: 62:         error_signal();
 [e ( _error_signal ..  ]
-"64
-[; ;main.c: 64:     }
+"63
+[; ;main.c: 63:     }
 }
 [e :U 471 ]
-"66
-[; ;main.c: 66:     I2C1_Open();
+"65
+[; ;main.c: 65:     I2C1_Open();
 [e ( _I2C1_Open ..  ]
-"73
-[; ;main.c: 73:     (INTCONbits.GIE = 1);
+"72
+[; ;main.c: 72:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"76
-[; ;main.c: 76:     (INTCONbits.PEIE = 1);
+"75
+[; ;main.c: 75:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"84
-[; ;main.c: 84:     while (1)
+"83
+[; ;main.c: 83:     while (1)
 [e :U 473 ]
-"85
-[; ;main.c: 85:     {
+"84
+[; ;main.c: 84:     {
 {
-"88
-[; ;main.c: 88:     }
+"87
+[; ;main.c: 87:     }
 }
 [e :U 472 ]
 [e $U 473  ]
 [e :U 474 ]
-"89
-[; ;main.c: 89: }
+"88
+[; ;main.c: 88: }
 [e :UE 469 ]
 }

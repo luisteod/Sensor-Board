@@ -51,12 +51,6 @@ void memory_initialize(uint8_t TAG);
  */
 void data_recv_handler(void);
 
-/* @Author : Luis
- * @Description : When receives 5 bytes of the MTW protocol, prepare data to send
- * @Params : Nothing
- * @Return : Nothing
- */
-void data_send_handle(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

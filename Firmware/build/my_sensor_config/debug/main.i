@@ -5788,7 +5788,6 @@ void WDT_Initialize(void);
 
 
 
-uint8_t debug = 0;
 
 void main(void)
 {

@@ -69,8 +69,9 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
  *  My global variables
  */
 static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
+static volatile uint8_t i2cWriteCnt = 0;
 volatile uint8_t i2cDataRead[CALIBRATION_BYTES]; // Array to store de bytes received
-
+volatile uint8_t i2cDataWrite[CALIBRATION_BYTES];
 /**
  Section: Functions declaration
  */
@@ -281,13 +282,15 @@ void I2C1_SlaveSetWriteIntHandler(i2c1InterruptHandler handler) {
 static void I2C1_SlaveWrCallBack() {
     // Add your custom callback code here
     if (I2C1_SlaveWrInterruptHandler) 
-    {
+    {   
+        i2c1WrData = i2cDataWrite[i2cWriteCnt];
         I2C1_SlaveWrInterruptHandler();
     }
 }
 
 static void I2C1_SlaveDefWrInterruptHandler() {
     I2C1_SlaveSendTxData(i2c1WrData);
+    i2cWriteCnt++;
 }
 
 // ADDRESS Event Interrupt Handlers
@@ -306,6 +309,7 @@ static void I2C1_SlaveDefAddrInterruptHandler() {
     i2c1SlaveAddr = I2C1_SlaveGetRxData();
     // Clear the counter of bytes received when receives the match addr
     i2cReadCnt = 0;
+    i2cWriteCnt = 0;
 }
 
 // Write Collision Event Interrupt Handlers

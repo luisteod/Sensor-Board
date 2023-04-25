@@ -649,8 +649,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;flash_memory_filling.c: 4: static uint16_t ramBuff[32];
 [v _ramBuff `us ~T0 @X0 -> 32 `i s ]
 "5
-[; ;flash_memory_filling.c: 5: static uint8_t status_byte;
-[v _status_byte `uc ~T0 @X0 1 s ]
+[; ;flash_memory_filling.c: 5: static uint8_t command;
+[v _command `uc ~T0 @X0 1 s ]
 "10
 [; ;flash_memory_filling.c: 10: void memory_initialize(uint8_t TAG)
 [v _memory_initialize `(v ~T0 @X0 1 ef1`uc ]
@@ -710,68 +710,68 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _data_recv_handler ]
 [f ]
-"30
-[; ;flash_memory_filling.c: 30:     if(i2cDataRead[5 - 1] == 0x21)
-[e $ ! == -> *U + &U _i2cDataRead * -> -> - -> 5 `i -> 1 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux `i -> 33 `i 472  ]
+"28
+[; ;flash_memory_filling.c: 28:     command = i2cDataRead[0] & 0x80;
+[e = _command -> & -> *U + &U _i2cDataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux `i -> 128 `i `uc ]
 "31
-[; ;flash_memory_filling.c: 31:     {
-{
+[; ;flash_memory_filling.c: 31:     if(command)
+[e $ ! != -> _command `i -> 0 `i 472  ]
 "32
-[; ;flash_memory_filling.c: 32:         for(uint16_t i = 0; i < 5; i++)
+[; ;flash_memory_filling.c: 32:     {
+{
+"33
+[; ;flash_memory_filling.c: 33:         for(uint16_t i = 1; i < 5; i++)
 {
 [v _i `us ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `us ]
+[e = _i -> -> 1 `i `us ]
 [e $ < -> _i `ui -> -> 5 `i `ui 473  ]
 [e $U 474  ]
 [e :U 473 ]
-"33
-[; ;flash_memory_filling.c: 33:         {
-{
 "34
-[; ;flash_memory_filling.c: 34:             FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
-[e ( _FLASH_WriteWord (3 , , -> + -> -> 1920 `i `ui + -> _i `ui -> -> 1 `i `ui `us &U _ramBuff -> *U + &U _i2cDataRead * -> _i `ux -> -> # *U &U _i2cDataRead `ui `ux `us ]
+[; ;flash_memory_filling.c: 34:         {
+{
 "35
-[; ;flash_memory_filling.c: 35:         }
+[; ;flash_memory_filling.c: 35:             FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
+[e ( _FLASH_WriteWord (3 , , -> + -> -> 1920 `i `ui + -> _i `ui -> -> 1 `i `ui `us &U _ramBuff -> *U + &U _i2cDataRead * -> _i `ux -> -> # *U &U _i2cDataRead `ui `ux `us ]
+"36
+[; ;flash_memory_filling.c: 36:         }
 }
 [e ++ _i -> -> 1 `i `us ]
 [e $ < -> _i `ui -> -> 5 `i `ui 473  ]
 [e :U 474 ]
 }
-"36
-[; ;flash_memory_filling.c: 36:     }
+"37
+[; ;flash_memory_filling.c: 37:     }
 }
 [e $U 476  ]
-"41
-[; ;flash_memory_filling.c: 41:     else if(i2cDataRead[5 - 1] == 0x31)
+"40
+[; ;flash_memory_filling.c: 40:     else if(~command)
 [e :U 472 ]
-[e $ ! == -> *U + &U _i2cDataRead * -> -> - -> 5 `i -> 1 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux `i -> 49 `i 477  ]
-"42
-[; ;flash_memory_filling.c: 42:     {
+[e $ ! != ~ -> _command `i -> 0 `i 477  ]
+"41
+[; ;flash_memory_filling.c: 41:     {
 {
-"43
-[; ;flash_memory_filling.c: 43:        status_byte = i2cDataRead[0];
-[e = _status_byte *U + &U _i2cDataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux ]
-"45
-[; ;flash_memory_filling.c: 45:        debug = 1;
+"42
+[; ;flash_memory_filling.c: 42:        debug = 1;
 [e = _debug -> -> 1 `i `uc ]
-"48
-[; ;flash_memory_filling.c: 48:     }
+"43
+[; ;flash_memory_filling.c: 43:     }
 }
 [e :U 477 ]
 [e :U 476 ]
-"49
-[; ;flash_memory_filling.c: 49: }
+"44
+[; ;flash_memory_filling.c: 44: }
 [e :UE 471 ]
 }
-"51
-[; ;flash_memory_filling.c: 51: void data_send_handle(void)
+"46
+[; ;flash_memory_filling.c: 46: void data_send_handle(void)
 [v _data_send_handle `(v ~T0 @X0 1 ef ]
-"52
-[; ;flash_memory_filling.c: 52: {
+"47
+[; ;flash_memory_filling.c: 47: {
 {
 [e :U _data_send_handle ]
 [f ]
-"53
-[; ;flash_memory_filling.c: 53: }
+"48
+[; ;flash_memory_filling.c: 48: }
 [e :UE 478 ]
 }

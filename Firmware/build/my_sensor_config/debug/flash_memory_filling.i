@@ -5789,7 +5789,7 @@ void data_send_handle(void);
 
 extern volatile uint8_t i2cDataRead[5];
 static uint16_t ramBuff[32];
-static uint8_t status_byte;
+static uint8_t command;
 
 
 extern uint8_t debug;
@@ -5812,26 +5812,21 @@ void memory_initialize(uint8_t TAG)
 
 void data_recv_handler(void)
 {
+    command = i2cDataRead[0] & 0x80;
 
 
-    if(i2cDataRead[5 - 1] == 0x21)
+    if(command)
     {
-        for(uint16_t i = 0; i < 5; i++)
+        for(uint16_t i = 1; i < 5; i++)
         {
             FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
         }
     }
 
 
-
-
-    else if(i2cDataRead[5 - 1] == 0x31)
+    else if(~command)
     {
-       status_byte = i2cDataRead[0];
-
        debug = 1;
-
-
     }
 }
 

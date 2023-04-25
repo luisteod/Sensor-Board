@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=Firmware
 
 # Active Configuration
-DEFAULTCONF=my_sensor_config
+DEFAULTCONF=default
 CONF=${DEFAULTCONF}
 
 # All Configurations

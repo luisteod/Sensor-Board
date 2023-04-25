@@ -468,7 +468,7 @@ I2C1_DATA_RX 4
 "4 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
 [v _ramBuff ramBuff `[32]us  1 s 64 ramBuff ]
 "5
-[v _status_byte status_byte `uc  1 s 1 status_byte ]
+[v _command command `uc  1 s 1 command ]
 "49 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\main.c
 [v _debug debug `uc  1 e 1 0 ]
 "63 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/i2c1_slave.c
@@ -735,9 +735,9 @@ I2C1_DATA_RX 4
 "26 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\flash_memory_filling.c
 [v _data_recv_handler data_recv_handler `(v  1 e 1 0 ]
 {
-"32
+"33
 [v data_recv_handler@i i `us  1 a 2 11 ]
-"49
+"44
 } 0
 "75 C:\Users\Hardware 1\Desktop\Meu_Sensor_Board\Sensor-Board\Firmware\mcc_generated_files/memory.c
 [v i1_FLASH_WriteWord FLASH_WriteWord `(v  1 e 1 0 ]

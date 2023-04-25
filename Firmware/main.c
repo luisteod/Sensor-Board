@@ -45,8 +45,7 @@
 #include "flash_memory_filling.h"
 #include "sensor.h"
 
-//Debug variables
-uint8_t debug = 0;
+
                 
 void main(void)
 {

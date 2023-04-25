@@ -539,8 +539,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/tmr0.h: 64: uint8_t LED_timer;
 [v _LED_timer `uc ~T0 @X0 1 e ]
 [v F3616 `Cus ~T0 @X0 -> 6 `i t ]
-"21 ./mcc_generated_files/../flash_memory_filling.h
-[; ;./mcc_generated_files/../flash_memory_filling.h: 21: const uint16_t default_in_flash[12][5 + 1] __attribute__((address(0x040))) =
+"24 ./mcc_generated_files/../flash_memory_filling.h
+[; ;./mcc_generated_files/../flash_memory_filling.h: 24: const uint16_t default_in_flash[12][5 + 1] __attribute__((address(0x040))) =
 [v _default_in_flash `F3616 ~T0 @X0 -> 12 `i e@64 ]
 [i _default_in_flash
 :U ..
@@ -645,107 +645,130 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4 flash_memory_filling.c
 [; ;flash_memory_filling.c: 4: static uint16_t ramBuff[32];
 [v _ramBuff `us ~T0 @X0 -> 32 `i s ]
-"6
-[; ;flash_memory_filling.c: 6: void memory_initialize(uint8_t TAG)
+"5
+[; ;flash_memory_filling.c: 5: static uint8_t command;
+[v _command `uc ~T0 @X0 1 s ]
+"8
+[; ;flash_memory_filling.c: 8: static uint8_t debug;
+[v _debug `uc ~T0 @X0 1 s ]
+"10
+[; ;flash_memory_filling.c: 10: void memory_initialize(uint8_t TAG)
 [v _memory_initialize `(v ~T0 @X0 1 ef1`uc ]
-"7
-[; ;flash_memory_filling.c: 7: {
+"11
+[; ;flash_memory_filling.c: 11: {
 {
 [e :U _memory_initialize ]
-"6
-[; ;flash_memory_filling.c: 6: void memory_initialize(uint8_t TAG)
-[v _TAG `uc ~T0 @X0 1 r1 ]
-"7
-[; ;flash_memory_filling.c: 7: {
-[f ]
-"9
-[; ;flash_memory_filling.c: 9:     if(FLASH_ReadWord(0x780) != 0x55)
-[e $ ! != -> ( _FLASH_ReadWord (1 -> -> 1920 `i `us `ui -> -> 85 `i `ui 470  ]
 "10
-[; ;flash_memory_filling.c: 10:     {
-{
+[; ;flash_memory_filling.c: 10: void memory_initialize(uint8_t TAG)
+[v _TAG `uc ~T0 @X0 1 r1 ]
 "11
-[; ;flash_memory_filling.c: 11:         FLASH_WriteWord(0x780, ramBuff, 0x55);
-[e ( _FLASH_WriteWord (3 , , -> -> 1920 `i `us &U _ramBuff -> -> 85 `i `us ]
-"12
-[; ;flash_memory_filling.c: 12:         FLASH_WriteWord(0x780 + 1, ramBuff, 0x00 );
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 1 `i `us &U _ramBuff -> -> 0 `i `us ]
+[; ;flash_memory_filling.c: 11: {
+[f ]
 "13
-[; ;flash_memory_filling.c: 13:         FLASH_WriteWord(0x780 + 2, ramBuff, (uint16_t)default_in_flash[TAG - 1][0]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 2 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 13:     if(FLASH_ReadWord(0x780) != 0x55)
+[e $ ! != -> ( _FLASH_ReadWord (1 -> -> 1920 `i `us `ui -> -> 85 `i `ui 470  ]
 "14
-[; ;flash_memory_filling.c: 14:         FLASH_WriteWord(0x780 + 3, ramBuff, (uint16_t)default_in_flash[TAG - 1][1]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 3 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 14:     {
+{
 "15
-[; ;flash_memory_filling.c: 15:         FLASH_WriteWord(0x780 + 4, ramBuff, (uint16_t)default_in_flash[TAG - 1][2]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 4 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 15:         FLASH_WriteWord(0x780, ramBuff, 0x55);
+[e ( _FLASH_WriteWord (3 , , -> -> 1920 `i `us &U _ramBuff -> -> 85 `i `us ]
 "16
-[; ;flash_memory_filling.c: 16:         FLASH_WriteWord(0x780 + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 5 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 16:         FLASH_WriteWord(0x780 + 1, ramBuff, 0x00 );
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 1 `i `us &U _ramBuff -> -> 0 `i `us ]
 "17
-[; ;flash_memory_filling.c: 17:         FLASH_WriteWord(0x780 + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 6 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 17:         FLASH_WriteWord(0x780 + 2, ramBuff, (uint16_t)default_in_flash[TAG - 1][0]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 2 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
 "18
-[; ;flash_memory_filling.c: 18:         FLASH_WriteWord(0x780 + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
-[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 7 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+[; ;flash_memory_filling.c: 18:         FLASH_WriteWord(0x780 + 3, ramBuff, (uint16_t)default_in_flash[TAG - 1][1]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 3 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
 "19
-[; ;flash_memory_filling.c: 19:     }
+[; ;flash_memory_filling.c: 19:         FLASH_WriteWord(0x780 + 4, ramBuff, (uint16_t)default_in_flash[TAG - 1][2]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 4 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+"20
+[; ;flash_memory_filling.c: 20:         FLASH_WriteWord(0x780 + 5, ramBuff, (uint16_t)default_in_flash[TAG - 1][3]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 5 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+"21
+[; ;flash_memory_filling.c: 21:         FLASH_WriteWord(0x780 + 6, ramBuff, (uint16_t)default_in_flash[TAG - 1][4]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 6 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+"22
+[; ;flash_memory_filling.c: 22:         FLASH_WriteWord(0x780 + 7, ramBuff, (uint16_t)default_in_flash[TAG - 1][5]);
+[e ( _FLASH_WriteWord (3 , , -> + -> 1920 `i -> 7 `i `us &U _ramBuff *U + &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _default_in_flash * -> -> - -> _TAG `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _default_in_flash `ui -> -> 6 `i `ui `ux `ui `ux ]
+"23
+[; ;flash_memory_filling.c: 23:     }
 }
 [e :U 470 ]
-"20
-[; ;flash_memory_filling.c: 20: }
+"24
+[; ;flash_memory_filling.c: 24: }
 [e :UE 469 ]
 }
-"22
-[; ;flash_memory_filling.c: 22: void data_recv_handler(void)
+"26
+[; ;flash_memory_filling.c: 26: void data_recv_handler(void)
 [v _data_recv_handler `(v ~T0 @X0 1 ef ]
-"23
-[; ;flash_memory_filling.c: 23: {
+"27
+[; ;flash_memory_filling.c: 27: {
 {
 [e :U _data_recv_handler ]
 [f ]
-"26
-[; ;flash_memory_filling.c: 26:     if(i2cDataRead[5 - 1] != 0x00)
-[e $ ! != -> *U + &U _i2cDataRead * -> -> - -> 5 `i -> 1 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux `i -> 0 `i 472  ]
-"27
-[; ;flash_memory_filling.c: 27:     {
-{
 "28
-[; ;flash_memory_filling.c: 28:         for(uint16_t i = 0; i < 5; i++)
+[; ;flash_memory_filling.c: 28:     command = i2cDataRead[0] & 0x80;
+[e = _command -> & -> *U + &U _i2cDataRead * -> -> -> 0 `i `ui `ux -> -> # *U &U _i2cDataRead `ui `ux `i -> 128 `i `uc ]
+"31
+[; ;flash_memory_filling.c: 31:     if(command)
+[e $ ! != -> _command `i -> 0 `i 472  ]
+"32
+[; ;flash_memory_filling.c: 32:     {
+{
+"33
+[; ;flash_memory_filling.c: 33:         for(uint16_t i = 1; i < 5; i++)
 {
 [v _i `us ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `us ]
+[e = _i -> -> 1 `i `us ]
 [e $ < -> _i `ui -> -> 5 `i `ui 473  ]
 [e $U 474  ]
 [e :U 473 ]
-"29
-[; ;flash_memory_filling.c: 29:         {
+"34
+[; ;flash_memory_filling.c: 34:         {
 {
-"30
-[; ;flash_memory_filling.c: 30:             FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
+"35
+[; ;flash_memory_filling.c: 35:             FLASH_WriteWord(0x780 + (i + 1), ramBuff, (uint16_t)i2cDataRead[i]);
 [e ( _FLASH_WriteWord (3 , , -> + -> -> 1920 `i `ui + -> _i `ui -> -> 1 `i `ui `us &U _ramBuff -> *U + &U _i2cDataRead * -> _i `ux -> -> # *U &U _i2cDataRead `ui `ux `us ]
-"31
-[; ;flash_memory_filling.c: 31:         }
+"36
+[; ;flash_memory_filling.c: 36:         }
 }
 [e ++ _i -> -> 1 `i `us ]
 [e $ < -> _i `ui -> -> 5 `i `ui 473  ]
 [e :U 474 ]
 }
-"32
-[; ;flash_memory_filling.c: 32:     }
-}
-[e $U 476  ]
-"34
-[; ;flash_memory_filling.c: 34:     else
-[e :U 472 ]
-"35
-[; ;flash_memory_filling.c: 35:     {
-{
 "37
 [; ;flash_memory_filling.c: 37:     }
 }
+[e $U 476  ]
+"40
+[; ;flash_memory_filling.c: 40:     else if(!command)
+[e :U 472 ]
+[e $ ! ! != -> _command `i -> 0 `i 477  ]
+"41
+[; ;flash_memory_filling.c: 41:     {
+{
+"43
+[; ;flash_memory_filling.c: 43:     }
+}
+[e :U 477 ]
 [e :U 476 ]
-"38
-[; ;flash_memory_filling.c: 38: }
+"44
+[; ;flash_memory_filling.c: 44: }
 [e :UE 471 ]
+}
+"46
+[; ;flash_memory_filling.c: 46: void data_send_handle(void)
+[v _data_send_handle `(v ~T0 @X0 1 ef ]
+"47
+[; ;flash_memory_filling.c: 47: {
+{
+[e :U _data_send_handle ]
+[f ]
+"49
+[; ;flash_memory_filling.c: 49: }
+[e :UE 478 ]
 }

@@ -55,12 +55,16 @@
 #include "../flash_memory_filling.h"
 #include "../sensor.h"
 
+#ifdef CALIBRATION_BYTES
+#define I2C_PROTOCOL_BYTES CALIBRATION_BYTES + 1
+#endif
 /*
  * My global variables
  */
 static volatile uint8_t i2cReadCnt; // Varible to count the varibles received
-volatile uint8_t i2cDataRead[CALIBRATION_BYTES]; // Array to store de bytes received
-
+static volatile uint8_t i2cWriteCnt;
+volatile uint8_t i2cDataRead[I2C_PROTOCOL_BYTES]; // Array to store de bytes received
+volatile uint8_t i2cDataWrite[I2C_PROTOCOL_BYTES - 1];
 
 typedef void (*i2c1InterruptHandler)(void);
 /**

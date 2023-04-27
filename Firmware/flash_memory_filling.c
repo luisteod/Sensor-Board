@@ -1,7 +1,7 @@
 #include "flash_memory_filling.h"
 
-extern volatile uint8_t i2cDataRead[CALIBRATION_BYTES];
-extern volatile uint8_t i2cDataWrite[CALIBRATION_BYTES];
+extern volatile uint8_t i2cDataRead[I2C_PROTOCOL_BYTES];
+extern volatile uint8_t i2cDataWrite[I2C_PROTOCOL_BYTES - 1];
 static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE]; // Auxiliar buffer for writing a word in flash memory
 static uint8_t command;
 static uint8_t low_cal;
@@ -36,8 +36,16 @@ void data_recv_handler(void) {
 
     //If the command is to Set calibration
     if (command) {
-        for (uint16_t i = 1; i < CALIBRATION_BYTES; i++) {
-            FLASH_WriteWord(STATUS_ARRAY_ADDR + i, ramBuff, (uint16_t) i2cDataRead[i]); // +1 is to do not write in the PREAMBLE ADDR
+        //Block for writing the sttus byte
+        if(low_cal)
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, 0x0001);
+        else if(high_cal)
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, 0x0002);
+        else 
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, 0x0003);
+            
+        for (uint16_t i = 0; i < I2C_PROTOCOL_BYTES - 1; i++) {
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + (i + 2), ramBuff, (uint16_t)i2cDataRead[i + 1]); // +1 is to do not write in the PREAMBLE ADDR
         }
     }//Preapares the Data for sending
     else {
@@ -53,21 +61,23 @@ void data_recv_handler(void) {
 }
 
 inline void send_normal_cal(void) {
-    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
-    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
-    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
-    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
+    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
+    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 5);
+    i2cDataWrite[4] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 6);
+    i2cDataWrite[5] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 7);
 }
 inline void send_high_cal(void) {
-    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
-    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
-    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
-    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+//    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
+//    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
+//    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
+//    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
 }
 inline void send_low_cal(void) {
-    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 9);
-    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 10);
-    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 11);
-    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 12);
+//    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 9);
+//    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 10);
+//    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 11);
+//    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 12);
 
 }

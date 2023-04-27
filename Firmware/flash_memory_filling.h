@@ -18,7 +18,7 @@
 #endif
  
 
-const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES + 1]  __at(DEFAULT_ARRAY_ADDR) = 
+const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(DEFAULT_ARRAY_ADDR) = 
 {
     {1,  1,  1,  1,  1,  1},
     {2,  2,  2,  2,  2,  2},

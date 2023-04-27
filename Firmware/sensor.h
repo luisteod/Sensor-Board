@@ -30,26 +30,26 @@
 
 #include <xc.h>
 
-#define SB_DC5V                1
-#define SB_OUTPUT              2
-#define SB_DC20V               3
-#define SB_INPUT               4
-#define SB_DC50V               5
-#define SB_AC250V              6
-#define SB_AC50V               7
-#define SB_AC5A                8
-#define SB_AC1A                9
-#define SB_AUDIOIN_MIC         10
-#define SB_AUDIOOUT_SPK        11
-#define SB_ISOURCE             12
+#define SB_DC5V                 1
+#define SB_OUTPUT               2
+#define SB_DC20V                3
+#define SB_INPUT                4
+#define SB_DC50V                5
+#define SB_AC250V               6
+#define SB_AC50V                7
+#define SB_AC5A                 8
+#define SB_AC1A                 9
+#define SB_AUDIOIN_MIC          10
+#define SB_AUDIOOUT_SPK         11
+#define SB_ISOURCE              12
 
-#define MIN_SENSOR_BOARD_TYPE  1
-#define MAX_SENSOR_BOARD_TYPE  12
+#define MIN_SENSOR_BOARD_TYPE   1
+#define MAX_SENSOR_BOARD_TYPE   12
 
-#define CALIBRATION_BYTES   5
+#define CALIBRATION_BYTES       6
 
-#define TRUE                1
-#define FALSE               0
+#define TRUE                    1
+#define FALSE                   0
 
 /*
  * Global variables

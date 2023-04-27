@@ -70,8 +70,8 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
  */
 static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
 static volatile uint8_t i2cWriteCnt = 0;
-volatile uint8_t i2cDataRead[CALIBRATION_BYTES]; // Array to store de bytes received
-volatile uint8_t i2cDataWrite[CALIBRATION_BYTES];
+volatile uint8_t i2cDataRead[I2C_PROTOCOL_BYTES]; // Array to store de bytes received
+volatile uint8_t i2cDataWrite[I2C_PROTOCOL_BYTES - 1];
 /**
  Section: Functions declaration
  */
@@ -252,7 +252,7 @@ static void I2C1_SlaveRdCallBack() {
         /* if the received data is equal to the bytes of mtw protocol of if
          * the command byte have the cal bit clear
          */
-        if(i2cReadCnt == CALIBRATION_BYTES  || ( !(i2c1RdData & 0x80) && i2cReadCnt == 1) ) // The -1 is considerating the indexing of a vector 
+        if(i2cReadCnt == I2C_PROTOCOL_BYTES  || ( !(i2c1RdData & 0x80) && i2cReadCnt == 1) ) // The -1 is considerating the indexing of a vector 
         {
             data_recv_handler();
         }
@@ -264,7 +264,7 @@ static void I2C1_SlaveDefRdInterruptHandler() {
     
     i2c1RdData = I2C1_SlaveGetRxData();
     
-    if(i2cReadCnt < CALIBRATION_BYTES) 
+    if(i2cReadCnt < I2C_PROTOCOL_BYTES) 
     {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
     }

@@ -249,7 +249,7 @@ static void I2C1_SlaveRdCallBack() {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
                
-        if(i2cReadCnt == CALIBRATION_BYTES - 1) // The -1 is considerating the indexing of a vector 
+        if(i2cReadCnt == CALIBRATION_BYTES - 1 || ( !(i2c1RdData && 0x80) && i2cReadCnt == 1) ) // The -1 is considerating the indexing of a vector 
         {
             data_recv_handler();
         }

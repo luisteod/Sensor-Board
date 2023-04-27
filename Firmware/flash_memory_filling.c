@@ -8,7 +8,7 @@ static uint8_t low_cal;
 static uint8_t high_cal;
 
 // Debug variables
-static uint8_t debug;
+static uint8_t debug = 0;
 
 void memory_initialize(uint8_t TAG) {
 
@@ -26,7 +26,7 @@ void memory_initialize(uint8_t TAG) {
 
 void data_recv_handler(void) {
 
-    command = (0x80 & i2cDataRead[0]); // Extraction of the command R/W
+    command = (0x80 & i2cDataRead[0]); // Extraction of the command write in flash or read from flash
     low_cal = (0x40 & i2cDataRead[0]);
     high_cal = (0x20 & i2cDataRead[0]);
 
@@ -37,25 +37,23 @@ void data_recv_handler(void) {
         }
     }        //Preapares the Data for sending
     else {
-        if (!low_cal && !high_cal) { // If high and Low cal is 0 then
-            //            i2cDataWrite[0] =
-            //            i2cDataWrite[1] =
-            //            i2cDataWrite[2] =
-            //            i2cDataWrite[3] =        
-        } else if (low_cal && !high_cal) {
+        if (!low_cal && !high_cal) { // If high and Low cal is 0 then is to retrieve normal cal
+                        i2cDataWrite[0] = 0x21;
+                        i2cDataWrite[1] = 0x23;
+                        i2cDataWrite[2] = 0x43;
+                        i2cDataWrite[3] = 0x55;
+                        debug = 1;
+        } else if (low_cal && !high_cal) { // retrieve low cal
             //            i2cDataWrite[0] =
             //            i2cDataWrite[1] =
             //            i2cDataWrite[2] =
             //            i2cDataWrite[3] = 
-        } else if (high_cal && !low_cal) {
+        } else if (high_cal && !low_cal) { //retrieve high cal
             //            i2cDataWrite[0] =
             //            i2cDataWrite[1] =
             //            i2cDataWrite[2] =
             //            i2cDataWrite[3] = 
         }
-
-
-
 
     }
 }

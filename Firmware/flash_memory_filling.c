@@ -7,8 +7,12 @@ static uint8_t command;
 static uint8_t low_cal;
 static uint8_t high_cal;
 
-// Debug variables
-static uint8_t debug = 0;
+/*
+ * Auxiliar functions
+ */
+inline void send_normal_cal(void);
+inline void send_high_cal(void);
+inline void send_low_cal(void);
 
 void memory_initialize(uint8_t TAG) {
 
@@ -32,30 +36,38 @@ void data_recv_handler(void) {
 
     //If the command is to Set calibration
     if (command) {
-        for (uint16_t i = 0; i < CALIBRATION_BYTES; i++) {
-            FLASH_WriteWord(STATUS_ARRAY_ADDR + (i + 1), ramBuff, (uint16_t) i2cDataRead[i + 1]); // +1 is to do not write in the PREAMBLE ADDR
+        for (uint16_t i = 1; i < CALIBRATION_BYTES; i++) {
+            FLASH_WriteWord(STATUS_ARRAY_ADDR + i, ramBuff, (uint16_t) i2cDataRead[i]); // +1 is to do not write in the PREAMBLE ADDR
         }
     }//Preapares the Data for sending
     else {
         if (!low_cal && !high_cal) { // If high and Low cal is 0 then is to retrieve normal cal
-            i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
-            i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
-            i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
-            i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+            send_normal_cal();
         } else if (low_cal && !high_cal) { // retrieve low cal
-            i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 5);
-            i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 6);
-            i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 7);
-            i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 8);
+            send_high_cal();
         } else if (high_cal && !low_cal) { //retrieve high cal
-            i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 9);
-            i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 10);
-            i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 11);
-            i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 12);
+            send_low_cal();
         }
 
     }
 }
 
+inline void send_normal_cal(void) {
+    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
+    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
+    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
+    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+}
+inline void send_high_cal(void) {
+    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 1);
+    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 2);
+    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 3);
+    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 4);
+}
+inline void send_low_cal(void) {
+    i2cDataWrite[0] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 9);
+    i2cDataWrite[1] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 10);
+    i2cDataWrite[2] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 11);
+    i2cDataWrite[3] = (uint8_t) FLASH_ReadWord(STATUS_ARRAY_ADDR + 12);
 
-
+}

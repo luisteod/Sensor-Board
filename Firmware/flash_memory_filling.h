@@ -7,9 +7,6 @@
 #define PREAMBLE            0x55
 #define STATUS_DEFAULT      0x00
 
-#define FLASH_CMD           0x21
-#define SEND_CMD            0x31
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "mcc_generated_files/mcc.h"
@@ -45,7 +42,8 @@ const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES + 1]  _
 void memory_initialize(uint8_t TAG);
 
 /* @Author : Luis
- * @Description : When receives 5 bytes of the MTW protocol, save things in flash
+ * @Description : When receives 5 bytes of the MTW protocol, save things in flash 
+                  OR when receives a command byte to read values send bytes.
  * @Params : Nothing
  * @Return : Nothing
  */

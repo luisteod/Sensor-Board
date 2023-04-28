@@ -56,15 +56,16 @@
 #include "../sensor.h"
 
 #ifdef CALIBRATION_BYTES
-#define I2C_PROTOCOL_BYTES CALIBRATION_BYTES + 1
+#define I2C_READ_PROTOCOL_BYTES CALIBRATION_BYTES + 1
+#define I2C_WRITE_PROTOCOL_BYTES CALIBRATION_BYTES
 #endif
 /*
  * My global variables
  */
 static volatile uint8_t i2cReadCnt; // Varible to count the varibles received
 static volatile uint8_t i2cWriteCnt;
-volatile uint8_t i2cDataRead[I2C_PROTOCOL_BYTES]; // Array to store de bytes received
-volatile uint8_t i2cDataWrite[I2C_PROTOCOL_BYTES - 1];
+volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES]; // Array to store de bytes received
+volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES];
 
 typedef void (*i2c1InterruptHandler)(void);
 /**

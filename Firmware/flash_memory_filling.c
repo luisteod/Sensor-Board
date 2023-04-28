@@ -1,7 +1,7 @@
 #include "flash_memory_filling.h"
 
-extern volatile uint8_t i2cDataRead[I2C_PROTOCOL_BYTES];
-extern volatile uint8_t i2cDataWrite[I2C_PROTOCOL_BYTES - 1];
+extern volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES];
+extern volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES];
 static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE]; // Auxiliar buffer for writing a word in flash memory
 static uint8_t command;
 static uint8_t low_cal;
@@ -36,7 +36,7 @@ void data_recv_handler(void) {
 
     //If the command is to Set calibration
     if (command) {
-        //Block for writing the sttus byte
+        //Block for writing the status byte
         if(low_cal)
             FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, 0x0001);
         else if(high_cal)
@@ -44,7 +44,7 @@ void data_recv_handler(void) {
         else 
             FLASH_WriteWord(STATUS_ARRAY_ADDR + 1, ramBuff, 0x0003);
             
-        for (uint16_t i = 0; i < I2C_PROTOCOL_BYTES - 1; i++) {
+        for (uint16_t i = 0; i < I2C_READ_PROTOCOL_BYTES - 1; i++) {
             FLASH_WriteWord(STATUS_ARRAY_ADDR + (i + 2), ramBuff, (uint16_t)i2cDataRead[i + 1]); // +1 is to do not write in the PREAMBLE ADDR
         }
     }//Preapares the Data for sending

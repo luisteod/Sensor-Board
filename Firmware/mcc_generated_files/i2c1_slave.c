@@ -194,6 +194,7 @@ static void I2C1_Isr()
         if(I2C1_SlaveIsRead())
         {
             i2c1SlaveState = I2C1_DATA_TX;
+            //send_data();
         }
         else
         {
@@ -252,7 +253,7 @@ static void I2C1_SlaveRdCallBack() {
         /* if the received data is equal to the bytes of mtw protocol of if
          * the command byte have the cal bit clear
          */
-        if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES  || ( !(i2c1RdData & 0x80) && i2cReadCnt == 1) ) // The -1 is considerating the indexing of a vector 
+        if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
         {
             data_recv_handler();
         }

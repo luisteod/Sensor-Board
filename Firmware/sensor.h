@@ -19,14 +19,14 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.36 and above
         MPLAB 	          :  MPLAB X 6.00	
-*/
+ */
 
 #ifndef SENSOR_H
 #define SENSOR_H
 
 /**
   Section: Included Files
-*/
+ */
 
 #include <xc.h>
 
@@ -51,6 +51,9 @@
 #define TRUE                    1
 #define FALSE                   0
 
+
+
+
 /*
  * Global variables
  */
@@ -61,11 +64,11 @@ uint8_t error_flag;
 uint8_t getSensorBoardType(void);
 
 
-uint8_t SensorBoardType_validation (uint8_t SensorBoardType);
+uint8_t SensorBoardType_validation(uint8_t SensorBoardType);
 
 void error_signal(void);
 
 #endif // PIN_MANAGER_H
 /**
  End of File
-*/
+ */

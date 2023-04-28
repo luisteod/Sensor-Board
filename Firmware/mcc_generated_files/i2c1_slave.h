@@ -50,15 +50,16 @@
 #define I2C1_SLAVE_ADDRESS      0x77
 #define I2C1_SLAVE_MASK         0
 
+
+#define I2C_READ_PROTOCOL_BYTES  9
+#define I2C_WRITE_PROTOCOL_BYTES 9
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "../flash_memory_filling.h"
 #include "../sensor.h"
 
-#ifdef CALIBRATION_BYTES
-#define I2C_READ_PROTOCOL_BYTES CALIBRATION_BYTES + 1
-#define I2C_WRITE_PROTOCOL_BYTES CALIBRATION_BYTES
-#endif
+
 /*
  * My global variables
  */

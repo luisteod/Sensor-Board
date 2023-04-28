@@ -2,6 +2,33 @@
 #define FLASH_MEMORY_FILLING_H
 
 #define STATUS_ARRAY_ADDR   0x780 
+#define PREAMBLE_ADDR       0x780
+#define STATUS_ADDR         0x781
+#define CAL_MSB_ADDR        0x782
+#define CAL_LSB_ADDR        0x783
+#define LOW_CAL_MSB_ADDR    0x784
+#define LOW_CAL_LSB_ADDR    0x785
+#define HIGH_CAL_MSB_ADDR   0x786
+#define HIGH_CAL_LSB_ADDR   0x787
+#define LED_DATA_ADDR       0x788
+#define BOARD_TYPE_ADDR     0x789
+
+#define CMD_CAL                 0x80
+#define CMD_LOW_CAL             0x40
+#define CMD_HIGH_CAL            0x20
+#define CMD_LED                 0x10
+
+#define CMD_I2C_POS             0
+#define STATUS_I2C_POS          0
+#define BOARD_TYPE_I2C_POS      1
+#define CAL_MSB_I2C_POS         2
+#define CAL_LSB_I2C_POS         3
+#define LOW_CAL_MSB_I2C_POS     4
+#define LOW_CAL_LSB_I2C_POS     5
+#define HIGH_CAL_MSB_I2C_POS    6
+#define HIGH_CAL_LSB_I2C_POS    7
+#define LED_DATA_I2C_POS        8
+
 #define STATUS_ARRAY_SIZE   8
 #define DEFAULT_ARRAY_ADDR  0x040
 #define PREAMBLE            0x55
@@ -49,6 +76,7 @@ void memory_initialize(uint8_t TAG);
  */
 void data_recv_handler(void);
 
+//void send_data(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

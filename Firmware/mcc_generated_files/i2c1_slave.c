@@ -72,6 +72,8 @@ static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles receive
 static volatile uint8_t i2cWriteCnt = 0;
 volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES]; // Array to store de bytes received
 volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES]; 
+bool i2c_recv_event = false;
+
 /**
  Section: Functions declaration
  */
@@ -194,7 +196,6 @@ static void I2C1_Isr()
         if(I2C1_SlaveIsRead())
         {
             i2c1SlaveState = I2C1_DATA_TX;
-            //send_data();
         }
         else
         {
@@ -249,6 +250,11 @@ static void I2C1_SlaveRdCallBack() {
     {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
+        
+         if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
+        {
+             i2c_recv_event = true;
+        }
        
     }
 }
@@ -280,6 +286,9 @@ static void I2C1_SlaveWrCallBack() {
     // Add your custom callback code here
     if (I2C1_SlaveWrInterruptHandler) 
     {   
+        if(i2cWriteCnt == 0){
+            send_data();
+        }
         i2c1WrData = i2cDataWrite[i2cWriteCnt];
         I2C1_SlaveWrInterruptHandler();
     }

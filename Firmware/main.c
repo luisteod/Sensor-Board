@@ -108,9 +108,10 @@ void main(void) {
         /* if the received data is equal to the bytes of mtw protocol of if
          * the command byte have the cal bit clear
          */
-         if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
+        if(i2c_recv_event)  
         {
-            data_recv_handler();
+             i2c_recv_event = false;
+             data_recv_handler();
         }
     }
     

@@ -60,6 +60,7 @@
 //Global variable definitions
 uint8_t LED_timer=0;
 extern uint8_t error_flag;
+bool timer_event = false;
 
 /* 
  Ponteiro para uma funcao que sera criada posteriormente com a mesma assinatura,
@@ -153,31 +154,7 @@ void TMR0_DefaultInterruptHandler(void){
     // add your TMR0 interrupt custom code
     // or set custom function using TMR0_SetInterruptHandler()
     
-    LED_timer++;
-    
-    //If error, LED's toggle fast then normal
-    if(error_flag == 1)
-    {
-        if(LED_timer == 5)
-        {
-            LED_SetHigh();
-        }
-        if(LED_timer == 10)
-        {
-            LED_SetLow();
-            LED_timer = 0;
-        }
-    }else{// LED indicates normal conditions
-        if(LED_timer == 50)
-        {
-            LED_SetHigh();
-        }
-        if(LED_timer == 100)
-        {
-            LED_SetLow();
-            LED_timer = 0;
-        }
-    }
+    timer_event = true;
 }
     
 

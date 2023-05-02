@@ -249,14 +249,7 @@ static void I2C1_SlaveRdCallBack() {
     {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
-        
-        /* if the received data is equal to the bytes of mtw protocol of if
-         * the command byte have the cal bit clear
-         */
-        if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
-        {
-            data_recv_handler();
-        }
+       
     }
 }
 

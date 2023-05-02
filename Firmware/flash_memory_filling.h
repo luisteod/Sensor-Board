@@ -76,7 +76,7 @@ void memory_initialize(uint8_t TAG);
  */
 void data_recv_handler(void);
 
-//void send_data(void);
+void send_data(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

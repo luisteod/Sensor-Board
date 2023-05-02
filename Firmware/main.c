@@ -16,7 +16,7 @@
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.8
         Device            :  PIC16F15223
         Driver Version    :  2.00
-*/
+ */
 
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
@@ -39,31 +39,29 @@
     CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
-*/
+ */
 
 #include "mcc_generated_files/mcc.h"
 #include "flash_memory_filling.h"
 #include "sensor.h"
+#include "mcc_generated_files/tmr0.h"
 
 
-                
-void main(void)
-{
+void main(void) {
     // initialize the device
     SYSTEM_Initialize();
-    
+
     uint8_t TAG = getSensorBoardType();
-    
-    if(SensorBoardType_validation(TAG)){
-        
+
+    if (SensorBoardType_validation(TAG)) {
+
         memory_initialize(TAG);
-    }
-    else{
+    } else {
         error_signal();
     }
     //Permite que o pic receba informação via I2C (Ativa )
     I2C1_Open();
-   
+
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
 
@@ -79,12 +77,45 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
-    while (1)
-    {
-        // Add your application code
+    while (1) {
         
+        // Add your application code
+        if (timer_event) {
+
+            timer_event = false;
+            LED_timer++;
+
+            //If error, LED's toggle fast then normal
+            if (error_flag == 1) {
+                if (LED_timer == 5) {
+                    LED_SetHigh();
+                }
+                if (LED_timer == 10) {
+                    LED_SetLow();
+                    LED_timer = 0;
+                }
+            } else {// LED indicates normal conditions
+                if (LED_timer == 50) {
+                    LED_SetHigh();
+                }
+                if (LED_timer == 100) {
+                    LED_SetLow();
+                    LED_timer = 0;
+                }
+            }
+        }
+        
+        /* if the received data is equal to the bytes of mtw protocol of if
+         * the command byte have the cal bit clear
+         */
+         if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
+        {
+            data_recv_handler();
+        }
     }
+    
+    
 }
 /**
  End of File
-*/
+ */

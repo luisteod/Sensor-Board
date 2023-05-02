@@ -54,17 +54,17 @@ void data_recv_handler(void) {
 
 }
 
-//void send_data(void) {
-//    
-//    i2cDataWrite[STATUS_I2C_POS] = (uint8_t) FLASH_ReadWord(STATUS_ADDR);
-//    i2cDataWrite[BOARD_TYPE_I2C_POS] = (uint8_t) FLASH_ReadWord(BOARD_TYPE_ADDR);
-//    i2cDataWrite[CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(CAL_MSB_ADDR);
-//    i2cDataWrite[CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(CAL_LSB_ADDR);
-//    i2cDataWrite[LOW_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_MSB_ADDR);
-//    i2cDataWrite[LOW_CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_LSB_ADDR);
-//    i2cDataWrite[HIGH_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(HIGH_CAL_MSB_ADDR);
-//    i2cDataWrite[HIGH_CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(HIGH_CAL_LSB_ADDR);
-//    i2cDataWrite[LED_DATA_I2C_POS] = (uint8_t) FLASH_ReadWord(LED_DATA_ADDR);
-//
-//}
+void send_data(void) {
+    
+    i2cDataWrite[STATUS_I2C_POS] = (uint8_t) FLASH_ReadWord(STATUS_ADDR);
+    i2cDataWrite[BOARD_TYPE_I2C_POS] = (uint8_t) FLASH_ReadWord(BOARD_TYPE_ADDR);
+    i2cDataWrite[CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(CAL_MSB_ADDR);
+    i2cDataWrite[CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(CAL_LSB_ADDR);
+    i2cDataWrite[LOW_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_MSB_ADDR);
+    i2cDataWrite[LOW_CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_LSB_ADDR);
+    i2cDataWrite[HIGH_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(HIGH_CAL_MSB_ADDR);
+    i2cDataWrite[HIGH_CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(HIGH_CAL_LSB_ADDR);
+    i2cDataWrite[LED_DATA_I2C_POS] = (uint8_t) FLASH_ReadWord(LED_DATA_ADDR);
+
+}
 

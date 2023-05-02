@@ -113,6 +113,15 @@ void main(void) {
              i2c_recv_event = false;
              data_recv_handler();
         }
+        
+        /* if the event is for slave send bytes through the bus
+         * so data is prepared
+         */
+        if(i2c_send_event)
+        {
+            i2c_send_event = false;
+            data_send_handler();
+        }
     }
     
     

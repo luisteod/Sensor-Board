@@ -19,7 +19,7 @@
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.36 and above or later
         MPLAB             :  MPLAB X 6.00
-*/
+ */
 
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
@@ -42,14 +42,12 @@
     CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
-*/
+ */
 
 #include "i2c1_slave.h"
 #include <xc.h>
 
-
-typedef enum
-{
+typedef enum {
     I2C1_IDLE,
     I2C1_ADDR_TX,
     I2C1_ADDR_RX,
@@ -71,8 +69,9 @@ static volatile i2c1_slave_state_t i2c1SlaveState = I2C1_IDLE;
 static volatile uint8_t i2cReadCnt = 0; // Varible to count the varibles received
 static volatile uint8_t i2cWriteCnt = 0;
 volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES]; // Array to store de bytes received
-volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES]; 
+volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES];
 bool i2c_recv_event = false;
+bool i2c_send_event = false;
 
 /**
  Section: Functions declaration
@@ -112,16 +111,14 @@ static inline void I2C1_SlaveSendAck(void);
 static inline void I2C1_SlaveSendNack(void);
 static inline bool I2C1_SlaveIsOverFlow(void);
 
-void I2C1_Initialize()
-{
-    SSP1STAT  = 0x40;
+void I2C1_Initialize() {
+    SSP1STAT = 0x40;
     SSP1CON1 |= 0x06;
-    SSP1CON2  = 0x00;
+    SSP1CON2 = 0x00;
     SSP1CON1bits.SSPEN = 0;
 }
 
-void I2C1_Open() 
-{
+void I2C1_Open() {
     I2C1_SlaveOpen();
     I2C1_SlaveSetSlaveAddr(I2C1_SLAVE_ADDRESS);
     I2C1_SlaveSetSlaveMask(I2C1_SLAVE_MASK);
@@ -131,84 +128,74 @@ void I2C1_Open()
     I2C1_SlaveSetReadIntHandler(I2C1_SlaveDefRdInterruptHandler);
     I2C1_SlaveSetAddrIntHandler(I2C1_SlaveDefAddrInterruptHandler);
     I2C1_SlaveSetWrColIntHandler(I2C1_SlaveDefWrColInterruptHandler);
-    I2C1_SlaveEnableIrq();    
+    I2C1_SlaveEnableIrq();
 }
 
-void I2C1_Close() 
-{
+void I2C1_Close() {
     I2C1_SlaveClose();
 }
 
-uint8_t I2C1_Read()
-{
-   return I2C1_SlaveGetRxData();
+uint8_t I2C1_Read() {
+    return I2C1_SlaveGetRxData();
 }
 
-void I2C1_Write(uint8_t data)
-{
+void I2C1_Write(uint8_t data) {
     I2C1_SlaveSendTxData(data);
 }
 
-bool I2C1_IsRead()
-{
+bool I2C1_IsRead() {
     return I2C1_SlaveIsRead();
 }
 
-void I2C1_Enable()
-{
+void I2C1_Enable() {
     I2C1_Initialize();
 }
 
-void I2C1_SendAck()
-{
+void I2C1_SendAck() {
     I2C1_SlaveSendAck();
 }
 
-void I2C1_SendNack()
-{
+void I2C1_SendNack() {
     I2C1_SlaveSendNack();
 }
 
-static void I2C1_Isr() 
-{ 
+static void I2C1_Isr() {
+
     I2C1_SlaveClearIrq();
-    
+
+    //Add boolean to prepare the data for sending
+    if (i2cWriteCnt == 0) {
+        i2c_send_event = true;
+    }
+
     // If addr of the slave matches, initiate the routine.
-    if(I2C1_SlaveIsAddr())
-    {
+    if (I2C1_SlaveIsAddr()) {
+
         /* 
          *Catch the W/R bit from master and and set the slave states as TX if master wants
           the slave to write on bus or RX if master wants to slave read the bus.
          * 
          * IsRead -> Master send the Read bit.
-        */
-        if(I2C1_SlaveIsRead())
-        {
+         */
+        if (I2C1_SlaveIsRead()) {
+
             i2c1SlaveState = I2C1_ADDR_TX;
-        }
-        else
-        {
+
+        } else {
             i2c1SlaveState = I2C1_ADDR_RX;
         }
-    }
-    else
-    {
-        if(I2C1_SlaveIsRead())
-        {
+    } else {
+        if (I2C1_SlaveIsRead()) {
             i2c1SlaveState = I2C1_DATA_TX;
-        }
-        else
-        {
+        } else {
             i2c1SlaveState = I2C1_DATA_RX;
         }
     }
 
-    switch(i2c1SlaveState)
-    {
+    switch (i2c1SlaveState) {
         case I2C1_ADDR_TX:
             I2C1_SlaveAddrCallBack();
-            if(I2C1_SlaveIsTxBufEmpty())
-            {
+            if (I2C1_SlaveIsTxBufEmpty()) {
                 I2C1_SlaveWrCallBack();
             }
             break;
@@ -216,14 +203,12 @@ static void I2C1_Isr()
             I2C1_SlaveAddrCallBack();
             break;
         case I2C1_DATA_TX:
-            if(I2C1_SlaveIsTxBufEmpty())
-            {
+            if (I2C1_SlaveIsTxBufEmpty()) {
                 I2C1_SlaveWrCallBack();
             }
             break;
         case I2C1_DATA_RX:
-            if(I2C1_SlaveIsRxBufFull())
-            {
+            if (I2C1_SlaveIsRxBufFull()) {
                 I2C1_SlaveRdCallBack();
             }
             break;
@@ -234,61 +219,58 @@ static void I2C1_Isr()
 }
 
 // Common Event Interrupt Handlers
-void I2C1_SlaveSetIsrHandler(i2c1InterruptHandler handler)
-{
+
+void I2C1_SlaveSetIsrHandler(i2c1InterruptHandler handler) {
     MSSP1_InterruptHandler = handler;
 }
 
 // Read Event Interrupt Handlers
+
 void I2C1_SlaveSetReadIntHandler(i2c1InterruptHandler handler) {
     I2C1_SlaveRdInterruptHandler = handler;
 }
 
 static void I2C1_SlaveRdCallBack() {
     // Add your custom callback code here
-    if (I2C1_SlaveRdInterruptHandler) 
-    {
+    if (I2C1_SlaveRdInterruptHandler) {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
-        
-         if(i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
+
+        if (i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
         {
-             i2c_recv_event = true;
+            i2c_recv_event = true;
         }
-       
+
     }
 }
 
 // Funcao que lida com a interrupcao gearada quando o master almeja falar
+
 static void I2C1_SlaveDefRdInterruptHandler() {
-    
+
     i2c1RdData = I2C1_SlaveGetRxData();
-    
-    if(i2cReadCnt < I2C_READ_PROTOCOL_BYTES) 
-    {
+
+    if (i2cReadCnt < I2C_READ_PROTOCOL_BYTES) {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
-    }
-    else // Ignore excess of data
+    } else // Ignore excess of data
     {
         I2C1_SlaveGetRxData();
     }
-    
+
     i2cReadCnt++;
-    
+
 }
 
 // Write Event Interrupt Handlers
+
 void I2C1_SlaveSetWriteIntHandler(i2c1InterruptHandler handler) {
     I2C1_SlaveWrInterruptHandler = handler;
 }
 
 static void I2C1_SlaveWrCallBack() {
     // Add your custom callback code here
-    if (I2C1_SlaveWrInterruptHandler) 
-    {   
-        if(i2cWriteCnt == 0){
-            send_data();
-        }
+
+    if (I2C1_SlaveWrInterruptHandler) {
         i2c1WrData = i2cDataWrite[i2cWriteCnt];
         I2C1_SlaveWrInterruptHandler();
     }
@@ -300,7 +282,8 @@ static void I2C1_SlaveDefWrInterruptHandler() {
 }
 
 // ADDRESS Event Interrupt Handlers
-void I2C1_SlaveSetAddrIntHandler(i2c1InterruptHandler handler){
+
+void I2C1_SlaveSetAddrIntHandler(i2c1InterruptHandler handler) {
     I2C1_SlaveAddrInterruptHandler = handler;
 }
 
@@ -319,15 +302,15 @@ static void I2C1_SlaveDefAddrInterruptHandler() {
 }
 
 // Write Collision Event Interrupt Handlers
-void I2C1_SlaveSetWrColIntHandler(i2c1InterruptHandler handler){
+
+void I2C1_SlaveSetWrColIntHandler(i2c1InterruptHandler handler) {
     I2C1_SlaveWrColInterruptHandler = handler;
 }
 
-static void  I2C1_SlaveWrColCallBack() {
+static void I2C1_SlaveWrColCallBack() {
     // Add your custom callback code here
-    if ( I2C1_SlaveWrColInterruptHandler) 
-    {
-         I2C1_SlaveWrColInterruptHandler();
+    if (I2C1_SlaveWrColInterruptHandler) {
+        I2C1_SlaveWrColInterruptHandler();
     }
 }
 
@@ -335,130 +318,109 @@ static void I2C1_SlaveDefWrColInterruptHandler() {
 }
 
 // Bus Collision Event Interrupt Handlers
-void I2C1_SlaveSetBusColIntHandler(i2c1InterruptHandler handler){
+
+void I2C1_SlaveSetBusColIntHandler(i2c1InterruptHandler handler) {
     I2C1_SlaveBusColInterruptHandler = handler;
 }
 
-static void  I2C1_SlaveBusColCallBack() {
+static void I2C1_SlaveBusColCallBack() {
     // Add your custom callback code here
-    if ( I2C1_SlaveBusColInterruptHandler) 
-    {
-         I2C1_SlaveBusColInterruptHandler();
+    if (I2C1_SlaveBusColInterruptHandler) {
+        I2C1_SlaveBusColInterruptHandler();
     }
 }
 
 static void I2C1_SlaveDefBusColInterruptHandler() {
 }
 
-static inline bool I2C1_SlaveOpen()
-{
-    if(!SSP1CON1bits.SSPEN)
-    {      
-        SSP1STAT  = 0x40;
+static inline bool I2C1_SlaveOpen() {
+    if (!SSP1CON1bits.SSPEN) {
+        SSP1STAT = 0x40;
         SSP1CON1 |= 0x06;
-        SSP1CON2  = 0x00;
+        SSP1CON2 = 0x00;
         SSP1CON1bits.SSPEN = 1;
         return true;
     }
     return false;
 }
 
-static inline void I2C1_SlaveClose()
-{
-    SSP1STAT  = 0x40;
+static inline void I2C1_SlaveClose() {
+    SSP1STAT = 0x40;
     SSP1CON1 |= 0x06;
-    SSP1CON2  = 0x00;
+    SSP1CON2 = 0x00;
     SSP1CON1bits.SSPEN = 0;
 }
 
-static inline void I2C1_SlaveSetSlaveAddr(uint8_t slaveAddr)
-{
+static inline void I2C1_SlaveSetSlaveAddr(uint8_t slaveAddr) {
     SSP1ADD = (uint8_t) (slaveAddr << 1);
 }
 
-static inline void I2C1_SlaveSetSlaveMask(uint8_t maskAddr)
-{
+static inline void I2C1_SlaveSetSlaveMask(uint8_t maskAddr) {
     SSP1MSK = (uint8_t) (maskAddr << 1);
 }
 
-static inline void I2C1_SlaveEnableIrq()
-{
+static inline void I2C1_SlaveEnableIrq() {
     PIE1bits.SSP1IE = 1;
 }
 
-static inline bool I2C1_SlaveIsAddr()
-{
+static inline bool I2C1_SlaveIsAddr() {
     return !(SSP1STATbits.D_nA);
 }
 
-static inline bool I2C1_SlaveIsRead()
-{
+static inline bool I2C1_SlaveIsRead() {
     return (SSP1STATbits.R_nW);
 }
 
-static inline void I2C1_SlaveClearIrq()
-{
+static inline void I2C1_SlaveClearIrq() {
     PIR1bits.SSP1IF = 0;
 }
 
-static inline void I2C1_SlaveReleaseClock()
-{
+static inline void I2C1_SlaveReleaseClock() {
     SSP1CON1bits.CKP = 1;
 }
 
-static inline bool I2C1_SlaveIsWriteCollision()
-{
+static inline bool I2C1_SlaveIsWriteCollision() {
     return SSP1CON1bits.WCOL;
 }
 
-static inline bool I2C1_SlaveIsData()
-{
+static inline bool I2C1_SlaveIsData() {
     return SSP1STATbits.D_nA;
 }
 
-static inline void I2C1_SlaveRestart(void)
-{
+static inline void I2C1_SlaveRestart(void) {
     SSP1CON2bits.RSEN = 1;
 }
 
-static inline bool I2C1_SlaveIsTxBufEmpty()
-{
+static inline bool I2C1_SlaveIsTxBufEmpty() {
     return !SSP1STATbits.BF;
 }
 
-static inline bool I2C1_SlaveIsRxBufFull()
-{
+static inline bool I2C1_SlaveIsRxBufFull() {
     return SSP1STATbits.BF;
 }
 
-static inline void I2C1_SlaveSendTxData(uint8_t data)
-{
+static inline void I2C1_SlaveSendTxData(uint8_t data) {
     SSP1BUF = data;
 }
 
-static inline uint8_t I2C1_SlaveGetRxData()
-{
+static inline uint8_t I2C1_SlaveGetRxData() {
     return SSP1BUF;
 }
 
-static inline uint8_t I2C1_SlaveGetAddr()
-{
+static inline uint8_t I2C1_SlaveGetAddr() {
     return SSP1ADD;
 }
 
-static inline void I2C1_SlaveSendAck()
-{
+static inline void I2C1_SlaveSendAck() {
     SSP1CON2bits.ACKDT = 0;
     SSP1CON2bits.ACKEN = 1;
 }
 
-static inline void I2C1_SlaveSendNack()
-{
+static inline void I2C1_SlaveSendNack() {
     SSP1CON2bits.ACKDT = 1;
     SSP1CON2bits.ACKEN = 1;
 }
 
-static inline bool I2C1_SlaveIsOverFlow()
-{
+static inline bool I2C1_SlaveIsOverFlow() {
     return SSP1CON1bits.SSPOV;
 }

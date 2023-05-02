@@ -69,14 +69,18 @@ const uint16_t default_in_flash[MAX_SENSOR_BOARD_TYPE][CALIBRATION_BYTES]  __at(
 void memory_initialize(uint8_t TAG);
 
 /* @Author : Luis
- * @Description : When receives 5 bytes of the MTW protocol, save things in flash 
-                  OR when receives a command byte to read values send bytes.
+ * @Description : When receives 5 bytes of the MTW protocol, save things in flash OR when receives a command byte to read values send bytes.
  * @Params : Nothing
  * @Return : Nothing
  */
 void data_recv_handler(void);
 
-void send_data(void);
+/*@Author : Luis
+ *@Description : Prepares data in an array for sending through the bus
+ *@Params : Nothing
+ *@Return : Nothing
+ */
+void data_send_handler(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

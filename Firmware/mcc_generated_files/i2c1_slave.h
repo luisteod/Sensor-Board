@@ -68,6 +68,7 @@ static volatile uint8_t i2cWriteCnt;
 volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES]; // Array to store de bytes received
 volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES];
 bool i2c_recv_event;
+bool i2c_send_event;
 
 typedef void (*i2c1InterruptHandler)(void);
 /**

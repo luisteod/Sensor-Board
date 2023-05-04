@@ -252,9 +252,11 @@ static void I2C1_SlaveDefRdInterruptHandler() {
 
     if (i2cReadCnt < I2C_READ_PROTOCOL_BYTES) {
         i2cDataRead[i2cReadCnt] = i2c1RdData;
-    } else // Ignore excess of data
+    }
+    else // Ignore excess of data
     {
         I2C1_SlaveGetRxData();
+        i2cReadCnt = 0;
     }
 
     i2cReadCnt++;

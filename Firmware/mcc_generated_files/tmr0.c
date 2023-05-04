@@ -58,7 +58,7 @@
 */
 
 //Global variable definitions
-uint8_t LED_timer=0;
+uint16_t LED_timer=0;
 extern uint8_t error_flag;
 bool timer_event = false;
 

@@ -32,7 +32,7 @@ void data_recv_handler(void) {
         FLASH_WriteWord(STATUS_ADDR, ramBuff, (uint16_t) CMD_CAL | (uint8_t) FLASH_ReadWord((uint16_t) STATUS_ADDR)); // saves status
 
         FLASH_WriteWord(CAL_MSB_ADDR, ramBuff, (uint16_t) i2cDataRead[CAL_MSB_I2C_POS]); // saves cal data
-        FLASH_WriteWord(CAL_MSB_ADDR, ramBuff, (uint16_t) i2cDataRead[CAL_LSB_I2C_POS]); //saves cal data
+        FLASH_WriteWord(CAL_LSB_ADDR, ramBuff, (uint16_t) i2cDataRead[CAL_LSB_I2C_POS]); //saves cal data
     }
     if (CMD_LOW_CAL & i2cDataRead[CMD_I2C_POS]) {
         FLASH_WriteWord(STATUS_ADDR, ramBuff, (uint16_t) CMD_LOW_CAL | (uint8_t) FLASH_ReadWord((uint16_t) STATUS_ADDR));

@@ -46,7 +46,6 @@
 #include "sensor.h"
 #include "mcc_generated_files/tmr0.h"
 
-
 void main(void) {
     // initialize the device
     SYSTEM_Initialize();
@@ -78,53 +77,74 @@ void main(void) {
     //INTERRUPT_PeripheralInterruptDisable();
 
     while (1) {
-        
+
         // Add your application code
         if (timer_event) {
 
             timer_event = false;
             LED_timer++;
 
-            //If error, LED's toggle fast then normal
+            //If error on TAG, LED's toggle fast then normal
             if (error_flag == 1) {
-                if (LED_timer == 5) {
+                if (LED_timer == 5)
                     LED_SetHigh();
-                }
                 if (LED_timer == 10) {
                     LED_SetLow();
                     LED_timer = 0;
                 }
             } else {// LED indicates normal conditions
-                if (LED_timer == 50) {
+
+                uint8_t status = (uint8_t) FLASH_ReadWord(STATUS_ADDR);
+
+                if (LED_timer <= 1)
                     LED_SetHigh();
-                }
-                if (LED_timer == 100) {
+                if (LED_timer == 10)
+                    LED_SetLow();
+                if (LED_timer == 400){
                     LED_SetLow();
                     LED_timer = 0;
                 }
+                    
+
+                if (status) { // If status has been seted once;
+
+                    if ((status & CMD_CAL) && LED_timer == 100)
+                        LED_SetHigh();
+                    else if (LED_timer == 150)
+                        LED_SetLow();
+                    else if ((status & CMD_LOW_CAL) && LED_timer == 200)
+                        LED_SetHigh();
+                    else if (LED_timer == 250)
+                        LED_SetLow();
+                    else if ((status & CMD_HIGH_CAL) && LED_timer == 300)
+                        LED_SetHigh();
+                    else if (LED_timer == 350) {
+                        LED_SetLow();
+                    }
+
+                }
+
             }
         }
-        
+
         /* if the received data is equal to the bytes of mtw protocol of if
          * the command byte have the cal bit clear
          */
-        if(i2c_recv_event)  
-        {
-             i2c_recv_event = false;
-             data_recv_handler();
+        if (i2c_recv_event) {
+            i2c_recv_event = false;
+            data_recv_handler();
         }
-        
+
         /* if the event is for slave send bytes through the bus
          * so data is prepared
          */
-        if(i2c_send_event)
-        {
+        if (i2c_send_event) {
             i2c_send_event = false;
             data_send_handler();
         }
     }
-    
-    
+
+
 }
 /**
  End of File

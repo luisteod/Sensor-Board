@@ -30,7 +30,7 @@
 #define LED_DATA_I2C_POS        8
 
 #define STATUS_ARRAY_SIZE   8
-#define DEFAULT_ARRAY_ADDR  0x040
+#define DEFAULT_ARRAY_ADDR  0x032
 #define PREAMBLE            0x55
 #define STATUS_DEFAULT      0x00
 

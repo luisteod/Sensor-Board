@@ -114,7 +114,7 @@ static inline bool I2C1_SlaveIsOverFlow(void);
 void I2C1_Initialize() {
     SSP1STAT = 0x40;
     SSP1CON1 |= 0x06;
-    SSP1CON2 = 0x00;
+    SSP1CON2 = 0x01;
     SSP1CON1bits.SSPEN = 0;
 }
 
@@ -160,13 +160,12 @@ void I2C1_SendNack() {
 }
 
 static void I2C1_Isr() {
-
     I2C1_SlaveClearIrq();
 
-    //Add boolean to prepare the data for sending
-    if (i2cWriteCnt == 0) {
-        i2c_send_event = true;
-    }
+//    //Add boolean to prepare the data for sending
+//    if (i2cWriteCnt == 0) {
+//        i2c_send_event = true;
+//    }
 
     // If addr of the slave matches, initiate the routine.
     if (I2C1_SlaveIsAddr()) {
@@ -235,12 +234,6 @@ static void I2C1_SlaveRdCallBack() {
     if (I2C1_SlaveRdInterruptHandler) {
         // Funcao ponteiro que aponta para I2C1_SlaveDefRdInterruptHandler()
         I2C1_SlaveRdInterruptHandler();
-
-        if (i2cReadCnt == I2C_READ_PROTOCOL_BYTES) // The -1 is considerating the indexing of a vector 
-        {
-            i2c_recv_event = true;
-        }
-
     }
 }
 
@@ -250,16 +243,25 @@ static void I2C1_SlaveDefRdInterruptHandler() {
 
     i2c1RdData = I2C1_SlaveGetRxData();
 
-    if (i2cReadCnt < I2C_READ_PROTOCOL_BYTES) {
+    if (i2cReadCnt < I2C_READ_PROTOCOL_BYTES)
         i2cDataRead[i2cReadCnt] = i2c1RdData;
-    }
-    else // Ignore excess of data
-    {
-        I2C1_SlaveGetRxData();
-        i2cReadCnt = 0;
-    }
+
+    //    else // Ignore excess of data
+    //    {
+    //        I2C1_SlaveGetRxData();
+    //        i2cReadCnt = 0;
+    //    }
 
     i2cReadCnt++;
+
+    if (i2cReadCnt == I2C_READ_PROTOCOL_BYTES) 
+    {
+        i2c_recv_event = true;
+        PIE1bits.SSP1IE = 0; //Disables I2C interruptions for main routine handles data and store in flash
+        
+    }
+
+
 
 }
 
@@ -273,12 +275,13 @@ static void I2C1_SlaveWrCallBack() {
     // Add your custom callback code here
 
     if (I2C1_SlaveWrInterruptHandler) {
-        i2c1WrData = i2cDataWrite[i2cWriteCnt];
         I2C1_SlaveWrInterruptHandler();
+
     }
 }
 
 static void I2C1_SlaveDefWrInterruptHandler() {
+    i2c1WrData = i2cDataWrite[i2cWriteCnt];
     I2C1_SlaveSendTxData(i2c1WrData);
     i2cWriteCnt++;
 }
@@ -339,7 +342,7 @@ static inline bool I2C1_SlaveOpen() {
     if (!SSP1CON1bits.SSPEN) {
         SSP1STAT = 0x40;
         SSP1CON1 |= 0x06;
-        SSP1CON2 = 0x00;
+        SSP1CON2 = 0x01;
         SSP1CON1bits.SSPEN = 1;
         return true;
     }
@@ -349,7 +352,7 @@ static inline bool I2C1_SlaveOpen() {
 static inline void I2C1_SlaveClose() {
     SSP1STAT = 0x40;
     SSP1CON1 |= 0x06;
-    SSP1CON2 = 0x00;
+    SSP1CON2 = 0x01;
     SSP1CON1bits.SSPEN = 0;
 }
 

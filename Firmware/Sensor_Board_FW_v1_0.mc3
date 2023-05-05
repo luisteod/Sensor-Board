@@ -388,7 +388,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="MSSP1" name="clockStretchEnable"/>
-         <value>false</value>
+         <value>true</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="MSSP1" name="componentName"/>
@@ -820,7 +820,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MSSP1" registerAlias="SSPCON2"/>
-         <value>0</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MSSP1" registerAlias="SSPCON3"/>
@@ -904,7 +904,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MSSP1" registerAlias="SSPCON2" settingAlias="SEN"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MSSP1" registerAlias="SSPCON3" settingAlias="ACKTIM"/>
@@ -3817,12 +3817,12 @@
          <hash>c1ce6c2d0de800321058b33fe5155d930a77e972d42b2003ede88e51988439f3</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\tmr0.c</file>
-         <hash>9342d2a0986b71b06b11a5baddadd96f776df223550c22f569c9fa8bfa482a6f</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\i2c1_slave.h</file>
          <hash>fc1b2520e9cda343d15d6f0a8109e2c0d190967f1e5b1b5326666ee73dfdbff8</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr0.c</file>
+         <hash>9342d2a0986b71b06b11a5baddadd96f776df223550c22f569c9fa8bfa482a6f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
@@ -3830,7 +3830,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\i2c1_slave.c</file>
-         <hash>966e64e8354559d9d89dd0c241d16b3ce06d39772752255ae1512805df145e2a</hash>
+         <hash>d488b79d075a69ce13af277b822a61f52a116200c90416e99a35345a95f7ee29</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>

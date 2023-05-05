@@ -58,6 +58,9 @@ void main(void) {
     } else {
         error_signal();
     }
+    //Prepares status data for sending
+    data_send_handler();
+
     //Permite que o pic receba informação via I2C (Ativa )
     I2C1_Open();
 
@@ -100,11 +103,11 @@ void main(void) {
                     LED_SetHigh();
                 if (LED_timer == 10)
                     LED_SetLow();
-                if (LED_timer == 400){
+                if (LED_timer == 400) {
                     LED_SetLow();
                     LED_timer = 0;
                 }
-                    
+
 
                 if (status) { // If status has been seted once;
 
@@ -133,15 +136,18 @@ void main(void) {
         if (i2c_recv_event) {
             i2c_recv_event = false;
             data_recv_handler();
+            //Renewd Status data for future sending
+            data_send_handler();
+            PIE1bits.SSP1IE = 1; // Enable the I2C interruptions for future transmissions
         }
 
-        /* if the event is for slave send bytes through the bus
-         * so data is prepared
-         */
-        if (i2c_send_event) {
-            i2c_send_event = false;
-            data_send_handler();
-        }
+//        /* if the event is for slave send bytes through the bus
+//         * so data is prepared
+//         */
+//        if (i2c_send_event) {
+//            i2c_send_event = false;
+//            data_send_handler();
+//        }
     }
 
 

@@ -52,6 +52,11 @@
 #include "tmr0.h"
 #include "pin_manager.h"
 
+/**
+  Section: Global Variables Definitions
+*/
+
+volatile uint16_t timer0ReloadVal16bit;
 
 /**
   Section: TMR0 APIs
@@ -73,14 +78,17 @@ void TMR0_Initialize(void)
 {
     // Set TMR0 to the options selected in the User Interface
 
-    // T0CS HFINTOSC; T0CKPS 1:512; T0ASYNC synchronised; 
-    T0CON1 = 0x69;
+    // T0CS HFINTOSC; T0CKPS 1:1024; T0ASYNC synchronised; 
+    T0CON1 = 0x6A;
 
-    // TMR0H 155; 
-    TMR0H = 0x9B;
+    // TMR0H 255; 
+    TMR0H = 0xFF;
 
-    // TMR0L 0; 
-    TMR0L = 0x00;
+    // TMR0L 100; 
+    TMR0L = 0x64;
+
+    // Load TMR0 value to the 16-bit reload variable
+    timer0ReloadVal16bit = (TMR0H << 8) | TMR0L;
 
     // Clear Interrupt flag before enabling the interrupt
     PIR0bits.TMR0IF = 0;
@@ -91,8 +99,8 @@ void TMR0_Initialize(void)
     // Set Default Interrupt Handler
     TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
 
-    // T0OUTPS 1:1; T0EN enabled; T016BIT 8-bit; 
-    T0CON0 = 0x80;
+    // T0OUTPS 1:1; T0EN enabled; T016BIT 16-bit; 
+    T0CON0 = 0x90;
 }
 
 void TMR0_StartTimer(void)
@@ -107,33 +115,41 @@ void TMR0_StopTimer(void)
     T0CON0bits.T0EN = 0;
 }
 
-uint8_t TMR0_ReadTimer(void)
+uint16_t TMR0_ReadTimer(void)
 {
-    uint8_t readVal;
+    uint16_t readVal;
+    uint8_t readValLow;
+    uint8_t readValHigh;
 
-    // read Timer0, low register only
-    readVal = TMR0L;
+    readValLow  = TMR0L;
+    readValHigh = TMR0H;
+    readVal  = ((uint16_t)readValHigh << 8) + readValLow;
 
     return readVal;
 }
 
-void TMR0_WriteTimer(uint8_t timerVal)
+void TMR0_WriteTimer(uint16_t timerVal)
 {
-    // Write to Timer0 registers, low register only
-    TMR0L = timerVal;
+    // Write to the Timer0 register
+    TMR0H = timerVal >> 8;
+    TMR0L = (uint8_t) timerVal;
  }
 
-void TMR0_Reload(uint8_t periodVal)
+void TMR0_Reload(void)
 {
-   // Write to Timer0 registers, high register only
-   TMR0H = periodVal;
+    // Write to the Timer0 register
+    TMR0H = timer0ReloadVal16bit >> 8;
+    TMR0L = (uint8_t) timer0ReloadVal16bit;
 }
 
 void TMR0_ISR(void)
 {
     // clear the TMR0 interrupt flag
     PIR0bits.TMR0IF = 0;
-    // Caso tenha algum endereco de memoria na funcao ponteiro TMR0_InterruptHandler
+    // Write to the Timer0 register
+    TMR0H = timer0ReloadVal16bit >> 8;
+    TMR0L = (uint8_t) timer0ReloadVal16bit;
+
     if(TMR0_InterruptHandler)
     {
         TMR0_InterruptHandler();

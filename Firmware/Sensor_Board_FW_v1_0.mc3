@@ -388,7 +388,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="MSSP1" name="clockStretchEnable"/>
-         <value>true</value>
+         <value>false</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="MSSP1" name="componentName"/>
@@ -820,7 +820,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MSSP1" registerAlias="SSPCON2"/>
-         <value>1</value>
+         <value>0</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="MSSP1" registerAlias="SSPCON3"/>
@@ -904,7 +904,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MSSP1" registerAlias="SSPCON2" settingAlias="SEN"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="MSSP1" registerAlias="SSPCON3" settingAlias="ACKTIM"/>
@@ -3785,16 +3785,16 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>f38d1b737954d42383da97cab3fd87c2188916e6457ab4315a86aaea9e7090b9</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\mcc.h</file>
          <hash>f4f37dd84a9620b867534fde8f3d33b297a45dd3ef7a47eb537621426fe4c41f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\device_config.h</file>
          <hash>08b9e6ed337d551b80de4905681b4c21685b2ee43500b6745bf5ddfa4d2c8aa9</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>f38d1b737954d42383da97cab3fd87c2188916e6457ab4315a86aaea9e7090b9</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\memory.c</file>
@@ -3830,15 +3830,15 @@
       </entry>
       <entry>
          <file>mcc_generated_files\i2c1_slave.c</file>
-         <hash>d488b79d075a69ce13af277b822a61f52a116200c90416e99a35345a95f7ee29</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\interrupt_manager.c</file>
-         <hash>14306aba03c7d88aba44ef5a4f7ad968ffb564dd8dae4d03ddfcf8cc9cc443cd</hash>
+         <hash>966e64e8354559d9d89dd0c241d16b3ce06d39772752255ae1512805df145e2a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.c</file>
          <hash>dcd0b62efaf3161cbb5e1c49456d19bf6a80e27bd83997c744fa03f436d14caf</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\interrupt_manager.c</file>
+         <hash>14306aba03c7d88aba44ef5a4f7ad968ffb564dd8dae4d03ddfcf8cc9cc443cd</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\memory.h</file>

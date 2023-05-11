@@ -48,7 +48,7 @@
 #define I2C1_SLAVE_H
 
 #define I2C1_SLAVE_ADDRESS      0x77
-#define I2C1_SLAVE_MASK         0
+#define I2C1_SLAVE_MASK         0x7F
 
 
 #define I2C_READ_PROTOCOL_BYTES  9

@@ -47,7 +47,9 @@
 #include "i2c1_slave.h"
 #include <xc.h>
 
-typedef enum {
+
+typedef enum
+{
     I2C1_IDLE,
     I2C1_ADDR_TX,
     I2C1_ADDR_RX,

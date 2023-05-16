@@ -47,6 +47,10 @@
 #include "mcc_generated_files/tmr0.h"
 
 void main(void) {
+
+    INTERRUPT_GlobalInterruptDisable();
+    INTERRUPT_PeripheralInterruptDisable();
+    
     // initialize the device
     SYSTEM_Initialize();
 
@@ -55,6 +59,7 @@ void main(void) {
     if (SensorBoardType_validation(TAG)) {
 
         memory_initialize(TAG);
+
     } else {
         error_signal();
     }
@@ -134,20 +139,14 @@ void main(void) {
          * the command byte have the cal bit clear
          */
         if (i2c_recv_event) {
-            i2c_recv_event = false;
             data_recv_handler();
             //Renewd Status data for future sending
             data_send_handler();
             PIE1bits.SSP1IE = 1; // Enable the I2C interruptions for future transmissions
+            i2c_recv_event = false;
         }
 
-//        /* if the event is for slave send bytes through the bus
-//         * so data is prepared
-//         */
-//        if (i2c_send_event) {
-//            i2c_send_event = false;
-//            data_send_handler();
-//        }
+     
     }
 
 

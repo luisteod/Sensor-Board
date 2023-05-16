@@ -1,4 +1,8 @@
 Firmware/dist
 Firmware/build
 Firmware/debug
-Firmware/nbproject
+Firmware/nbproject/private
+Firmware/nbproject/Makefile-genesis*
+Firmware/nbproject/Makefile-impl.mk
+Firmware/nbproject/Makefile-local-*
+Firmware/nbproject/Makefile-variables*

@@ -16,12 +16,13 @@ void memory_initialize(uint8_t TAG) {
         FLASH_WriteWord(LOW_CAL_MSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][0]);
         FLASH_WriteWord(LOW_CAL_LSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][1]);
         FLASH_WriteWord(CAL_MSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][2]);
-        FLASH_WriteWord(CAL_LSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][3]);       
+        FLASH_WriteWord(CAL_LSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][3]);
         FLASH_WriteWord(HIGH_CAL_MSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][4]);
         FLASH_WriteWord(HIGH_CAL_LSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][5]);
         FLASH_WriteWord(LED_DATA_ADDR, ramBuff, 0x0000);
-        FLASH_WriteWord(BOARD_TYPE_ADDR, ramBuff, (uint16_t) TAG);
     }
+    FLASH_WriteWord(BOARD_TYPE_ADDR, ramBuff, (uint16_t) TAG);
+
 }
 
 void data_recv_handler(void) {
@@ -55,7 +56,7 @@ void data_recv_handler(void) {
 }
 
 void data_send_handler(void) {
-    
+
     i2cDataWrite[STATUS_I2C_POS] = (uint8_t) FLASH_ReadWord(STATUS_ADDR);
     i2cDataWrite[BOARD_TYPE_I2C_POS] = (uint8_t) FLASH_ReadWord(BOARD_TYPE_ADDR);
     i2cDataWrite[LOW_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_MSB_ADDR);

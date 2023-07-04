@@ -3,6 +3,7 @@
 extern volatile uint8_t i2cDataRead[I2C_READ_PROTOCOL_BYTES];
 extern volatile uint8_t i2cDataWrite[I2C_WRITE_PROTOCOL_BYTES];
 static uint16_t ramBuff[ERASE_FLASH_BLOCKSIZE]; // Auxiliar buffer for writing a word in flash memory
+static uint8_t board_type;
 
 /*
  * Auxiliar functions
@@ -21,7 +22,8 @@ void memory_initialize(uint8_t TAG) {
         FLASH_WriteWord(HIGH_CAL_LSB_ADDR, ramBuff, (uint16_t) default_in_flash[TAG - 1][5]);
         FLASH_WriteWord(LED_DATA_ADDR, ramBuff, 0x0000);
     }
-    FLASH_WriteWord(BOARD_TYPE_ADDR, ramBuff, (uint16_t) TAG);
+    //FLASH_WriteWord(BOARD_TYPE_ADDR, ramBuff, (uint16_t) TAG);
+     board_type = TAG;
 
 }
 
@@ -58,7 +60,8 @@ void data_recv_handler(void) {
 void data_send_handler(void) {
 
     i2cDataWrite[STATUS_I2C_POS] = (uint8_t) FLASH_ReadWord(STATUS_ADDR);
-    i2cDataWrite[BOARD_TYPE_I2C_POS] = (uint8_t) FLASH_ReadWord(BOARD_TYPE_ADDR);
+    //i2cDataWrite[BOARD_TYPE_I2C_POS] = (uint8_t) FLASH_ReadWord(BOARD_TYPE_ADDR);
+    i2cDataWrite[BOARD_TYPE_I2C_POS] = board_type;
     i2cDataWrite[LOW_CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_MSB_ADDR);
     i2cDataWrite[LOW_CAL_LSB_I2C_POS] = (uint8_t) FLASH_ReadWord(LOW_CAL_LSB_ADDR);
     i2cDataWrite[CAL_MSB_I2C_POS] = (uint8_t) FLASH_ReadWord(CAL_MSB_ADDR);
